@@ -1,44 +1,26 @@
-import time
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException, Request
+from fastapi.responses import JSONResponse, FileResponse, HTMLResponse
+from fastapi.templating import Jinja2Templates
+from pydantic import BaseModel
+from datetime import datetime
+import os
 
-from fastapi.responses import JSONResponse
-import requests
+# GET/POST are indifferent (curl http://localhost:8000/ping)
 
+app = FastAPI() # uvicorn main:app --reload (sandbox)
+# http://127.0.0.1:8000/
+# http://127.0.0.1:8000/docs/
 
-def request_this_server():
-    """This function could be called from a different script but I added it here to keep
-    thigns together"""
-
-    # Request 0
-    try:
-        o = requests.get("http://localhost:1234/ping")
-        print(o.json())
-    except Exception as e:
-        print("Oh... I couldn't connect :c")
-        print(e)
-
-    # Request 1
-    try:
-
-        o = requests.post(
-            "http://localhost:1234/process",
-            json={
-                "parameter_0": "hello",
-                "parameter_1": 2,
-            },
-        )
-        print(o.json())
-    except Exception as e:
-        print("Oh... I couldn't connect :c")
-        print(e)
-
-
-app = FastAPI()
-# uvicorn main:app --reload
-
-@app.get("/")
-def root():
-    return {"Hello":"World"}
+templates = Jinja2Templates(directory=".")
+@app.get("/", response_class=HTMLResponse)
+async def root(request: Request):
+    links = [
+        {"href": "/agents", "text": "Agents", "description": "Responses endpoint"},
+        {"href": "/service", "text": "Service", "description": "n/a"},
+        {"href": "/items", "text": "Items", "description": "n/a"},
+        {"href": "/ping", "text": "Ping", "description": "Send the ball to see if it bounces back"},
+    ]
+    return templates.TemplateResponse("index.html", {"request": request, "links": links})
 
 @app.api_route("/ping", methods=["GET", "POST"])
 async def ping():
@@ -46,19 +28,20 @@ async def ping():
     print("Got /ping...")
     return JSONResponse(status_code=200, content={"ping": "pong"})
 
+generations = {}
 
-@app.post("/process")
-def process_data(parameter_0: str, parameter_1: int):
-    """Do thingsssss"""
-    print("Got /process...")
+class GenerationPayload(BaseModel):
+    name: str
+    generation: str
+    datetime: datetime
 
-    def this_function_is_very_expensive_to_compute():
-        time.sleep(4)
-        return "done"
+@app.post("/agents/")
+async def upload_generation(payload: GenerationPayload):
+    generations[payload.name] = {"generation": payload.generation, "datetime": payload.datetime}
+    return {"message": "Generation uploaded successfully"}
 
-    this_function_is_very_expensive_to_compute()
-
-    return JSONResponse(status_code=200, content={"result": "done"})
-
-
-# requests for testing
+@app.get("/agents/{name}")
+async def get_generation(name: str):
+    if name in generations:
+        return JSONResponse(status_code=200, content={"generations": generations[name]})
+    raise HTTPException(status_code=404, detail="Agent not found")

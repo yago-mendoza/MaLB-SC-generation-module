@@ -1,10 +1,17 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, WebSocket
 
 my_app = FastAPI()
 # uvicorn main:my_app --reload
 
 # http://127.0.0.1:8000/
 # http://127.0.0.1:8000/docs/
+
+@my_app.websocket("/ws")
+async def websocket_endpoint(websocket: WebSocket):
+    await websocket.accept()
+    while True:
+        data = await websocket.receive_text()
+        await websocket.send_text(f"Message text was: {data}")
 
 @my_app.get("/") # 'get' operation (just indicates)
 async def root():
