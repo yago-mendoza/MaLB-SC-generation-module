@@ -17,23 +17,23 @@ pre-commit = "^3.6.2"
 skip-string-normalization = true
 line-length = 120
 
-[tool.ruff]
-# Same as Black.
-line-length = 120
+# [tool.ruff]
+# # Same as Black.
+# line-length = 120
 
-exclude = ["jupyter_notebook_config.py"]
-select = [
-    "E",  # pycodestyle errors (settings from FastAPI, thanks, @tiangolo!)
-    "W",  # pycodestyle warnings
-    "F",  # pyflakes
-    "I",  # isort
-    "C",  # flake8-comprehensions
-    "B",  # flake8-bugbear
-]
-ignore = [
-    "E501",  # line too long, handled by black
-    "C901",  # too complex
-]
+# exclude = ["jupyter_notebook_config.py"]
+# select = [
+#     "E",  # pycodestyle errors (settings from FastAPI, thanks, @tiangolo!)
+#     "W",  # pycodestyle warnings
+#     "F",  # pyflakes
+#     "I",  # isort
+#     "C",  # flake8-comprehensions
+#     "B",  # flake8-bugbear
+# ]
+# ignore = [
+#     "E501",  # line too long, handled by black
+#     "C901",  # too complex
+# ]
 
 [tool.ruff.isort]
 order-by-type = true
@@ -45,3 +45,30 @@ known-first-party = []
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.isort]
+profile = "black"
+
+[tool.ruff.lint]
+select = [
+    # "ARG",
+    # "B",
+    "C4",
+    # "EM",
+    # "FA",
+    "I",
+    "PERF",
+    # "PIE",
+    # "PT",
+    # "PTH",
+    # "RET",
+    # "RSE",
+    # "RUF",
+    # "SIM",
+    # "TRY",
+    "UP",
+    # # ERA (when the project is more mature)
+    # "Q",
+    # "YTT",
+    # "N",
+]

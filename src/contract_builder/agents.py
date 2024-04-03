@@ -1,9 +1,10 @@
+import os
+from typing import Any
+
+import requests
 from langchain.schema.output_parser import StrOutputParser
 from langchain_core.prompts import PromptTemplate
 from langchain_openai import OpenAI
-from typing import Any
-import requests
-import os
 
 # Set the OpenAI API key in the environment variables
 with open(r"C:/openai_key/openai_key.txt") as f:
@@ -23,7 +24,7 @@ class ContractAgent:
         self.prompt_template = None
         self.last_response = ''
         # self.chain_synopsis = None
-    
+
     def set_prompt(self, prompt_template: str) -> None:
         """
         Set the prompt template for generating responses.
@@ -53,7 +54,7 @@ class ContractAgent:
 
     def connect_url(self, url):
         self.server_url = url
-    
+
     def sendResponse(self):
         data = {"name": self.name, "generation": self.last_response}
         response = requests.post(f"{self.server_url}/agents/", json=data)
@@ -67,13 +68,17 @@ class ContractAgent:
         else:
             return {"error": "Agent not found or server error"}
 
-# From terminal usage example
-agent = ContractAgent('Caleb')
-agent.set_prompt("Write a haiku with {0}, {1} & {2}")
-agent.generate('Egg', 'Bee', 'Ape') # restrictions
-print(agent.last_response)
-agent.connect_url("http://127.0.0.1:8000/")
-agent.sendResponse()
+def main () -> None:
+    # From terminal usage example
+    agent = ContractAgent('Caleb')
+    agent.set_prompt("Write a haiku with {0}, {1} & {2}")
+    agent.generate('Egg', 'Bee', 'Ape') # restrictions
+    print(agent.last_response)
+    agent.connect_url("http://127.0.0.1:8000/")
+    agent.sendResponse()
+
+if __name__ == "__main__":
+    main()
 
 
 

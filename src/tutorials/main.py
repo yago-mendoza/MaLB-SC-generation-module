@@ -29,6 +29,7 @@ async def read_user(user_id: str):
 
 from enum import Enum
 
+
 class ModelName(str, Enum):
     alexnet = "alexnet"
     resnet = "resnet"

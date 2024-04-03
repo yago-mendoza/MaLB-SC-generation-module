@@ -44,4 +44,8 @@ output = chain_synopsis.invoke(
     }
 )
 
+# Print the generated contract.
+    
+
 print(output)
+
