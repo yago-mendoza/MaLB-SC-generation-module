@@ -4,7 +4,7 @@
 
 <p align="center">
   <a href="https://www.google.com/">
-    <img src="assets/banner.png" alt="swe-agent.com" />
+    <img src="assets/banner.PNG" alt="https://github.com/yago-mendoza/MaLB-SC-generation-module?tab=readme-ov-file" />
   </a>
 </p>
 
