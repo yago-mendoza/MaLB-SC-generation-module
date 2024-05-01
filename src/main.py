@@ -1,3 +1,19 @@
+
+from factory.agent_factory import create_agent
+
+def main():
+    agent = create_agent('openai', 'gpt-4')
+    response = agent.respond("Hello, how are you?")
+    print(response)
+
+    agent = create_agent('llama', 'lama3-8b')
+    response = agent.respond("What is the weather today?")
+    print(response)
+
+if __name__ == "__main__":
+    main()
+
+
 import os
 from datetime import datetime
 
@@ -38,9 +54,7 @@ async def ping():
         content={"ping": "pong"},
     )
 
-
 generations = {}
-
 
 class GenerationPayload(BaseModel):
 

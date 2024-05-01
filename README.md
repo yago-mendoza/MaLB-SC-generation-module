@@ -18,7 +18,7 @@
 Proof-of-concept for a self-organizing multi-agent system that leverages transformer-based LLMs to autonomously script functional programs for the Ethereum Virtual Machine (EVM), designed within specified operational constraints and aiming to achieve targeted performance metrics and security standards.
 
 <p align="center">
-  <img src="assets/workflow.png" style="width: 40%; height: auto;">
+  <img src="assets/workflow.png" style="width: 90%; height: auto;">
 </p>
 
 

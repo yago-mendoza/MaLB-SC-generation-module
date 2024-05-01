@@ -17,10 +17,15 @@ python = "^3.9"
 requests = "^2.26.0"
 langchain = "^0.1.16"
 langchain-openai = "^0.1.3"
+pytest = "^8.1.1"
+fastapi = "^0.110.2"
+ollama = "^0.1.8"
+openai = "^1.23.3"
+langchain-groq = "^0.1.2"
 
 [tool.black]
 skip-string-normalization = true
-line-length = 120
+line-length = 88
 
 # exclude = ["jupyter_notebook_config.py"]
 # select = [
@@ -52,24 +57,24 @@ profile = "black"
 
 [tool.ruff.lint]
 select = [
-    # "ARG",
-    # "B",
+    "ARG",
+    "B",
     "C4",
-    # "EM",
-    # "FA",
+    "EM",
+    "FA",
     "I",
     "PERF",
-    # "PIE",
-    # "PT",
-    # "PTH",
-    # "RET",
-    # "RSE",
-    # "RUF",
-    # "SIM",
-    # "TRY",
+    "PIE",
+    "PT",
+    "PTH",
+    "RET",
+    "RSE",
+    "RUF",
+    "SIM",
+    "TRY",
     "UP",
-    # # ERA (when the project is more mature)
-    # "Q",
-    # "YTT",
-    # "N",
+    "ERA",
+    "Q",
+    "YTT",
+    "N",
 ]
