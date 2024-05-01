@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>models package &mdash; MaLB-SC Generation Module  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            MaLB-SC Generation Module
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">models package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-models.base_model">models.base_model module</a><ul>
+<li><a class="reference internal" href="#models.base_model.LanguageModel"><code class="docutils literal notranslate"><span class="pre">LanguageModel</span></code></a><ul>
+<li><a class="reference internal" href="#models.base_model.LanguageModel.generate_response"><code class="docutils literal notranslate"><span class="pre">LanguageModel.generate_response()</span></code></a></li>
+<li><a class="reference internal" href="#models.base_model.LanguageModel.set_prompt"><code class="docutils literal notranslate"><span class="pre">LanguageModel.set_prompt()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-models.groq_model">models.groq_model module</a><ul>
+<li><a class="reference internal" href="#models.groq_model.GroqModel"><code class="docutils literal notranslate"><span class="pre">GroqModel</span></code></a><ul>
+<li><a class="reference internal" href="#models.groq_model.GroqModel.generate_response"><code class="docutils literal notranslate"><span class="pre">GroqModel.generate_response()</span></code></a></li>
+<li><a class="reference internal" href="#models.groq_model.GroqModel.set_prompt"><code class="docutils literal notranslate"><span class="pre">GroqModel.set_prompt()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-models.llama3_model">models.llama3_model module</a><ul>
+<li><a class="reference internal" href="#models.llama3_model.LLaMAModel"><code class="docutils literal notranslate"><span class="pre">LLaMAModel</span></code></a><ul>
+<li><a class="reference internal" href="#models.llama3_model.LLaMAModel.generate_response"><code class="docutils literal notranslate"><span class="pre">LLaMAModel.generate_response()</span></code></a></li>
+<li><a class="reference internal" href="#models.llama3_model.LLaMAModel.set_prompt"><code class="docutils literal notranslate"><span class="pre">LLaMAModel.set_prompt()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-models.openai_model">models.openai_model module</a><ul>
+<li><a class="reference internal" href="#models.openai_model.OpenAIModel"><code class="docutils literal notranslate"><span class="pre">OpenAIModel</span></code></a><ul>
+<li><a class="reference internal" href="#models.openai_model.OpenAIModel.generate_response"><code class="docutils literal notranslate"><span class="pre">OpenAIModel.generate_response()</span></code></a></li>
+<li><a class="reference internal" href="#models.openai_model.OpenAIModel.set_prompt"><code class="docutils literal notranslate"><span class="pre">OpenAIModel.set_prompt()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-models">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">MaLB-SC Generation Module</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">models package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/models.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="models-package">
+<h1>models package<a class="headerlink" href="#models-package" title="Link to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+</section>
+<section id="module-models.base_model">
+<span id="models-base-model-module"></span><h2>models.base_model module<a class="headerlink" href="#module-models.base_model" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="models.base_model.LanguageModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.base_model.</span></span><span class="sig-name descname"><span class="pre">LanguageModel</span></span><a class="reference internal" href="_modules/models/base_model.html#LanguageModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.base_model.LanguageModel" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="models.base_model.LanguageModel.generate_response">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">generate_response</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/models/base_model.html#LanguageModel.generate_response"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.base_model.LanguageModel.generate_response" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="models.base_model.LanguageModel.set_prompt">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">set_prompt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prompt_template</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/models/base_model.html#LanguageModel.set_prompt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.base_model.LanguageModel.set_prompt" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-models.groq_model">
+<span id="models-groq-model-module"></span><h2>models.groq_model module<a class="headerlink" href="#module-models.groq_model" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="models.groq_model.GroqModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.groq_model.</span></span><span class="sig-name descname"><span class="pre">GroqModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/models/groq_model.html#GroqModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.groq_model.GroqModel" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#models.base_model.LanguageModel" title="models.base_model.LanguageModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">LanguageModel</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="models.groq_model.GroqModel.generate_response">
+<span class="sig-name descname"><span class="pre">generate_response</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/models/groq_model.html#GroqModel.generate_response"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.groq_model.GroqModel.generate_response" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="models.groq_model.GroqModel.set_prompt">
+<span class="sig-name descname"><span class="pre">set_prompt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prompt_template</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/models/groq_model.html#GroqModel.set_prompt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.groq_model.GroqModel.set_prompt" title="Link to this definition"></a></dt>
+<dd><p>Set the prompt template for generating responses.
+:param prompt_template: The template string for prompts with placeholders like {0}, {1}, etc.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-models.llama3_model">
+<span id="models-llama3-model-module"></span><h2>models.llama3_model module<a class="headerlink" href="#module-models.llama3_model" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="models.llama3_model.LLaMAModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.llama3_model.</span></span><span class="sig-name descname"><span class="pre">LLaMAModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/models/llama3_model.html#LLaMAModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.llama3_model.LLaMAModel" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#models.base_model.LanguageModel" title="models.base_model.LanguageModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">LanguageModel</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="models.llama3_model.LLaMAModel.generate_response">
+<span class="sig-name descname"><span class="pre">generate_response</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/models/llama3_model.html#LLaMAModel.generate_response"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.llama3_model.LLaMAModel.generate_response" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="models.llama3_model.LLaMAModel.set_prompt">
+<span class="sig-name descname"><span class="pre">set_prompt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prompt_template</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/models/llama3_model.html#LLaMAModel.set_prompt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.llama3_model.LLaMAModel.set_prompt" title="Link to this definition"></a></dt>
+<dd><p>Set the prompt template for generating responses.
+:param prompt_template: The template string for prompts with placeholders like {0}, {1}, etc.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-models.openai_model">
+<span id="models-openai-model-module"></span><h2>models.openai_model module<a class="headerlink" href="#module-models.openai_model" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="models.openai_model.OpenAIModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.openai_model.</span></span><span class="sig-name descname"><span class="pre">OpenAIModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'gpt-3.5-turbo-instruct'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">temperature</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.8</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_tokens</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">2048</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/models/openai_model.html#OpenAIModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.openai_model.OpenAIModel" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#models.base_model.LanguageModel" title="models.base_model.LanguageModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">LanguageModel</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="models.openai_model.OpenAIModel.generate_response">
+<span class="sig-name descname"><span class="pre">generate_response</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/models/openai_model.html#OpenAIModel.generate_response"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.openai_model.OpenAIModel.generate_response" title="Link to this definition"></a></dt>
+<dd><p>Generate a response based on the set prompt template, formatted with given input prompt.
+:param prompt: The input string to format the template.
+:return: The raw response from the language model.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="models.openai_model.OpenAIModel.set_prompt">
+<span class="sig-name descname"><span class="pre">set_prompt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prompt_template</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/models/openai_model.html#OpenAIModel.set_prompt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.openai_model.OpenAIModel.set_prompt" title="Link to this definition"></a></dt>
+<dd><p>Set the prompt template for generating responses.
+:param prompt_template: The template string for prompts with placeholders like {0}, {1}, etc.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-models">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-models" title="Link to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Yago M..</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -4,7 +4,7 @@
 
 <p align="center">
   <a href="https://www.google.com/">
-    <img src="assets/banner.PNG" alt="https://github.com/yago-mendoza/MaLB-SC-generation-module?tab=readme-ov-file" />
+    <img src="assets/banner.PNG" />
   </a>
 </p>
 
@@ -17,9 +17,9 @@
 ## 👋 Overview <a name="overview"></a>
 Proof-of-concept for a self-organizing multi-agent system that leverages transformer-based LLMs to autonomously script functional programs for the Ethereum Virtual Machine (EVM), designed within specified operational constraints and aiming to achieve targeted performance metrics and security standards.
 
-<p align="center">
+<!-- <p align="center">
   <img src="assets/workflow.png" style="width: 90%; height: auto;">
-</p>
+</p> -->
 
 
 ## 🔧 Prerequisites
