@@ -20,7 +20,9 @@
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="utils package" href="utils.html" />
+    <link rel="prev" title="main module" href="main.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -42,47 +44,39 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <!-- Local TOC -->
-              <div class="local-toc"><ul>
-<li><a class="reference internal" href="#">models package</a><ul>
-<li><a class="reference internal" href="#submodules">Submodules</a></li>
-<li><a class="reference internal" href="#module-models.base_model">models.base_model module</a><ul>
-<li><a class="reference internal" href="#models.base_model.LanguageModel"><code class="docutils literal notranslate"><span class="pre">LanguageModel</span></code></a><ul>
-<li><a class="reference internal" href="#models.base_model.LanguageModel.generate_response"><code class="docutils literal notranslate"><span class="pre">LanguageModel.generate_response()</span></code></a></li>
-<li><a class="reference internal" href="#models.base_model.LanguageModel.set_prompt"><code class="docutils literal notranslate"><span class="pre">LanguageModel.set_prompt()</span></code></a></li>
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">src</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="agents.html">agents package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="factory.html">factory package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fastapi_main.html">fastapi_main module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="main.html">main module</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">models package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-models.base_model">models.base_model module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#models.base_model.LanguageModel"><code class="docutils literal notranslate"><span class="pre">LanguageModel</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-models.groq_model">models.groq_model module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#models.groq_model.GroqModel"><code class="docutils literal notranslate"><span class="pre">GroqModel</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-models.llama3_model">models.llama3_model module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#models.llama3_model.LLaMAModel"><code class="docutils literal notranslate"><span class="pre">LLaMAModel</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-models.openai_model">models.openai_model module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#models.openai_model.OpenAIModel"><code class="docutils literal notranslate"><span class="pre">OpenAIModel</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-models">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html">utils package</a></li>
 </ul>
 </li>
 </ul>
-</li>
-<li><a class="reference internal" href="#module-models.groq_model">models.groq_model module</a><ul>
-<li><a class="reference internal" href="#models.groq_model.GroqModel"><code class="docutils literal notranslate"><span class="pre">GroqModel</span></code></a><ul>
-<li><a class="reference internal" href="#models.groq_model.GroqModel.generate_response"><code class="docutils literal notranslate"><span class="pre">GroqModel.generate_response()</span></code></a></li>
-<li><a class="reference internal" href="#models.groq_model.GroqModel.set_prompt"><code class="docutils literal notranslate"><span class="pre">GroqModel.set_prompt()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#module-models.llama3_model">models.llama3_model module</a><ul>
-<li><a class="reference internal" href="#models.llama3_model.LLaMAModel"><code class="docutils literal notranslate"><span class="pre">LLaMAModel</span></code></a><ul>
-<li><a class="reference internal" href="#models.llama3_model.LLaMAModel.generate_response"><code class="docutils literal notranslate"><span class="pre">LLaMAModel.generate_response()</span></code></a></li>
-<li><a class="reference internal" href="#models.llama3_model.LLaMAModel.set_prompt"><code class="docutils literal notranslate"><span class="pre">LLaMAModel.set_prompt()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#module-models.openai_model">models.openai_model module</a><ul>
-<li><a class="reference internal" href="#models.openai_model.OpenAIModel"><code class="docutils literal notranslate"><span class="pre">OpenAIModel</span></code></a><ul>
-<li><a class="reference internal" href="#models.openai_model.OpenAIModel.generate_response"><code class="docutils literal notranslate"><span class="pre">OpenAIModel.generate_response()</span></code></a></li>
-<li><a class="reference internal" href="#models.openai_model.OpenAIModel.set_prompt"><code class="docutils literal notranslate"><span class="pre">OpenAIModel.set_prompt()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#module-models">Module contents</a></li>
-</ul>
-</li>
-</ul>
-</div>
+
         </div>
       </div>
     </nav>
@@ -97,6 +91,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">src</a></li>
       <li class="breadcrumb-item active">models package</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/models.rst.txt" rel="nofollow"> View page source</a>
@@ -205,7 +200,10 @@
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="main.html" class="btn btn-neutral float-left" title="main module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="utils.html" class="btn btn-neutral float-right" title="utils package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 

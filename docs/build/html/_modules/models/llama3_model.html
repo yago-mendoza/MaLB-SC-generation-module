@@ -41,8 +41,11 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <!-- Local TOC -->
-              <div class="local-toc"></div>
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">src</a></li>
+</ul>
+
         </div>
       </div>
     </nav>
@@ -69,6 +72,7 @@
              
   <h1>Source code for models.llama3_model</h1><div class="highlight"><pre>
 <span></span><span class="kn">import</span> <span class="nn">ollama</span>
+
 <span class="kn">from</span> <span class="nn">models.base_model</span> <span class="kn">import</span> <span class="n">LanguageModel</span>
 
 <span class="c1">### API KEY MANAGEMENT ###</span>
@@ -95,7 +99,7 @@
 <div class="viewcode-block" id="LLaMAModel.set_prompt">
 <a class="viewcode-back" href="../../models.html#models.llama3_model.LLaMAModel.set_prompt">[docs]</a>
     <span class="k">def</span> <span class="nf">set_prompt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prompt_template</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;        </span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Set the prompt template for generating responses.</span>
 <span class="sd">        :param prompt_template: The template string for prompts with placeholders like {0}, {1}, etc.</span>
 <span class="sd">        &quot;&quot;&quot;</span>

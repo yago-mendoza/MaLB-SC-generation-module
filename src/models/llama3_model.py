@@ -1,4 +1,5 @@
 import ollama
+
 from models.base_model import LanguageModel
 
 ### API KEY MANAGEMENT ###
@@ -21,7 +22,7 @@ class LLaMAModel(LanguageModel):
         self.prompt_template = prompt_template
 
     def set_prompt(self, prompt_template: str) -> None:
-        """        
+        """
         Set the prompt template for generating responses.
         :param prompt_template: The template string for prompts with placeholders like {0}, {1}, etc.
         """

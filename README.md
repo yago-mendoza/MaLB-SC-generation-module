@@ -126,7 +126,7 @@ To install [Poetry](https://python-poetry.org/) using [Chocolatey](https://choco
 
 | Tool    | Command                           | Explanation                                                  |
 |---------|-----------------------------------|--------------------------------------------------------------|
-| Ruff    | `ruff . --fix`                    | Automatically fixes `FIXABLE` `[*]` issues in the current directory.         |
+| Ruff    | `ruff check . --fix`                    | Automatically fixes `FIXABLE` `[*]` issues in the current directory.         |
 | Ruff    | `ruff check .`                    | Checks for issues in the current directory without fixing.   |
 | Black   | `black .`                         | Automatically formats Python code in the current directory (requires `:reload`)  |
 | Poetry  | `poetry add`                      | Adds a new dependency to your Poetry project.                |

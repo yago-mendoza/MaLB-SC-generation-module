@@ -2,8 +2,9 @@ import os
 from pathlib import Path
 
 from langchain_openai import OpenAI
-from models.base_model import LanguageModel
 from utils.exceptions import ApiKeyNotFoundException
+
+from models.base_model import LanguageModel
 
 ### API KEY MANAGEMENT ###
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
@@ -32,6 +33,11 @@ class OpenAIModel(LanguageModel):
         )
         self.prompt_template = None
         self.last_response = ""
+
+    # Setting compatibility with quickly drafted DSPy file    
+    def ask(self, prompt: str) -> str:
+        self.set_prompt(prompt)
+        return self.generate_response(prompt)
 
     def set_prompt(self, prompt_template: str) -> None:
         """

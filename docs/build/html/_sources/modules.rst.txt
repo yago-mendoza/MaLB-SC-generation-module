@@ -1,4 +1,4 @@
-src
+MaLB-SC Generation Module
 ===
 
 .. toctree::

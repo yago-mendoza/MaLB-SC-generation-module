@@ -1,8 +1,11 @@
 import os
 
+# modified
+
 from groq import Groq
-from models.base_model import LanguageModel
 from utils.exceptions import ApiKeyNotFoundException
+
+from models.base_model import LanguageModel
 
 ### API KEY MANAGEMENT ###
 GROQ_APY_KEY = os.getenv("GROQ_API_KEY")
@@ -11,6 +14,7 @@ if not GROQ_APY_KEY:
 client = Groq(
     api_key=os.environ.get("GROQ_API_KEY"),
 )
+
 
 class GroqModel(LanguageModel):
     def __init__(self, model_name):

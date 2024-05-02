@@ -25,6 +25,13 @@ langchain-groq = "^0.1.2"
 groq = "^0.5.0"
 sphinx = "^7.3.7"
 sphinx-rtd-theme = "^2.0.0"
+llama-index = "^0.10.33"
+llama-index-llms-openai = "^0.1.16"
+dspy-ai = "^2.4.9"
+deepeval = "^0.21.36"
+
+[tool.poetry.group.dev.dependencies]
+ipykernel = "^6.29.4"
 
 [tool.black]
 skip-string-normalization = true
@@ -44,7 +51,7 @@ line-length = 88
 #     "C901",  # too complex
 # ]
 
-[tool.ruff.isort]
+[tool.ruff.lint.isort]
 order-by-type = true
 relative-imports-order = "closest-to-furthest"
 extra-standard-library = ["typing"]
