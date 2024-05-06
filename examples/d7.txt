@@ -1,0 +1,61 @@
+.title
+distribution
+
+.description
+For the Fan Engagement Platform, design a ERC721 Smart Contract to distribute rewards based on activity and token holdings at the end of each month. Fans with more than 200 tokens held and at least 50 activity points accumulated in a month qualify for rewards. Rewards consist of awarding 10% of held tokens as additional tokens. Distribution occurs automatically on the last day of each month, emitting an event.
+>
+>
+>
+
+.requirements
+
+REQ01
+
+..name
+Reward Qualification Criteria
+..scope
+Defining and validating the criteria for fans to qualify for monthly rewards on the Fan Engagement Platform, based on token holdings and activity points.
+..input
+Fan's total tokens, monthly activity points.
+..constraints
+Fans must hold more than 200 tokens and accumulate at least 50 activity points in a month to qualify for rewards.
+..output
+Determination of whether a fan qualifies for the monthly reward.
+..primary_scenario
+Fan exceeds both the token holding and activity point thresholds, qualifying for rewards.
+..alternative_scenario
+Fan does not meet one or both of the thresholds, and does not qualify for rewards.
+
+REQ02
+
+..name
+Reward Calculation and Distribution
+..scope
+Automatically calculating and distributing rewards to qualified fans at the end of each month, where the reward is 10% of the tokens they hold.
+..input
+Qualified fan's token holdings, current date.
+..constraints
+Reward calculation occurs only if the fan qualifies and on the last day of the month.
+..output
+Additional tokens credited to the fan’s account, proportional to their held tokens.
+..primary_scenario
+On the last day of the month, tokens are automatically credited to the accounts of fans who qualify.
+..alternative_scenario
+It is not the last day of the month, or the fan does not qualify; no tokens are distributed.
+
+REQ03
+
+..name
+Event Emission upon Reward Distribution
+..scope
+Emitting an event each time rewards are distributed to notify the system and potentially other linked services or interfaces.
+..input
+Details of the reward distribution (fan identifier, amount of tokens distributed).
+..constraints
+An event must be emitted for each reward distribution, capturing all relevant details.
+..output
+Event log that provides transparency and traceability of the reward distribution process.
+..primary_scenario
+Rewards are distributed and an event is emitted detailing the distribution.
+..alternative_scenario
+No rewards are distributed (due to non-qualification or other reasons), hence no event is emitted.

@@ -1,0 +1,78 @@
+.title
+upgrading
+
+.description
+Implement an ERC-721-based smart contract for managing tiered VIP memberships, allowing fans to upgrade or downgrade their membership based on the tokens they hold. Define membership levels as Bronze, Silver, and Gold, each with associated perks. Upgrading requires the owner to have a sufficient number of additional tokens (100 tokens for Silver, 200 for Gold). Include functionality for members to voluntarily lower their level, refunding tokens proportionally based on their tenure on the platform (70% if >2 years, 50% if >1 year, 30% if >6 months). Once downgraded, a member must wait 12 days before upgrading again.
+>
+>
+>
+
+.requirements
+
+REQ01
+
+..name
+Tiered VIP Membership Management
+..scope
+Managing tiered VIP memberships using an ERC-721-based smart contract where memberships are categorized into Bronze, Silver, and Gold levels.
+..input
+Membership upgrade or downgrade request, member's current token count and membership level.
+..constraints
+Memberships are strictly categorized into three levels with specific token requirements for each.
+..output
+Member's new membership level following a successful upgrade or downgrade.
+..primary_scenario
+Member requests an upgrade and has the necessary tokens for the next level, which is then processed successfully.
+..alternative_scenario
+Member requests an upgrade without sufficient tokens, and the request is denied.
+
+REQ02
+
+..name
+Membership Upgrade Requirements
+..scope
+Defining and enforcing token requirements for upgrading membership levels among Bronze, Silver, and Gold.
+..input
+Member's current membership level, number of tokens held, upgrade request.
+..constraints
+100 additional tokens needed for Silver, 200 for Gold. Member must not have downgraded within the last 12 days.
+..output
+Approval or denial of the membership upgrade based on token count and upgrade cooldown.
+..primary_scenario
+Member meets the token requirement and cooldown period, successfully upgrades membership.
+..alternative_scenario
+Member does not meet token requirement or is within cooldown period, and the upgrade is denied.
+
+REQ03
+
+..name
+Voluntary Membership Downgrading
+..scope
+Allowing members to voluntarily downgrade their membership level and receive a token refund based on their tenure.
+..input
+Member’s current level, tenure on the platform, downgrade request.
+..constraints
+Token refund rates: 70% if tenure >2 years, 50% if >1 year, 30% if >6 months. Downgrade is followed by a 12-day upgrade cooldown.
+..output
+Number of tokens refunded and new membership level.
+..primary_scenario
+Member requests a downgrade and is eligible for a refund based on tenure; tokens are refunded accordingly.
+..alternative_scenario
+Member requests a downgrade but does not meet the minimum tenure for a refund; downgrade proceeds without refund.
+
+REQ04
+
+..name
+Upgrade Cooldown Management
+..scope
+Managing the cooldown period preventing members from upgrading their membership level again too soon after downgrading.
+..input
+Date of last downgrade, current date, upgrade request.
+..constraints
+12-day cooldown period after any downgrade.
+..output
+Approval or denial of the upgrade request based on cooldown compliance.
+..primary_scenario
+Member attempts to upgrade more than 12 days after a downgrade and is successful.
+..alternative_scenario
+Member attempts to upgrade within 12 days of downgrading; the request is denied.

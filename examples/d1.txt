@@ -1,0 +1,114 @@
+.title
+
+event
+
+.description
+
+Implement a blockchain contract to manage 50,000 tokens available for a concert, with each token representing one ticket. Users are limited to purchasing one ticket each, but those with Golden status can buy up to three tickets to transfer to other users. The ticket sales are divided into two phases. The first phase lasts for 5 minutes, and the second phase is triggered one week after the first one ends. If the event is cancelled, compensation includes an extra 25% for Golden ticket holders, 5% for Platinum, and no extra compensation for Bronze ticket holders.
+>
+>
+>
+
+.requirements
+
+REQ01
+
+..name
+Token Allocation
+..scope
+Managing the distribution and tracking of 50,000 concert tickets represented as tokens.
+..input
+Total number of tokens (50,000), each ticket request.
+..constraints
+Fixed total supply of tokens.
+..output
+Each successful transaction decreases the total number of available tokens.
+..primary_scenario
+User requests a ticket and if tokens are available, one token is allocated to the user.
+..alternative_scenario
+All tokens are sold, no more tokens can be allocated.
+
+REQ02
+
+..name
+User Purchase Limit
+..scope
+Restricting standard users to purchasing only one ticket.
+..input
+User status (standard), ticket purchase request.
+..constraints
+User status must be standard; ticket count per standard user cannot exceed one.
+..output
+Validation result of purchase request (approved or denied).
+..primary_scenario
+Standard user purchases their first ticket successfully.
+..alternative_scenario
+Standard user attempts to purchase more than one ticket; the system denies the request.
+
+REQ03
+
+..name
+Golden Status Exception
+..scope
+Allowing Golden status holders enhanced purchasing capabilities.
+..input
+User status (Golden), ticket purchase requests.
+..constraints
+User status must be verified as Golden; ticket count for Golden users cannot exceed three.
+..output
+Validation result of purchase request for up to three tickets.
+..primary_scenario
+Golden status user purchases up to three tickets successfully.
+..alternative_scenario
+Golden status user attempts to purchase more than three tickets; the system denies the request.
+
+REQ04
+
+..name
+Sales Phases
+..scope
+Managing the ticket sales timeline in two phases.
+..input
+Current time/date, phase status.
+..constraints
+Sales must occur strictly within the defined phase durations.
+..output
+Phase status (active or inactive).
+..primary_scenario
+A user makes a purchase during an active sales phase.
+..alternative_scenario
+A user attempts to purchase outside the active sales phase; the system denies the request.
+
+REQ05
+
+..name
+Phase Timing
+..scope
+Scheduling and triggering the two sales phases.
+..input
+Start times for each phase, duration of the first phase.
+..constraints
+Exact timing must be adhered to; the second phase begins exactly one week after the first ends.
+..output
+Current phase status based on the timeline.
+..primary_scenario
+System transitions from the first phase to the second phase exactly one week after the first ends.
+..alternative_scenario
+Time checks occur frequently to ensure phase timings are respected.
+
+REQ06
+
+..name
+Event Cancellation Compensation
+..scope
+Event Cancellation Compensation
+..input
+Calculating compensation for ticket holders if the event is cancelled.
+..constraints
+Ticket holder's status (Golden, Platinum, Bronze), event cancellation status.
+..output
+Compensation rates differ by status: 25% for Golden, 5% for Platinum, none for Bronze.
+..primary_scenario
+Event is cancelled, and compensation is distributed according to user status.
+..alternative_scenario
+Event proceeds as planned; no compensation is distributed.

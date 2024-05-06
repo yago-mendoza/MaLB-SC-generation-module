@@ -1,0 +1,95 @@
+.title
+auctioning
+
+.description
+Implement an ERC-721-based smart contract for auctioning limited VIP tickets to fans for a concert. Each ticket is represented as a unique token. Limit each address to bid a maximum of 3 times. Bids must be at least 5% higher than the current highest bid. Emit new highest bids and conclude when a time limit expires.
+>
+>
+>
+
+.requirements
+
+REQ01
+
+..name
+Unique Token Representation
+..scope
+Representing each VIP concert ticket as a unique token using the ERC-721 standard.
+..input
+Concert details (artist, venue, date), token generation request.
+..constraints
+Each token must be uniquely identifiable and comply with the ERC-721 standard.
+..output
+Generation of a new unique token for each VIP ticket.
+..primary_scenario
+A request is made to generate a token, and a unique ERC-721 token is minted for a VIP ticket.
+..alternative_scenario
+Token generation fails due to system errors or non-compliance with ERC-721 standards.
+
+REQ02
+
+..name
+Bid Limitation Per Address
+..scope
+Limiting the number of bids an address can place during the auction to three.
+..input
+Bidder's address, bid attempt.
+..constraints
+Each address can only make three bids during the entire auction period.
+..output
+Acceptance or rejection of a bid based on the bid count from the same address.
+..primary_scenario
+Bidder places a bid and has not reached the three-bid limit, so the bid is accepted.
+..alternative_scenario
+Bidder attempts to place a fourth bid, and the system rejects this bid.
+
+REQ03
+
+..name
+Bid Increment Requirement
+..scope
+Enforcing a rule that each new bid must be at least 5% higher than the current highest bid.
+..input
+Amount of the new bid, current highest bid.
+..constraints
+New bids must be quantifiably 5% higher than the current highest bid.
+..output
+Validation result of the bid increment (approved or denied).
+..primary_scenario
+A new bid is successfully placed that is 5% higher than the previous highest bid.
+..alternative_scenario
+A bid is placed that does not meet the 5% higher requirement and is therefore rejected.
+
+REQ04
+
+..name
+Emitting Bid Updates
+..scope
+Notifying participants of a new highest bid through event emissions in the smart contract.
+..input
+New highest bid details.
+..constraints
+Each new highest bid must trigger an event emission.
+..output
+Event emission that notifies all participants of the new highest bid.
+..primary_scenario
+A new highest bid is placed, and an event is emitted to update participants.
+..alternative_scenario
+A highest bid is placed, but due to a system fault, the event is not emitted.
+
+REQ05
+
+..name
+Auction Time Limit
+..scope
+Managing the auction duration with a set time limit, after which no further bids can be accepted.
+..input
+Current time/date, auction end time.
+..constraints
+Bids are only accepted within the predefined auction time frame.
+..output
+Status of auction (active or concluded).
+..primary_scenario
+A bid is placed within the active auction time and is accepted.
+..alternative_scenario
+A bid attempt is made after the auction time has expired, and it is rejected.
