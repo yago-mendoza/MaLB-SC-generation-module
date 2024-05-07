@@ -2,7 +2,7 @@
 voting
 
 .description
-For the Fan Engagement Platform, design a ERC721 Smart Contract where fans can vote on various categories using tokens. Votes are weighted by the number of tokens held. Categories include Best Video, Best Fan Art, and Best Comment. Each category has its own voting function, where 1 token equals 1 vote. Fans can allocate tokens to different categories but must hold at least 10 tokens to participate. Voting is open for 30 days.
+Fans can vote on various categories using tokens. Votes are weighted by the number of tokens held. Categories include Best Video, Best Fan Art, and Best Comment. Each category has its own voting function, where 1 token equals 1 vote. Fans can allocate tokens to different categories but must hold at least 10 tokens to participate. Voting is open for 30 days.
 >
 >
 >

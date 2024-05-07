@@ -4,7 +4,7 @@ event
 
 .description
 
-Implement a blockchain contract to manage 50,000 tokens available for a concert, with each token representing one ticket. Users are limited to purchasing one ticket each, but those with Golden status can buy up to three tickets to transfer to other users. The ticket sales are divided into two phases. The first phase lasts for 5 minutes, and the second phase is triggered one week after the first one ends. If the event is cancelled, compensation includes an extra 25% for Golden ticket holders, 5% for Platinum, and no extra compensation for Bronze ticket holders.
+It has to manage 50,000 tokens available for a concert, with each token representing one ticket. Users are limited to purchasing one ticket each, but those with Golden status can buy up to three tickets to transfer to other users. The ticket sales are divided into two phases. The first phase lasts for 5 minutes, and the second phase is triggered one week after the first one ends. If the event is cancelled, compensation includes an extra 25% for Golden ticket holders, 5% for Platinum, and no extra compensation for Bronze ticket holders.
 >
 >
 >
@@ -105,7 +105,7 @@ Event Cancellation Compensation
 ..input
 Calculating compensation for ticket holders if the event is cancelled.
 ..constraints
-Ticket holder's status (Golden, Platinum, Bronze), event cancellation status.
+Ticket holder's status (Golden, Platinum, Bronze), event cancellation status. Only applies if they bought in the first phase.
 ..output
 Compensation rates differ by status: 25% for Golden, 5% for Platinum, none for Bronze.
 ..primary_scenario

@@ -2,7 +2,7 @@
 distribution
 
 .description
-For the Fan Engagement Platform, design a ERC721 Smart Contract to distribute rewards based on activity and token holdings at the end of each month. Fans with more than 200 tokens held and at least 50 activity points accumulated in a month qualify for rewards. Rewards consist of awarding 10% of held tokens as additional tokens. Distribution occurs automatically on the last day of each month, emitting an event.
+Program a highly efficient ERC721 Smart Contract for the Fan Engagement Platform to distribute rewards based on activity and token holdings at the end of each month. Fans with more than 200 tokens held and at least 50 activity points accumulated in a month qualify for rewards. Rewards consist of awarding 10% of held tokens as additional tokens. Distribution occurs automatically on the last day of each month, emitting an event.
 >
 >
 >

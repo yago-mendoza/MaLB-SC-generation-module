@@ -80,7 +80,7 @@ def parse_requirement(lines):
         else:
             # This part will append additional details to the last key if it's not starting with 'REQ' or '..'
             if current_key in requirement:
-                requirement[current_key] += " " + line.strip()
+                requirement[current_key] += "" + line.strip()
             else:
                 # Log or handle cases where there is a formatting error or unexpected line
                 print(f"Unexpected line format or misplaced line: '{line}'")
@@ -90,7 +90,7 @@ def parse_requirement(lines):
 
 if __name__ == "__main__":
 
-    output_filename = "output.json"
+    output_filename = "data.json"
 
     files = [file for file in glob.glob("*.txt") if re.match(r"d[0-9]+\.txt", file)]
     dict_objects = [parse_txt_to_dict(file) for file in files]
