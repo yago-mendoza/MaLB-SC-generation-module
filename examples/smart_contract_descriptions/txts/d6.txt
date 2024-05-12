@@ -1,0 +1,78 @@
+.title
+voting
+
+.description
+Fans can vote on various categories using tokens. Votes are weighted by the number of tokens held. Categories include Best Video, Best Fan Art, and Best Comment. Each category has its own voting function, where 1 token equals 1 vote. Fans can allocate tokens to different categories but must hold at least 10 tokens to participate. Voting is open for 30 days.
+>
+>
+>
+
+.requirements
+
+REQ01
+
+..name
+Token-Based Voting System
+..scope
+Implementing an ERC721 smart contract for a Fan Engagement Platform that allows fans to vote on different categories (Best Video, Best Fan Art, Best Comment) using tokens, where the number of tokens held by a fan determines their voting power.
+..input
+Fan's token count, category selection, number of tokens allocated for voting.
+..constraints
+Each token equates to one vote. Fans must hold at least 10 tokens to participate in voting.
+..output
+Recorded votes for each category based on tokens allocated by fans.
+..primary_scenario
+Fan allocates tokens to a category, and votes are added to the total count of that category based on the number of tokens used.
+..alternative_scenario
+Fan attempts to vote with fewer than 10 tokens, and the voting attempt is rejected.
+
+REQ02
+
+..name
+Category-Specific Voting Functions
+..scope
+Creating separate voting functions within the smart contract for each category, allowing fans to allocate tokens specifically for Best Video, Best Fan Art, and Best Comment.
+..input
+Category-specific vote request, number of tokens allocated.
+..constraints
+Separate functions must exist for each category to prevent vote misallocation.
+..output
+Successful recording of votes in the correct category based on fan’s token allocation.
+..primary_scenario
+Fan selects a category, allocates a specific number of tokens, and the tokens are correctly applied as votes in that category.
+..alternative_scenario
+Fan mistakenly tries to allocate tokens to a non-existent category, and the transaction is nullified.
+
+REQ03
+
+..name
+Voting Eligibility and Minimum Token Requirement
+..scope
+Ensuring that only fans with at least 10 tokens can participate in the voting process, maintaining fairness and engagement in voting.
+..input
+Fan's token holdings, voting request.
+..constraints
+Fans need to hold a minimum of 10 tokens to be eligible for voting.
+..output
+Validation of fan’s eligibility to vote based on token holdings.
+..primary_scenario
+Fan meets the minimum token requirement and is allowed to vote.
+..alternative_scenario
+Fan does not meet the minimum token requirement and is denied the ability to vote.
+
+REQ04
+
+..name
+Voting Period Management
+..scope
+Managing the open period for voting across all categories, ensuring the voting process is open for a designated timeframe (30 days).
+..input
+Current date, start and end dates of the voting period.
+..constraints
+Voting must only occur within the 30-day period after initiation.
+..output
+Status of voting period (open or closed).
+..primary_scenario
+Fan votes within the designated 30-day period, and the vote is accepted.
+..alternative_scenario
+Fan attempts to vote outside of the 30-day period, and the vote is not accepted.

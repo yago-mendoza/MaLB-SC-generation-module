@@ -1,5 +1,6 @@
 import glob
 import json
+import os
 import re
 
 
@@ -89,19 +90,27 @@ def parse_requirement(lines):
 
 
 if __name__ == "__main__":
+    output_directory = "json"  # Nombre de la carpeta donde quieres guardar el archivo JSON
+    output_filename = "data.json"  # Nombre del archivo JSON a guardar
+    
+    # Asegúrate de que el directorio de salida exista
+    os.makedirs(output_directory, exist_ok=True)
 
-    output_filename = "data.json"
+    all_files = glob.glob("txts/*.txt")
+    files = [file for file in all_files if re.match(r"txts\\d[0-9]+\.txt", file)]
 
-    files = [file for file in glob.glob("*.txt") if re.match(r"d[0-9]+\.txt", file)]
     dict_objects = [parse_txt_to_dict(file) for file in files]
 
     combined_dict = {}
     for index, json_obj in enumerate(dict_objects, 1):
-        key = f"D{index}"  # Generate key names like "D1", "D2", etc.
+        key = f"D{index}"  # Generar nombres de clave como "D1", "D2", etc.
         combined_dict[key] = json_obj
 
     def save_json(data, filename):
-        with open(filename, "w", encoding="utf-8") as file:
+        # Construye la ruta completa donde se guardará el archivo
+        full_path = os.path.join(output_directory, filename)
+        with open(full_path, "w", encoding="utf-8") as file:
             json.dump(data, file, indent=4, ensure_ascii=False)
 
+    # Guarda el JSON en la carpeta especificada
     save_json(combined_dict, output_filename)

@@ -1,0 +1,78 @@
+.title
+subscription
+
+.description
+A smart contract is needed to manage multiple subscription levels where fans pay a monthly fee in tokens to access exclusive content. Subscription levels include Basic (10 tokens/month), Premium (50 tokens/month), and Elite (100 tokens/month). Automatically deduct fees from a user's token balance every 30 days. If there are insufficient funds, the subscription is paused. Implement auto-renewal features, and if a subscription expires, access to exclusive content is immediately revoked until renewal.
+>
+>
+>
+
+.requirements
+
+REQ01
+
+..name
+Subscription Level Management
+..scope
+Managing multiple subscription levels (Basic, Premium, Elite) within a smart contract, allowing fans to access exclusive content based on their subscription tier.
+..input
+Fan’s subscription level selection, token payment.
+..constraints
+Subscription fees: Basic at 10 tokens/month, Premium at 50 tokens/month, Elite at 100 tokens/month.
+..output
+Activation or update of the fan’s subscription status based on the paid tier.
+..primary_scenario
+Fan selects a subscription level and successfully pays the required tokens, activating the subscription.
+..alternative_scenario
+Fan selects a subscription level but lacks sufficient tokens to pay the fee, preventing activation.
+
+REQ02
+
+..name
+Automatic Fee Deduction
+..scope
+Automatically deducting subscription fees from a user’s token balance every 30 days to maintain active subscriptions.
+..input
+Current date, last payment date, user’s token balance, subscription level.
+..constraints
+Fees are deducted every 30 days, corresponding to the subscription level’s cost.
+..output
+Updated token balance and subscription status (active or paused).
+..primary_scenario
+It is time for the fee deduction, the fan has sufficient balance, and the fee is successfully deducted, keeping the subscription active.
+..alternative_scenario
+Insufficient balance at the time of fee deduction leads to the subscription being paused.
+
+REQ03
+
+..name
+Subscription Auto-Renewal
+..scope
+Implementing an auto-renewal feature for subscriptions, ensuring continuous access to exclusive content unless manually cancelled or paused due to insufficient funds.
+..input
+Subscription expiry date, user’s token balance, user’s renewal settings.
+..constraints
+Subscriptions attempt to auto-renew unless funds are insufficient or the user has cancelled.
+..output
+Renewal of subscription and deduction of corresponding fee, or failure to renew due to cancellation or insufficient funds.
+..primary_scenario
+Subscription is due for renewal, auto-renewal is enabled, and the user has sufficient tokens; subscription is renewed.
+..alternative_scenario
+Subscription is due for renewal but cannot be processed due to insufficient funds or user cancellation; access is revoked until issues are resolved.
+
+REQ04
+
+..name
+Access Revocation on Expiry
+..scope
+Revoking access to exclusive content immediately if a subscription expires without renewal, maintaining the integrity and exclusivity of content.
+..input
+Subscription status, access request to exclusive content.
+..constraints
+Access to content is directly tied to the active status of a subscription.
+..output
+Access granted if subscription is active; access denied if subscription is expired.
+..primary_scenario
+Fan tries to access content with an active subscription, and access is granted.
+..alternative_scenario
+Subscription has expired due to non-renewal or insufficient funds, and access to content is denied.

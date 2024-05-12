@@ -1,0 +1,78 @@
+.title
+referral
+
+.description
+Smart Contract that rewards fans for referring friends, with bonuses based on the number of successful referrals. Successful referrals are counted when the referred friend creates an account and buys a ticket for an event. Bonuses include 10 tokens for 5 referrals, 30 tokens for 10, and 70 tokens for 20. Additionally, if a referred friend further refers others, the original referrer receives 150 tokens.
+>
+>
+>
+
+.requirements
+
+REQ01
+
+..name
+Referral Tracking System
+..scope
+Implementing a tracking system within an ERC721 smart contract to monitor successful referrals, where a referral is deemed successful once the referred friend creates an account and purchases an event ticket.
+..input
+Referrer’s ID, referred friend’s account creation and ticket purchase status.
+..constraints
+Referrals must be confirmed by both account creation and an event ticket purchase by the referred friend.
+..output
+Incremented referral count for the referrer upon successful referral confirmation.
+..primary_scenario
+A referred friend creates an account and purchases a ticket, successfully confirming a referral and increasing the referrer's count.
+..alternative_scenario
+A referred friend creates an account but does not purchase a ticket, resulting in an unsuccessful referral that does not increase the count.
+
+REQ02
+
+..name
+Referral Bonus Distribution
+..scope
+Calculating and distributing bonuses to fans based on the number of successful referrals made. Bonuses are tiered based on referral milestones.
+..input
+Referrer’s ID, number of successful referrals.
+..constraints
+Bonuses are set at 10 tokens for 5 referrals, 30 tokens for 10 referrals, and 70 tokens for 20 referrals. Distribution occurs as each milestone is reached.
+..output
+Tokens awarded to referrers upon reaching specific referral milestones.
+..primary_scenario
+Referrer reaches a referral milestone and is automatically awarded the corresponding token bonus.
+..alternative_scenario
+Referrer’s total referrals do not meet any of the bonus thresholds, resulting in no bonus distribution.
+
+REQ03
+
+..name
+Second-Level Referral Rewards
+..scope
+Rewarding the original referrer with additional tokens if their referred friends refer others to the platform.
+..input
+Original referrer’s ID, successful second-level referral activity.
+..constraints
+The original referrer earns a bonus only when a referred friend successfully refers others.
+..output
+150 tokens awarded to the original referrer for each successful second-level referral.
+..primary_scenario
+A referred friend successfully refers another person who creates an account and purchases a ticket, triggering a second-level reward for the original referrer.
+..alternative_scenario
+A referred friend attempts to refer another person, but the referral does not complete the required actions (account creation and ticket purchase), so no second-level reward is issued.
+
+REQ04
+
+..name
+Event Emission for Reward Activities
+..scope
+Emitting blockchain events for each reward activity related to referrals to ensure transparency and traceability within the smart contract operations.
+..input
+Details of the referral reward distribution (referrer’s ID, number of tokens awarded).
+..constraints
+An event must be emitted whenever tokens are distributed as a referral reward.
+..output
+Blockchain event logs that detail each instance of reward distribution for auditing and tracking purposes.
+..primary_scenario
+Tokens are awarded for reaching a referral milestone or for second-level referrals, and an event is emitted detailing these transactions.
+..alternative_scenario
+No tokens are awarded due to failure to meet referral criteria, hence no event is emitted.
