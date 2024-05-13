@@ -1,0 +1,103 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Index Template</title>
+    <style>
+        body {
+            font-family: 'Consolas', 'Courier New', monospace;
+            background-color: #000;
+            color: #fff;
+            margin: 0;
+            padding: 0 100px; /* Adjusted padding for content */
+            display: flex;
+            flex-direction: column; /* Changed to column direction */
+            justify-content: flex-start;
+            align-items: flex-start; /* Left alignment */
+            height: 100vh;
+        }
+        h1 {
+            margin-top: 100px;
+            margin-bottom: 20px; /* Spacing below the title */
+        }
+        p {
+            margin: 20px 0; /* Spacing around the paragraph */
+            color: #ccc; /* More grayish color for the text */
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0; /* Removed previously adjusted left margin */
+            text-align: left;
+            width: 100%; /* Width adjusted to 100% */
+        }
+        li {
+            margin: 10px 0;
+            position: relative; /* Positioning context for pseudo-elements */
+        }
+        a {
+            text-decoration: none;
+            color: #fff;
+        }
+        .description {
+            color: #666; /* More grayish tone for descriptions */
+            font-size: 0.9em; /* Smaller font size for description */
+        }
+        .active::after {
+            content: '';
+            display: block;
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%; /* Ensuring it spans the entire width */
+            height: 2px;
+            background-color: rgb(255, 255, 255);
+            animation: expandRight 0.5s forwards;
+        }
+        @keyframes expandRight {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <h1>Endpoints Index</h1>
+    <p>Este directorio es el principal y desde aquí se puede acceder a todos los endpoints de la aplicación FastAPI.</p>
+    <ul id="linkList">
+        {% for link in links %}
+            <li><a href="{{ link.href }}">{{ link.text }}</a> <span class="description">[{{ link.description }}]</span></li>
+        {% endfor %}
+    </ul>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const items = document.querySelectorAll('li');
+            let currentIndex = 0;
+
+            function updateActiveItem() {
+                items.forEach((item, index) => {
+                    item.classList.remove('active');
+                    if(index === currentIndex) {
+                        item.classList.add('active');
+                    }
+                });
+            }
+
+            updateActiveItem();
+
+            document.addEventListener('keydown', (e) => {
+                if(e.key === 'ArrowDown') {
+                    currentIndex = (currentIndex + 1) % items.length;
+                    updateActiveItem();
+                } else if(e.key === 'ArrowUp') {
+                    currentIndex = (currentIndex - 1 + items.length) % items.length;
+                    updateActiveItem();
+                } else if(e.key === 'Enter') {
+                    items[currentIndex].querySelector('a').click();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
