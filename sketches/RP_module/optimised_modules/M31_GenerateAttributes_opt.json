@@ -1,0 +1,96 @@
+{
+  "generate_answer.predictor": {
+    "lm": null,
+    "traces": [],
+    "train": [],
+    "demos": [
+      {
+        "augmented": true,
+        "smart_contract_description": "It has to manage 50,000 tokens available for a concert, with each token representing one ticket. Users are limited to purchasing one ticket each, but those with Golden status can buy up to three tickets to transfer to other users. The ticket sales are divided into two phases. The first phase lasts for 5 minutes, and the second phase is triggered one week after the first one ends. If the event is cancelled, compensation includes an extra 25% for Golden ticket holders, 5% for Platinum, and no extra compensation for Bronze ticket holders.",
+        "requirement_name": "Phase Timing",
+        "attribute": "Current phase timing and status of sales (open or closed)."
+      },
+      {
+        "augmented": true,
+        "smart_contract_description": "Design a smart contract that tracks and rates fan interactions for each content piece. Fans earn points that influence their ranking on the platform, with interactions categorized as likes, comments, shares, and views. Each interaction type carries different weightings (1 point for likes, 10 points for shares, 20 points for comments). Fans can earn a maximum of 100 points per day from each activity. Platinum and Gold tier members can earn up to 150 and 200 points, respectively, but the extra points expire after a week.",
+        "requirement_name": "Tier-Based Point Adjustment",
+        "attribute": "Successful addition of tier-based points to fan's total points earned."
+      },
+      {
+        "augmented": true,
+        "smart_contract_description": "It is intented to manage tiered VIP memberships, allowing fans to upgrade or downgrade their membership based on the tokens they hold. Define membership levels as Bronze, Silver, and Gold, each with associated perks. Upgrading requires the owner to have a sufficient number of additional tokens (100 tokens for Silver, 200 for Gold). Include functionality for members to voluntarily lower their level, refunding tokens proportionally based on their tenure on the platform (70% if >2 years, 50% if >1 year, 30% if >6 months). Once downgraded, a member must wait 12 days before upgrading again.",
+        "requirement_name": "Upgrade Cooldown Management",
+        "attribute": "Length of time remaining before a member can upgrade again, following a downgrade."
+      },
+      {
+        "augmented": true,
+        "smart_contract_description": "It is intented to manage tiered VIP memberships, allowing fans to upgrade or downgrade their membership based on the tokens they hold. Define membership levels as Bronze, Silver, and Gold, each with associated perks. Upgrading requires the owner to have a sufficient number of additional tokens (100 tokens for Silver, 200 for Gold). Include functionality for members to voluntarily lower their level, refunding tokens proportionally based on their tenure on the platform (70% if >2 years, 50% if >1 year, 30% if >6 months). Once downgraded, a member must wait 12 days before upgrading again.",
+        "requirement_name": "Membership Upgrade Requirements",
+        "attribute": "Approval or denial of the upgrade request based on the number of tokens held."
+      },
+      {
+        "augmented": true,
+        "smart_contract_description": "Fans can vote on various categories using tokens. Votes are weighted by the number of tokens held. Categories include Best Video, Best Fan Art, and Best Comment. Each category has its own voting function, where 1 token equals 1 vote. Fans can allocate tokens to different categories but must hold at least 10 tokens to participate. Voting is open for 30 days.",
+        "requirement_name": "Category-Specific Voting Functions",
+        "attribute": "Functionality to allow fans to assign tokens to various categories for voting purposes."
+      },
+      {
+        "smart_contract_description": "Smart Contract that rewards fans for referring friends, with bonuses based on the number of successful referrals. Successful referrals are counted when the referred friend creates an account and buys a ticket for an event. Bonuses include 10 tokens for 5 referrals, 30 tokens for 10, and 70 tokens for 20. Additionally, if a referred friend further refers others, the original referrer receives 150 tokens.",
+        "requirement_name": "Referral Tracking System",
+        "attribute": "Incremented referral count for the referrer upon successful referral confirmation."
+      },
+      {
+        "smart_contract_description": "Fans can vote on various categories using tokens. Votes are weighted by the number of tokens held. Categories include Best Video, Best Fan Art, and Best Comment. Each category has its own voting function, where 1 token equals 1 vote. Fans can allocate tokens to different categories but must hold at least 10 tokens to participate. Voting is open for 30 days.",
+        "requirement_name": "Voting Eligibility and Minimum Token Requirement",
+        "attribute": "Validation of fan's eligibility to vote based on token holdings."
+      },
+      {
+        "smart_contract_description": "Design a smart contract that tracks and rates fan interactions for each content piece. Fans earn points that influence their ranking on the platform, with interactions categorized as likes, comments, shares, and views. Each interaction type carries different weightings (1 point for likes, 10 points for shares, 20 points for comments). Fans can earn a maximum of 100 points per day from each activity. Platinum and Gold tier members can earn up to 150 and 200 points, respectively, but the extra points expire after a week.",
+        "requirement_name": "Daily Point Limits",
+        "attribute": "Total points earned by the fan for the day, considering the daily limits."
+      },
+      {
+        "smart_contract_description": "A smart contract is needed to manage multiple subscription levels where fans pay a monthly fee in tokens to access exclusive content. Subscription levels include Basic (10 tokens\/month), Premium (50 tokens\/month), and Elite (100 tokens\/month). Automatically deduct fees from a user's token balance every 30 days. If there are insufficient funds, the subscription is paused. Implement auto-renewal features, and if a subscription expires, access to exclusive content is immediately revoked until renewal.",
+        "requirement_name": "Subscription Auto-Renewal",
+        "attribute": "Renewal of subscription and deduction of corresponding fee, or failure to renew due to cancellation or insufficient funds."
+      },
+      {
+        "smart_contract_description": "Design a smart contract that tracks and rates fan interactions for each content piece. Fans earn points that influence their ranking on the platform, with interactions categorized as likes, comments, shares, and views. Each interaction type carries different weightings (1 point for likes, 10 points for shares, 20 points for comments). Fans can earn a maximum of 100 points per day from each activity. Platinum and Gold tier members can earn up to 150 and 200 points, respectively, but the extra points expire after a week.",
+        "requirement_name": "Interaction Tracking and Rating",
+        "attribute": "Updated points and ranking for the fan based on their interactions."
+      },
+      {
+        "smart_contract_description": "A smart contract is needed to manage multiple subscription levels where fans pay a monthly fee in tokens to access exclusive content. Subscription levels include Basic (10 tokens\/month), Premium (50 tokens\/month), and Elite (100 tokens\/month). Automatically deduct fees from a user's token balance every 30 days. If there are insufficient funds, the subscription is paused. Implement auto-renewal features, and if a subscription expires, access to exclusive content is immediately revoked until renewal.",
+        "requirement_name": "Access Revocation on Expiry",
+        "attribute": "Access granted if subscription is active; access denied if subscription is expired."
+      },
+      {
+        "smart_contract_description": "It has to manage 50,000 tokens available for a concert, with each token representing one ticket. Users are limited to purchasing one ticket each, but those with Golden status can buy up to three tickets to transfer to other users. The ticket sales are divided into two phases. The first phase lasts for 5 minutes, and the second phase is triggered one week after the first one ends. If the event is cancelled, compensation includes an extra 25% for Golden ticket holders, 5% for Platinum, and no extra compensation for Bronze ticket holders.",
+        "requirement_name": "Sales Phases",
+        "attribute": "Phase status (active or inactive)."
+      },
+      {
+        "smart_contract_description": "The goal is to auction limited VIP tickets to fans for a concert. Each ticket is represented as a unique token. Limit each address to bid a maximum of 3 times. Bids must be at least 5% higher than the current highest bid. Emit new highest bids and conclude when a time limit expires.",
+        "requirement_name": "Unique Token Representation",
+        "attribute": "Generation of a new unique token for each VIP ticket."
+      },
+      {
+        "smart_contract_description": "A smart contract is needed to manage multiple subscription levels where fans pay a monthly fee in tokens to access exclusive content. Subscription levels include Basic (10 tokens\/month), Premium (50 tokens\/month), and Elite (100 tokens\/month). Automatically deduct fees from a user's token balance every 30 days. If there are insufficient funds, the subscription is paused. Implement auto-renewal features, and if a subscription expires, access to exclusive content is immediately revoked until renewal.",
+        "requirement_name": "Automatic Fee Deduction",
+        "attribute": "Updated token balance and subscription status (active or paused)."
+      },
+      {
+        "smart_contract_description": "It has to manage 50,000 tokens available for a concert, with each token representing one ticket. Users are limited to purchasing one ticket each, but those with Golden status can buy up to three tickets to transfer to other users. The ticket sales are divided into two phases. The first phase lasts for 5 minutes, and the second phase is triggered one week after the first one ends. If the event is cancelled, compensation includes an extra 25% for Golden ticket holders, 5% for Platinum, and no extra compensation for Bronze ticket holders.",
+        "requirement_name": "Token Allocation",
+        "attribute": "Each successful transaction decreases the total number of available tokens."
+      },
+      {
+        "smart_contract_description": "It is intented to manage tiered VIP memberships, allowing fans to upgrade or downgrade their membership based on the tokens they hold. Define membership levels as Bronze, Silver, and Gold, each with associated perks. Upgrading requires the owner to have a sufficient number of additional tokens (100 tokens for Silver, 200 for Gold). Include functionality for members to voluntarily lower their level, refunding tokens proportionally based on their tenure on the platform (70% if >2 years, 50% if >1 year, 30% if >6 months). Once downgraded, a member must wait 12 days before upgrading again.",
+        "requirement_name": "Voluntary Membership Downgrading",
+        "attribute": "Number of tokens refunded and new membership level."
+      }
+    ],
+    "signature_instructions": "Given the fields `smart_contract_description`, `requirement_name`, produce the fields `attribute`.",
+    "signature_prefix": "Attribute:"
+  }
+}

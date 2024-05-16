@@ -1,0 +1,99 @@
+{
+  "generate_answer.predictor": {
+    "lm": null,
+    "traces": [],
+    "train": [],
+    "demos": [
+      {
+        "augmented": true,
+        "smart_contract_description": "Launching a successful fan engagement platform necessitates a robust business strategy. Initial funding might be sourced from venture capital, emphasizing the innovative use of blockchain to attract tech-savvy investors. Partnerships with prominent influencers or sports teams could drive initial user adoption, while a multi-tiered subscription model can sustain long-term revenue. Marketing strategies should focus on digital channels to tap into the tech-oriented audience, leveraging social media for brand visibility and engagement.",
+        "reasoning": "produce the boolean assessment. We need to examine if the description provides a detailed engineer's functional smart contract description, rather than a business strategy.",
+        "boolean_assessment": "0"
+      },
+      {
+        "augmented": true,
+        "smart_contract_description": "Single smart contracts have lots of functionalities and can be used in various industries, since they offer very technical resources.",
+        "reasoning": "produce the boolean_assessment. We should consider the level of detail and technical specificity in the description to determine if it meets the criteria of a detailed engineer's functional smart contract description post-deployment.",
+        "boolean_assessment": "0"
+      },
+      {
+        "augmented": true,
+        "smart_contract_description": "Smart Contract that rewards fans for referring friends, with bonuses based on the number of successful referrals. Successful referrals are counted when the referred friend creates an account and buys a ticket for an event. Bonuses include 10 tokens for 5 referrals, 30 tokens for 10, and 70 tokens for 20. Additionally, if a referred friend further refers others, the original referrer receives 150 tokens.",
+        "reasoning": "produce the boolean_assessment. We would need to provide a detailed explanation of how the smart contract operates programmatically post-deployment.",
+        "boolean_assessment": "1"
+      },
+      {
+        "augmented": true,
+        "smart_contract_description": "",
+        "reasoning": "The above description does not deliver a detailed engineer's functional smart contract description. Therefore, it is rated 0.",
+        "boolean_assessment": "0"
+      },
+      {
+        "augmented": true,
+        "smart_contract_description": "A smart contract is needed to manage multiple subscription levels where fans pay a monthly fee in tokens to access exclusive content. Subscription levels include Basic (10 tokens\/month), Premium (50 tokens\/month), and Elite (100 tokens\/month). Automatically deduct fees from a user's token balance every 30 days. If there are insufficient funds, the subscription is paused. Implement auto-renewal features, and if a subscription expires, access to exclusive content is immediately revoked until renewal.",
+        "reasoning": "produce the boolean assessment: We validate the text against the requirements for a detailed engineer's functional smart contract description",
+        "boolean_assessment": "1"
+      },
+      {
+        "augmented": true,
+        "smart_contract_description": "Design a smart contract that tracks and rates fan interactions for each content piece. Fans earn points that influence their ranking on the platform, with interactions categorized as likes, comments, shares, and views. Each interaction type carries different weightings (1 point for likes, 10 points for shares, 20 points for comments). Fans can earn a maximum of 100 points per day from each activity. Platinum and Gold tier members can earn up to 150 and 200 points, respectively, but the extra points expire after a week.",
+        "reasoning": "produce the boolean_assessment. We...",
+        "boolean_assessment": "1"
+      },
+      {
+        "augmented": true,
+        "smart_contract_description": "Smart Contract Smart Contract Smart Contract Smart Contract Smart Contract Smart Contract Smart Contract Smart Contract.",
+        "reasoning": "${produce the boolean_assessment}. We ...",
+        "boolean_assessment": "0"
+      },
+      {
+        "augmented": true,
+        "smart_contract_description": "The goal is to auction limited VIP tickets to fans for a concert. Each ticket is represented as a unique token. Limit each address to bid a maximum of 3 times. Bids must be at least 5% higher than the current highest bid. Emit new highest bids and conclude when a time limit expires.",
+        "reasoning": "produce the boolean_assessment. We...\tBoolean Assessment: 1",
+        "boolean_assessment": "1"
+      },
+      {
+        "augmented": true,
+        "smart_contract_description": "It is intented to manage tiered VIP memberships, allowing fans to upgrade or downgrade their membership based on the tokens they hold. Define membership levels as Bronze, Silver, and Gold, each with associated perks. Upgrading requires the owner to have a sufficient number of additional tokens (100 tokens for Silver, 200 for Gold). Include functionality for members to voluntarily lower their level, refunding tokens proportionally based on their tenure on the platform (70% if >2 years, 50% if >1 year, 30% if >6 months). Once downgraded, a member must wait 12 days before upgrading again.",
+        "reasoning": "produce the boolean assessment. We consider the level of technical detail provided in the description and whether it thoroughly explains the functionality and design of the smart contract.",
+        "boolean_assessment": "1"
+      },
+      {
+        "augmented": true,
+        "smart_contract_description": "In the realm of professional networking, a Virtual Handshake Protocol could mirror the functionalities of a smart contract by automating connections and endorsements based on pre-set criteria. This protocol, powered by machine learning algorithms, can analyze user profiles and match individuals with potential mentors, partners, or employers, streamlining the networking process while ensuring a high level of data integrity and user consent.",
+        "reasoning": "produce the boolean_assessment. We ...",
+        "boolean_assessment": "0"
+      },
+      {
+        "augmented": true,
+        "smart_contract_description": "Code binds agreement, Blocks chain truth in the ledger, Trust is automatic. Transactions secure, Ledger logs every action, Immutable trace. Contracts self-execute, Mistakes are past, trust in code, Blockchain does ensure.",
+        "reasoning": "${produce the boolean_assessment}. We need to ensure the description covers the technical details of the smart contract's functionality, including the conditions, triggers, and limitations. Additionally, it should detail the specific interactions and transactions that the smart contract program will execute post-deployment, outlining how it will function programmatically.",
+        "boolean_assessment": "0"
+      },
+      {
+        "augmented": true,
+        "smart_contract_description": "The smart contract must be able to produce tokens.",
+        "reasoning": "produce the boolean_assessment. We would need to provide more detailed information about the process of token creation and allocation within the smart contract to be considered a detailed engineer's functional smart contract description. Therefore, the reasoning is not sufficient to provide a detailed description.",
+        "boolean_assessment": "0"
+      },
+      {
+        "smart_contract_description": "Loyalty 3.0 represents the next generation of loyalty programs, integrating gamification, big data analytics, and blockchain technology. This approach not only rewards transactions but also interaction and engagement, creating a more holistic view of loyalty that values a customer's entire relationship with a brand. By leveraging blockchain, Loyalty 3.0 can ensure that rewards are distributed fairly and transparently, enhancing trust and participation in the program.",
+        "boolean_assessment": 0
+      },
+      {
+        "smart_contract_description": "The Smart Scheduler for conference management could draw from the principles of smart contracts to automate the planning and execution of events. Based on predefined rules and participant feedback, sessions could be dynamically scheduled and resources allocated efficiently, ensuring optimal engagement and operational transparency",
+        "boolean_assessment": 0
+      },
+      {
+        "smart_contract_description": "Imagine a digital marketing campaign that functions like a smart contract. Campaign elements are executed automatically based on audience engagement metrics. This could include the release of exclusive content when certain interaction thresholds are met, mimicking the conditional execution of smart contracts but applied to marketing strategies",
+        "boolean_assessment": 0
+      },
+      {
+        "smart_contract_description": "A futuristic 'Consent Ledger' in online platforms could function like a smart contract for privacy settings, automatically adjusting users' privacy based on their preferences and activities. This would enhance user trust and control, providing a transparent record of consent and changes over time, similar to the immutable nature of blockchain records.",
+        "boolean_assessment": 0
+      }
+    ],
+    "signature_instructions": "Does the text delivers a detailed engineer's functional description of how one particular smart contract is designed to work programmatically post-deployment?",
+    "signature_prefix": "Boolean Assessment:"
+  }
+}

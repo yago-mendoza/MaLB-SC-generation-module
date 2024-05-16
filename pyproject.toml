@@ -32,6 +32,7 @@ deepeval = "^0.21.36"
 flask = "^3.0.3"
 ipywidgets = "^8.1.2"
 matplotlib = "^3.8.4"
+import-ipynb = "^0.1.4"
 
 [tool.poetry.group.dev.dependencies]
 ipykernel = "^6.29.4"
