@@ -1,0 +1,116 @@
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+}
+
+#chat-widget {
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+    margin: 50px auto;
+}
+
+#chat-header {
+    background: linear-gradient(to right, #00b4db, #0083b0);
+    color: white;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+
+#avatar {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+#chatbot-name {
+    font-weight: bold;
+    flex: 1;
+}
+
+#status-label {
+    font-size: 0.8em;
+    color: #d0eaff;
+}
+
+#chat-body {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+    background: #f9f9f9;
+}
+
+.user-message, .bot-message {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.user-message {
+    background: #0083b0;
+    color: white;
+    align-self: flex-start;
+}
+
+.bot-message {
+    background: #eee;
+    align-self: flex-end;
+}
+
+.response-options {
+    margin: 10px 0;
+}
+
+.response-button {
+    background: #00b4db;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.rating-button {
+    background: none;
+    border: none;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+#chat-footer {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    border-top: 1px solid #ccc;
+    background: #fff;
+}
+
+#message-input {
+    flex: 1;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+#send-button {
+    background: #00b4db;
+    color: white;
+    border: none;
+    padding: 10px;
+    margin-left: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#attachments-emojis {
+    margin-left: 10px;
+}

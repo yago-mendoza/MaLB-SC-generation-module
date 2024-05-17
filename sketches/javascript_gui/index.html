@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Widget</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="chat-widget">
+        <div id="chat-header">
+            <img src="avatar.jpg" alt="Avatar" id="avatar">
+            <div id="chatbot-name">Jessica Cowles</div>
+            <div id="status-label">We typically reply in a few minutes.</div>
+        </div>
+        <div id="chat-body">
+            <div class="user-message">Hey, I want to know more about shipping rates 🤔</div>
+            <div class="response-options">
+                <button class="response-button">Shipping rates to EU countries</button>
+                <button class="response-button">Shipping rates to USA</button>
+            </div>
+            <div class="bot-message">
+                Hey 👋 $5 standard shipping in the contiguous USA on orders under $50
+            </div>
+            <div id="response-rating">
+                Was this helpful? 
+                <button class="rating-button">👍</button>
+                <button class="rating-button">👎</button>
+            </div>
+        </div>
+        <div id="chat-footer">
+            <input type="text" id="message-input" placeholder="Enter your message...">
+            <button id="send-button">Send</button>
+            <div id="attachments-emojis">
+                <button>😊</button>
+                <button>📎</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
