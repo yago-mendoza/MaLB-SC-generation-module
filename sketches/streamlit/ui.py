@@ -82,7 +82,7 @@ with st.sidebar:
     # top_p = st.sidebar.slider('top_p', min_value=0.01, max_value=1.0, value=0.9, step=0.01)
     # max_length = st.sidebar.slider('max_length', min_value=32, max_value=128, value=120, step=8)
 
-    SECRETS_FILE = ".streamlit/secrets.toml"
+    SECRETS_FILE = "sketches/RP_module/streamlit/.streamlit/secrets.toml"
 
     def load_secrets():
         with open(SECRETS_FILE, 'r') as f:
@@ -95,29 +95,30 @@ with st.sidebar:
         with open(SECRETS_FILE, 'w') as f:
             toml.dump(secrets, f)
 
-    # Inicializar el estado de la sesión si es necesario
+    # Initialize the session state if necessary
     if 'api_key' not in st.session_state:
         st.session_state['api_key'] = None
 
-    # Cargar los secretos
-    secrets = load_secrets()
-
-    if 'TESTING_KEY' in secrets['OPENAI_API_KEYS']:
-        st.success('API key already provided!', icon='✅')
-        st.session_state['api_key'] = secrets['OPENAI_API_KEYS']['TESTING_KEY']
-        
-    else:
+    # Load the secrets
+    try:
+        secrets = load_secrets()
+        if 'TESTING_KEY' in secrets['OPENAI_API_KEYS']:
+            st.success('API key already provided!', icon='✅')
+            st.session_state['api_key'] = secrets['OPENAI_API_KEYS']['TESTING_KEY']
+        else:
+            raise KeyError
+    except (FileNotFoundError, KeyError):
         openai_api_key = st.text_input('OpenAI API token:', type='password')
-        "[Get an OpenAI API key](https://platform.openai.com/account/api-keys)"
+        st.markdown("[Get an OpenAI API key](https://platform.openai.com/account/api-keys)")
         if openai_api_key:
-            if not (openai_api_key.startswith('sk-') or len(openai_api_key) != 56):
+            if not (openai_api_key.startswith('sk-') and len(openai_api_key) == 43):
                 st.warning('Please enter your credentials!', icon='⚠️')
             else:
                 st.session_state['api_key'] = openai_api_key
                 save_secret('TESTING_KEY', openai_api_key)
                 st.success('API key saved successfully! Proceed to entering your prompt message.', icon='✅')
 
-    # Usar la clave API de session_state si está definida
+    # Use the API key from session state if it is defined
     if st.session_state['api_key']:
         os.environ['REPLICATE_API_TOKEN'] = st.session_state['api_key']
 
