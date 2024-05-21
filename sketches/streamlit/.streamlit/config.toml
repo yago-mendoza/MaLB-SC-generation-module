@@ -1,0 +1,7 @@
+[theme]
+base="dark"
+primaryColor="#00b4d8"  # Widgets hover
+backgroundColor="#424242"  # Right background
+secondaryBackgroundColor="#313131"  # Sidebar background
+textColor="#fffff"  # Text
+font="sans serif"

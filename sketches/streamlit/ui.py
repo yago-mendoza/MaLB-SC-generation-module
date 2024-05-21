@@ -1,129 +1,225 @@
 import streamlit as st
 from openai import OpenAI
 import os
-import toml
 from pathlib import Path
 
 # run with "streamlit run ui.py"
 
-openai_logo_dir = Path("assets/openai-2.svg")
-sony_logo_dir = Path("assets/SONY.png")
+def main():
 
-with open(openai_logo_dir, "r") as file: page_icon = file.read()
-st.set_page_config(page_title="MaLB-SC Generation Module GUI", page_icon=page_icon)
+    # ------------------ Streamlit UI Configuration ------------------ #
 
+    openai_logo_dir = Path("assets/openai-2.svg")
+    sony_logo_dir = Path("assets/SONY.png")
+    
+    with open(openai_logo_dir, "r") as file: page_icon = file.read()
 
-c = st.columns(1)
-st.caption("")
+    def clear_chat_history(): st.session_state.messages = [{"role": "assistant", "content": "Could you please tell me how you'd like your smart contract to work?"}]
 
-st.image(str(sony_logo_dir), width=100)
+    st.set_page_config(
+        page_title="MaLB-SC Generation Module GUI",
+        page_icon=page_icon,
+        layout="wide",
+        initial_sidebar_state="expanded",
+    )
 
-st.title("🔗 Requirement Parser")
-st.caption("This is a testing product that primarily uses the GPT-3.5 model. As a result, the quality of interactions may vary. For enhanced performance and more accurate responses, consider using more inference-expensive models. Please note that this product is in the testing phase, and user experience improvements are ongoing.")
+    # ------------------ Sidebar ------------------ #
+    
+    st.sidebar.caption('SONY / MaLB-SC Generation Module')
+    st.sidebar.title("How to use this interface")
 
-with st.expander("See explanation"):
-    st.write("""
-        The Earth orbits around the Sun in an elliptical path, with the Sun at one of the two foci of the ellipse.
-        This elliptical orbit is a result of the gravitational forces between the Earth and the Sun.
-    """)
+    with st.sidebar:
 
-# Additional content outside the expander
-st.write("This is some content outside the expander.")
+        model_provider = st.selectbox(
+            "Select your preferred model provider:",
+            ["OpenAI API"],
+            key="model_provider",
+            help="Select the model provider you would like to use. This will determine the models available for selection.",
+        )
 
-ChatTab, GenerationTab = st.tabs(["Chat", "Info"])
+        if model_provider == "OpenAI API":
+            st.markdown(
+            """
+            1. Enter your [OpenAI API key](https://platform.openai.com/account/api-keys) and chosen model below.
+            2. Select the appropriate model for design and generation purposes.
+            3. Tune the settings according to your specific requirements.
+            """
+            )
 
-with ChatTab:
-    if "messages" not in st.session_state:
-        st.session_state["messages"] = [{"role": "assistant", "content": "Hello, how can I help you today?"}]
+            st.session_state['api_key'] = None
 
-    def clear_chat_history():
-        st.session_state.messages = [{"role": "assistant", "content": "How may I assist you today?"}]
+            # User Interface for API key input
+            if not st.session_state['api_key']:
+                openai_api_key = st.text_input(
+                    'Enter your OpenAI API key:',
+                    type='password',
+                    help="You can find your OpenAI API key on the [OpenAI dashboard](https://platform.openai.com/account/api-keys).",
+                    )
+                if openai_api_key:
+                    if not (openai_api_key.startswith('sk-') and len(openai_api_key) == 56):
+                        st.warning('Please enter valid OpenAI credentials (starts with sk- and 56 characters long)', icon='⚠️')
+                    else:
+                        st.session_state['api_key'] = openai_api_key
+                        os.environ['OPENAI_API_TOKEN'] = openai_api_key  # Save the API key in the environment
+                        st.success('API key saved successfully! Proceed to entering your prompt message.', icon='✅')
 
-    for msg in st.session_state.messages:
-        st.chat_message(msg["role"]).write(msg["content"])
+            # Add model selection input field to the sidebar
+            selected_model = st.selectbox(
+                "Select the model you would like to use:",
+                ["gpt-4o", "gpt-4-turbo", "gpt-4", "gpt-3.5-turbo"],
+                key="selected_model",
+                help="OpenAI have moved to continuous model upgrades so `gpt-3.5-turbo`, `gpt-4` and `gpt-4-turbo` point to the latest available version of each model.",
+            )
 
-    # Create a form for the input prompt
-    with st.form(key='chat_form', clear_on_submit=True):
-        prompt = st.text_input("Your message", key="input")
-        c1, c2 = st.columns([1, 4.6])
-        with c1: submit_button = st.form_submit_button(label='Clear History')
-        with c2: submit_button = st.form_submit_button(label='Send')
+    st.sidebar.title("Model Parameters")
 
-    if submit_button and prompt:
+    temperature = st.sidebar.slider('Temperature', min_value=0.01, max_value=1.0, value=1.0, step=0.01)
+    top_p = st.sidebar.slider('Top P', min_value=0.01, max_value=1.0, value=1.0, step=0.01)
 
-        if not st.session_state.get('api_key'):
-            st.info("Please add your OpenAI API key to continue.")
-            st.stop()
+    st.sidebar.header("About")
 
-        client = OpenAI(api_key=st.session_state['api_key'])
-        st.session_state.messages.append({"role": "user", "content": prompt})
+    with st.sidebar:
+        st.markdown(
+            "Welcome to MaLB-SC, an AI-powered tool designed to help teams create robust ERC721 smart contracts for engaging with fans."
+        )
+        st.markdown(
+            "Smart contracts are crucial in blockchain applications, ensuring secure and transparent transactions. This app leverages the power of Large Language Models (LLMs) to help you define the requirements of your smart contracts and then automatically generate the contracts based on the details provided."
+        )
+
+    st.sidebar.header("Example Application Description")
+
+    with st.sidebar:
+        st.markdown(
+            "Below is an example application description that you can use to test MaLB:"
+        )
+        st.markdown(
+            "> The contract has to manage 50,000 tokens available for a concert, with each token representing one ticket. Users are limited to purchasing one ticket each, but those with Golden status can buy up to three tickets to transfer to other users. The ticket sales are divided into two phases. The first phase lasts for 5 minutes, and the second phase is triggered one week after the first one ends. If the event is cancelled, compensation includes an extra 25% for Golden ticket holders, 5% for Platinum, and no extra compensation for Bronze ticket holders."
+        )
+        st.markdown("""---""")
+
+    st.sidebar.header("FAQs")
+
+    with st.sidebar:
+        st.markdown(
+            """
+            ### **What is the purpose of this STREAMLIT app?**
+            This app demonstrates the functionality of MaLB, a system that transforms user descriptions into smart contracts. It currently supports OpenAI's LLM but can be easily extended to support other LLMs like Google's Gemini, or open-source models such as Llama or Mistral, thanks to the DSPy framework.
+            """
+        )
+
+        st.markdown(
+            """
+            ### **What is MaLB?**
+            MaLB is a system designed to convert user descriptions into smart contracts. It leverages Large Language Models (LLMs) to interpret natural language inputs and generate corresponding smart contracts.
+            """
+        )
+
+        st.markdown(
+            """
+            ### **Which LLMs are currently supported by MaLB?**
+            Currently, MaLB supports OpenAI's LLM. However, the framework is designed to be flexible, allowing easy integration of other LLMs like Google's Gemini or open-source models such as Llama or Mistral.
+            """
+        )
+
+        st.markdown(
+            """
+            ### **What are the cost considerations for using different LLMs?**
+            It's important to note that models like GPT-4 or GPT-40 are significantly more expensive, costing 30 to 60 times more than GPT-3.5. Users should consider these costs when choosing a model for their needs.
+            """
+        )
+
+        st.markdown(
+            """
+            ### **Is MaLB fully developed?**
+            No, MaLB is still under development. The current version provides a simple way to interact with the chatbot and see how user descriptions can be converted into smart contracts.
+            """
+        )
+
+        st.markdown(
+            """
+            ### **How can I use this app?**
+            To use the app, simply enter your description into the provided input field. The system will process your input using the integrated LLM and generate a corresponding smart contract.
+            """
+        )
+
+    # ------------------ Main Page ------------------ #
+
+    # st.image(str(sony_logo_dir), width=100)
+
+    st.title("🔗 Requirement Parser")
+    ChatTab, DataTab = st.tabs(["Chat", "Data"])
+
+    with ChatTab:
+
+        if "messages" not in st.session_state:
+            st.session_state["messages"] = [{"role": "assistant", "content": "Hello, how can I help you today?"}]
+
+        st.markdown(
+            """
+        <style>
+        button {
+            padding-left: 30px !important;
+            padding-right: 30px !important;
+            padding-top: 20px !important;
+            padding-bottom: 20px !important;
+        }
+        </style>
+        """,
+            unsafe_allow_html=True,
+        )
+
+        # Create a form for the input prompt
+        with st.form(key='chat_form', clear_on_submit=True):
+            instructionCol, buttonCol = st.columns([10,1])
+            with instructionCol:
+                prompt = st.text_input("Your message", key="input")
+            with buttonCol:
+                submit_button = st.form_submit_button(label='Send')
         
-        response = client.chat.completions.create(model="gpt-3.5-turbo", messages=st.session_state.messages)
-        msg = response.choices[0].message.content
-        st.session_state.messages.append({"role": "assistant", "content": msg})
+        for msg in st.session_state.messages[::-1]:
+            st.chat_message(msg["role"]).write(msg["content"])
         
-        st.experimental_rerun()
+        if st.session_state.messages[-1]["role"] == "user":
 
-with GenerationTab:
-    st.write("This tab contains information.")
-with st.sidebar:
+            client = OpenAI(api_key=st.session_state['api_key'])
 
-    st.title('💻 MaLB-SC Generation Module')
-    st.write('This chatbot is created using the GPT3.5-Turbo LLM model from OpenAI.')
+            # Vanilla Completin (no streaming) ----------------------- #
+            
+            response = client.chat.completions.create(model="gpt-3.5-turbo", messages=st.session_state.messages)
+            msg = response.choices[0].message.content
+            st.session_state.messages.append({"role": "assistant", "content": msg})
+            st.experimental_rerun()
 
-    # Models and model parameters ######################
-    # st.subheader('Models and parameters')
-    # selected_model = st.sidebar.selectbox('Choose a Llama2 model', ['Llama2-7B', 'Llama2-13B'], key='selected_model')
-    # if selected_model == 'Llama2-7B':
-    #     llm = 'a16z-infra/llama7b-v2-chat:4f0a4744c7295c024a1de15e1a63c880d3da035fa1f49bfd344fe076074c8eea'
-    # elif selected_model == 'Llama2-13B':
-    #     llm = 'a16z-infra/llama13b-v2-chat:df7690f1994d94e96ad9d568eac121aecf50684a0b0963b25a41cc40061269e5'
-    # temperature = st.sidebar.slider('temperature', min_value=0.01, max_value=1.0, value=0.1, step=0.01)
-    # top_p = st.sidebar.slider('top_p', min_value=0.01, max_value=1.0, value=0.9, step=0.01)
-    # max_length = st.sidebar.slider('max_length', min_value=32, max_value=128, value=120, step=8)
+        if submit_button and prompt:
+            if not st.session_state.get('api_key'):
+                st.info("Please add your OpenAI API key to continue.")
+                st.stop()
+            
+            st.session_state.messages.append({"role": "user", "content": prompt})
+            st.experimental_rerun()
+            
+        st.markdown("---")        
 
-    SECRETS_FILE = "sketches/RP_module/streamlit/.streamlit/secrets.toml"
+        c1, c2 = st.columns([1, 5])
 
-    def load_secrets():
-        with open(SECRETS_FILE, 'r') as f:
-            secrets = toml.load(f)
-        return secrets
+        with c1:
+            st.button('Clear Chat History', on_click=clear_chat_history)
 
-    def save_secret(key, value):
-        secrets = load_secrets()
-        secrets['OPENAI_API_KEYS'][key] = value
-        with open(SECRETS_FILE, 'w') as f:
-            toml.dump(secrets, f)
+        with c2:
+            app_type = st.selectbox(
+                label="Select the mechanism",
+                options=[
+                    "Vanilla Completion Generetion",
+                    "MaLB-SC Workflow",
+                ],
+                key="procedure",
+            )
+            
+    with DataTab:
+        st.write('Data')
 
-    # Initialize the session state if necessary
-    if 'api_key' not in st.session_state:
-        st.session_state['api_key'] = None
-
-    # Load the secrets
-    try:
-        secrets = load_secrets()
-        if 'TESTING_KEY' in secrets['OPENAI_API_KEYS']:
-            st.success('API key already provided!', icon='✅')
-            st.session_state['api_key'] = secrets['OPENAI_API_KEYS']['TESTING_KEY']
-        else:
-            raise KeyError
-    except (FileNotFoundError, KeyError):
-        openai_api_key = st.text_input('OpenAI API token:', type='password')
-        st.markdown("[Get an OpenAI API key](https://platform.openai.com/account/api-keys)")
-        if openai_api_key:
-            if not (openai_api_key.startswith('sk-') and len(openai_api_key) == 43):
-                st.warning('Please enter your credentials!', icon='⚠️')
-            else:
-                st.session_state['api_key'] = openai_api_key
-                save_secret('TESTING_KEY', openai_api_key)
-                st.success('API key saved successfully! Proceed to entering your prompt message.', icon='✅')
-
-    # Use the API key from session state if it is defined
-    if st.session_state['api_key']:
-        os.environ['REPLICATE_API_TOKEN'] = st.session_state['api_key']
+if __name__ == "__main__":
+    main()
 
     
-
-    st.sidebar.markdown("---")
-
-    st.sidebar.button('Clear Chat History', on_click=clear_chat_history)
+    
