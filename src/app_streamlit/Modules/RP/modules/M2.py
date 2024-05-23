@@ -1,3 +1,6 @@
+import dspy
+from typing import List
+
 class infer_requirements(dspy.Signature):
     """Extract requirements from a Smart Contract Description"""
     smart_contract_description: str = dspy.InputField(desc="A description of a Smart Contract")

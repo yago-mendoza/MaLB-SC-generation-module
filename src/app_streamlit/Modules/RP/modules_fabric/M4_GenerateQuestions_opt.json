@@ -1,0 +1,71 @@
+{
+  "generate_answer.predictor": {
+    "lm": null,
+    "traces": [],
+    "train": [],
+    "demos": [
+      {
+        "augmented": true,
+        "smart_contract_description": "The contract has to manage 50,000 tokens available for a concert, with each token representing one ticket. Users are limited to purchasing one ticket each, but those with Golden status can buy up to three tickets to transfer to other users. The ticket sales are divided into two phases. The first phase lasts for 5 minutes, and the second phase is triggered one week after the first one ends. If the event is cancelled, compensation includes an extra 25% for Golden ticket holders, 5% for Platinum, and no extra compensation for Bronze ticket holders.",
+        "questions": "{\"value\":[\"If the 50,000 tokens sell out before the first 5 minutes end, what happend with the second phase?\",\"Is there a deadline for Golden users to transfer tickets? What if they aren't transferred before the concert?\",\"How is compensation calculated and distributed if the event is canceled? Is it automatic or manual?\",\"How is the refund amount determined for each user type in case of cancellation? Is it a single transaction?\",\"What happens to unsold tickets after both sales phases? Is there a return or recycling mechanism?\"]}"
+      },
+      {
+        "augmented": true,
+        "smart_contract_description": "The goal is to auction limited VIP tickets to fans for a concert. Each ticket is represented as a unique token. Limit each address to bid a maximum number of times. Bids must be at least 5% higher than the current highest bid. Emit new highest bids and conclude when a time limit expires.",
+        "questions": "{\"value\":[\"What is the maximum number of times an address can bid? Is it 3 times per auction or in total?\",\"How long is the auction time limit?\",\"What happens if two bids of the same amount are placed simultaneously?\",\"How are ties resolved if the time limit expires with multiple highest bids?\",\"Is there a minimum bid amount to start the auction?\"]}"
+      },
+      {
+        "augmented": true,
+        "smart_contract_description": "Fans can vote on various categories using tokens. Votes are weighted by the number of tokens held. Categories include Best Video, Best Fan Art, and Best Comment. Each category has its own voting function, where 1 token equals 1 vote. Fans can allocate tokens to different categories but must hold at least 10 tokens to participate. Voting is open for 30 days.",
+        "questions": "{\"value\":[\"How is the holding of at least 10 tokens verified before participating in voting?\",\"Can tokens be reallocated between categories during the voting period?\",\"What happens to the tokens used for voting after the 30 days period ends?\",\"Is there a limit on the number of votes one can place in a single category?\",\"How are votes counted and verified to ensure fairness and transparency?\"]}"
+      },
+      {
+        "augmented": true,
+        "smart_contract_description": "Smart Contract that rewards fans for referring friends, with bonuses based on the number of successful referrals. Successful referrals are counted when the referred friend creates an account and buys a ticket for an event. Bonuses include 10 tokens for 5 referrals, 30 tokens for 10, and 70 tokens for 20. Additionally, if a referred friend further refers others, the original referrer receives 150 tokens.",
+        "questions": "{\"value\":[\"How are successful referrals tracked and verified?\",\"Is there a time limit for the referred friend to buy a ticket for the referral to be counted?\",\"Can a referred friend be referred by more than one person?\",\"How and when are the bonus tokens distributed?\",\"Are there any limits on the number of referrals one can make or the number of bonuses one can earn?\"]}"
+      },
+      {
+        "smart_contract_description": "Program a highly efficient ERC721 Smart Contract for the Fan Engagement Platform to distribute rewards based on activity and token holdings at the end of each month. Fans with more than 200 tokens held and at least 50 activity points accumulated in a month qualify for rewards. Rewards consist of awarding 10% of held tokens as additional tokens. Distribution occurs automatically on the last day of each month, emitting an event.",
+        "questions": [
+          "How are activity points tracked and calculated?",
+          "What types of activities contribute to the activity points?",
+          "Is there a cap on the number of tokens a user can hold or earn through rewards?",
+          "How is the 10% reward calculated and distributed?",
+          "What happens if a user falls below the 200 token threshold before the end of the month but has accumulated 50 activity points?"
+        ]
+      },
+      {
+        "smart_contract_description": "It is intended to manage tiered VIP memberships, allowing fans to upgrade or downgrade their membership based on the tokens they hold. Define membership levels as Bronze, Silver, and Gold, each with associated perks. Upgrading requires the owner to have a sufficient number of additional tokens (100 tokens for Silver, 200 for Gold). Include functionality for members to voluntarily lower their level, refunding tokens proportionally based on their tenure on the platform (70% if >2 years, 50% if >1 year, 30% if >6 months). Once downgraded, a member must wait 12 days before upgrading again.",
+        "questions": [
+          "How are the perks for each membership level defined and updated?",
+          "Is there a mechanism to prevent users from upgrading immediately after downgrading to game the system?",
+          "How is tenure on the platform calculated and verified for token refunds?",
+          "Are there any fees associated with upgrading or downgrading membership?",
+          "Can members upgrade or downgrade multiple levels at once (e.g., from Gold to Bronze)"
+        ]
+      },
+      {
+        "smart_contract_description": "A smart contract is needed to manage multiple subscription levels where fans pay a monthly fee in tokens to access exclusive content. Subscription levels include Basic (10 tokens/month), Premium (50 tokens/month), and Elite (100 tokens/month). Automatically deduct fees from a user's token balance every 30 days. If there are insufficient funds, the subscription is paused. Implement auto-renewal features, and if a subscription expires, access to exclusive content is immediately revoked until renewal.",
+        "questions": [
+          "How is the token balance checked and fees deducted automatically every 30 days?",
+          "Is there a grace period before pausing the subscription due to insufficient funds?",
+          "How is the auto-renewal feature managed and can users opt-out?",
+          "What happens to the unused portion of a subscription if a user manually cancels before the end of the 30-day period?",
+          "Can users upgrade or downgrade their subscription level at any time, and how is the fee adjustment handled?"
+        ]
+      },
+      {
+        "smart_contract_description": "Design a smart contract that tracks and rates fan interactions for each content piece. Fans earn points that influence their ranking on the platform, with interactions categorized as likes, comments, shares, and views. Each interaction type carries different weightings (1 point for likes, 10 points for shares, 20 points for comments). Fans can earn a maximum of 100 points per day from each activity. Platinum and Gold tier members can earn up to 150 and 200 points, respectively, but the extra points expire after a week.",
+        "questions": [
+          "How are interactions tracked and points allocated in real-time?",
+          "What mechanisms are in place to prevent fraudulent interactions or spamming?",
+          "How are extra points for Platinum and Gold members calculated and tracked?",
+          "What happens to the points once they expire after a week for higher-tier members?",
+          "Is there a leaderboard or ranking system to display fan rankings based on points?"
+        ]
+      }
+    ],
+    "signature_instructions": "Ask insightful questions about a Smart Contract description",
+    "signature_prefix": "Questions:"
+  }
+}
