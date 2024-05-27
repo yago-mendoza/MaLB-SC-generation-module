@@ -1,7 +1,7 @@
 from Modules.RP.modules.M1 import ValidateTopic
 from Modules.RP.modules.M4 import GenerateQuestions, UpdateDescription, Reflexion
 
-from Modules.abstract_module import AbstractModule
+from Modules.abstract_module import LLM_Agent as AbstractModule
 
 from datetime import datetime
 

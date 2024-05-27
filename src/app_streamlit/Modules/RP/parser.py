@@ -1,7 +1,7 @@
 from Modules.RP.modules.M2 import InferRequirements
 from Modules.RP.modules.M3 import GenerateAttributes
 
-from Modules.abstract_module import AbstractModule
+from Modules.abstract_module import LLM_Agent as AbstractModule
 
 class Parser:
 

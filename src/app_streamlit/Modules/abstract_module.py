@@ -5,7 +5,7 @@ import tempfile
 
 # ---------- Drop-in MaLB Implementation Class for Modules ---------- #
 
-class AbstractModule:
+class LLM_Agent:
 
     def __init__(self,
                  module=None,
@@ -17,7 +17,7 @@ class AbstractModule:
         self.module = module() ### unique
 
         self.load_path = load_path
-        if load_path: self.load_module()
+        if load_path: self.load_task()
 
         self.model = model
         self.load_model()
@@ -29,7 +29,7 @@ class AbstractModule:
         model = dspy.OpenAI(model=self.model, max_tokens=300, temperature=1)
         dspy.settings.configure(lm=model, max_tokens=1024)
 
-    def load_module(self) -> None:
+    def load_task(self) -> None:
 
         with tempfile.NamedTemporaryFile(delete=False) as temp_file:
             json_content = Path(self.load_path).read_text()
