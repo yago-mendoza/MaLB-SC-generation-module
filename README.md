@@ -116,11 +116,27 @@ To install [Poetry](https://python-poetry.org/) using [Chocolatey](https://choco
 
   This command activates the virtual environment, setting up your shell to use the project’s local dependencies instead of globally installed packages. Ensure that you're using a command-line interface that supports PowerShell commands if you're on Windows, or adapt the command for Unix-based systems as needed.
 
+  When you're done working, you can deactivate the virtual environment to return to your global Python environment:
+
   ```powershell
   deactivate
   ```
 
-  When you're done working, you can deactivate the virtual environment to return to your global Python environment:
+# Running the Parsing Module <a name="development-commands"></a>
+
+⚠️ **Disclaimer:** The generation and assessment features are currently under development and cannot be run at this time. However, you can run the parsing module as described below.
+
+To run the program, execute the command:
+
+```bash
+streamlit run src/app.py
+```
+
+This will launch a Streamlit web application on your local server.
+
+The app.py script imports the ChatBotTeam and ParserTeam modules for interaction and data processing purposes.
+
+After filling in the required categories and completing the process, the application will generate an `attributes.json` file with the results of the interaction.
 
 # 🛠 Development Commands <a name="development-commands"></a>
 

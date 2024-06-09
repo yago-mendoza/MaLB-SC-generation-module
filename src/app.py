@@ -3,15 +3,13 @@ from openai import OpenAI
 import os
 from pathlib import Path
 
-from Modules.RP.manager import Manager
-from Modules.RP.parser import Parser
+from Modules.RP.manager import ChatBotTeam
+from Modules.RP.parser import ParserTeam
 
 import pandas as pd
 import json
 from st_aggrid import AgGrid, GridOptionsBuilder
 from pydantic import BaseModel
-
-# run with "streamlit run ui.py"
 
 def main():
 
@@ -21,7 +19,7 @@ def main():
 
     def get_manager():
         if 'manager' not in st.session_state:
-            st.session_state.manager = Manager()
+            st.session_state.manager = ChatBotTeam()
             st.session_state.manager.reset()
         return st.session_state.manager
     
@@ -94,93 +92,38 @@ def main():
 
     st.sidebar.title("Temperature")
 
-    temperature = st.sidebar.slider('Temperature', min_value=0.01, max_value=1.0, value=1.0, step=0.01)
-
     st.sidebar.header("About")
 
-    with st.sidebar:
-        st.markdown(
-            "Welcome to MaLB-SC, an AI-powered tool designed to help teams create robust ERC721 smart contracts for engaging with fans."
-        )
-        st.markdown(
-            "Smart contracts are crucial in blockchain applications, ensuring secure and transparent transactions. This app leverages the power of Large Language Models (LLMs) to help you define the requirements of your smart contracts and then automatically generate the contracts based on the details provided."
-        )
-
-    st.sidebar.header("Example Application Description")
+    json_path = Path(__file__).parent / 'Modules' / 'RP' / 'strings.json'
+    with open(json_path, 'r') as f: strings = json.load(f)
 
     with st.sidebar:
-        st.markdown(
-            "Below is an example application description that you can use to test MaLB:"
-        )
-        st.markdown(
-            "> The contract has to manage 50,000 tokens available for a concert, with each token representing one ticket. Users are limited to purchasing one ticket each, but those with Golden status can buy up to three tickets to transfer to other users. The ticket sales are divided into two phases. The first phase lasts for 5 minutes, and the second phase is triggered one week after the first one ends. If the event is cancelled, compensation includes an extra 25% for Golden ticket holders, 5% for Platinum, and no extra compensation for Bronze ticket holders."
-        )
+        st.markdown(strings["sidebar"]["welcome"])
+        st.markdown(strings["sidebar"]["description"])
 
-        st.markdown(
-            "And here a DELETEME explanation for debugging purposes:"
-        )
-        st.markdown(
-            "> If the 55,000 tokens sell out before the first 5 minutes end, the second phase starts immediately. There is no specified deadline for Golden users to transfer tickets, but tickets must be transferred before the concert. Compensation for a canceled event is calculated automatically and distributed manually. The refund amount for each user type in case of cancellation is determined by their original purchase price and processed in a single transaction. Unsold tickets after both sales phases are returned to the issuer for potential recycling or re-release."
-        )
-
-        st.markdown(
-            "Finally (also for debugging purposes):"
-        )
-        st.markdown(
-            "> There is no limit on the number of Golden status users who can purchase up to three tickets each. Transfers of tickets between users are facilitated through a secure online platform and verified via unique ticket identifiers. The automatic calculation and distribution of compensation are triggered by the official cancellation announcement from the event organizer. Refunds and extra compensation for Golden and Platinum ticket holders are processed separately. Yes, there is a mechanism in place to prevent the re-sale of transferred tickets at inflated prices, typically through price caps and monitoring of transactions."
-        )
-
-        st.markdown("""---""")
-
-    st.sidebar.header("FAQs")
+    st.sidebar.header(strings["sidebar"]["example_description_header"])
 
     with st.sidebar:
-        st.markdown(
-            """
-            ### **What is the purpose of this STREAMLIT app?**
-            This app demonstrates the functionality of MaLB, a system that transforms user descriptions into smart contracts. It currently supports OpenAI's LLM but can be easily extended to support other LLMs like Google's Gemini, or open-source models such as Llama or Mistral, thanks to the DSPy framework.
-            """
-        )
+        st.markdown(strings["sidebar"]["example_description"])
+        st.markdown(strings["sidebar"]["example_content"])
+        st.markdown(strings["sidebar"]["debugging_description"])
+        st.markdown(strings["sidebar"]["debugging_content"])
+        st.markdown(strings["sidebar"]["final_debugging"])
+        st.markdown(strings["sidebar"]["final_debugging_content"])
+        st.markdown(strings["sidebar"]["divider"])
 
-        st.markdown(
-            """
-            ### **What is MaLB?**
-            MaLB is a system designed to convert user descriptions into smart contracts. It leverages Large Language Models (LLMs) to interpret natural language inputs and generate corresponding smart contracts.
-            """
-        )
+    st.sidebar.header(strings["sidebar"]["faqs_header"])
 
-        st.markdown(
-            """
-            ### **Which LLMs are currently supported by MaLB?**
-            Currently, MaLB supports OpenAI's LLM. However, the framework is designed to be flexible, allowing easy integration of other LLMs like Google's Gemini or open-source models such as Llama or Mistral.
-            """
-        )
-
-        st.markdown(
-            """
-            ### **What are the cost considerations for using different LLMs?**
-            It's important to note that models like GPT-4 or GPT-40 are significantly more expensive, costing 30 to 60 times more than GPT-3.5. Users should consider these costs when choosing a model for their needs.
-            """
-        )
-
-        st.markdown(
-            """
-            ### **Is MaLB fully developed?**
-            No, MaLB is still under development. The current version provides a simple way to interact with the chatbot and see how user descriptions can be converted into smart contracts.
-            """
-        )
-
-        st.markdown(
-            """
-            ### **How can I use this app?**
-            To use the app, simply enter your description into the provided input field. The system will process your input using the integrated LLM and generate a corresponding smart contract.
-            """
-        )
+    with st.sidebar:
+        st.markdown(strings["sidebar"]["faq_1"])
+        st.markdown(strings["sidebar"]["faq_2"])
+        st.markdown(strings["sidebar"]["faq_3"])
+        st.markdown(strings["sidebar"]["faq_4"])
+        st.markdown(strings["sidebar"]["faq_5"])
+        st.markdown(strings["sidebar"]["faq_6"])
 
 
     # ------------------ Main Page ------------------ #
-
-    # st.image(str(sony_logo_dir), width=100)
 
     st.title("🔗 Requirement Parser")
     ChatTab, HistoryTab, ParserTab = st.tabs(["Chat", "History", "Parser"])
@@ -295,8 +238,13 @@ def main():
             with st.expander("Selected Description"):
                 st.write(st.session_state["selected_description"])
             
-            requirements = Parser().get_requirements(st.session_state["selected_description"])
-            attributes = Parser().get_attributes(requirements, st.session_state["selected_description"])
+            requirements = ParserTeam().get_requirements(st.session_state["selected_description"])
+            attributes = ParserTeam().get_attributes(requirements, st.session_state["selected_description"])
+
+            # We extract the attributes of the requirements into a JSON file
+            attributes_dict = [attr.dict() for attr in attributes]
+            with open('attributes.json', 'w') as attr_file:
+                json.dump(attributes_dict, attr_file, indent=4)
             
             st.subheader("Inferred Requirements")
             st.write(requirements)
@@ -343,6 +291,7 @@ def main():
                         display_aggrid(df)
         else:
             st.write("No description selected yet.")
+        
         
 if __name__ == "__main__":
     main()

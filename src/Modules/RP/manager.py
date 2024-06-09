@@ -1,11 +1,11 @@
 from Modules.RP.modules.M1 import ValidateTopic
 from Modules.RP.modules.M4 import GenerateQuestions, UpdateDescription, Reflexion
 
-from Modules.abstract_module import LLM_Agent as AbstractModule
+from Modules.abstract_module import ReFactAgent
 
 from datetime import datetime
 
-class Manager:
+class ChatBotTeam:
 
     ERROR_101 = "This is not technical enough. Please, repeat it."
     LEN_THRESHOLD = 750
@@ -28,27 +28,27 @@ class Manager:
 
         # -------------- Modules -------------- #
 
-        self.ValidateTopic = AbstractModule(
+        self.ValidateTopic = ReFactAgent(
             module=ValidateTopic,
             load_path="Modules/RP/modules_fabric/M11_ValidateTopic_opt.json",
             model=self.model,
             out="boolean_assessment"
         )
         
-        self.GenerateQuestions = AbstractModule(
+        self.GenerateQuestions = ReFactAgent(
             module=GenerateQuestions,
             load_path="Modules/RP/modules_fabric/M4_GenerateQuestions_opt.json",
             model=self.model,
             out="questions"
         )
         
-        self.UpdateDescription = AbstractModule(
+        self.UpdateDescription = ReFactAgent(
             module=UpdateDescription,
             model=self.model,
             out="new_description"
         )
 
-        self.Reflect = AbstractModule(
+        self.Reflect = ReFactAgent(
             module=Reflexion,
             model=self.model,
             out="insights"
@@ -75,18 +75,18 @@ class Manager:
         
         if not self.TOPIC_VALIDATED:
 
-            out = self.ValidateTopic.forward(self.last_msg('user'))
+            out = self.ValidateTopic.execute(self.last_msg('user'))
             
             if out is True:
 
                 self.TOPIC_VALIDATED = True
                 self.DESCRIPTIONS.append(self.last_msg('user'))
                 self.keep("Initial User Description", self.DESCRIPTIONS[-1])
-                self.QUESTIONS = self.GenerateQuestions.forward(
+                self.QUESTIONS = self.GenerateQuestions.execute(
                     self.DESCRIPTIONS[-1],
                 )
                 self.keep("System Queries", self.QUESTIONS)
-                return Manager.format_list(
+                return ChatBotTeam.format_list(
                     self.QUESTIONS,
                     "Okay, so let's start with some questions"
                     )
@@ -98,7 +98,7 @@ class Manager:
             answer = self.last_msg('user')
             self.keep("User Insights", answer)
 
-            new_description = self.UpdateDescription.forward(
+            new_description = self.UpdateDescription.execute(
                 self.DESCRIPTIONS[-1],
                 ' '.join(self.QUESTIONS),
                 answer)
@@ -112,22 +112,22 @@ class Manager:
                 if self.POST > 1:
                     return "Okay, your final description has been created, incorporating all of the insights you've shared throughout our conversation. You can find it in the history section. To start a new one, clear the chat with the button below and provide a new starting point description."
             
-                self.REFLEXION = self.Reflect.forward(
+                self.REFLEXION = self.Reflect.execute(
                     self.DESCRIPTIONS[-1],
                 )
                 self.keep("Reflexion", self.DESCRIPTIONS[-1])
-                return Manager.format_list(
+                return ChatBotTeam.format_list(
                     self.REFLEXION,
                     "I still have some questions about how certain aspects of the Smart Contract behave. If these are important for understanding its functionality, would you be able to clarify them for me?"
                     )
             
             else:
 
-                self.QUESTIONS = self.GenerateQuestions.forward(
+                self.QUESTIONS = self.GenerateQuestions.execute(
                     self.DESCRIPTIONS[-1],
                 )
                 self.keep("System Queries", self.QUESTIONS)
-                return Manager.format_list(
+                return ChatBotTeam.format_list(
                     self.QUESTIONS,
                     "Excellent. Just some additional questions"
                     )

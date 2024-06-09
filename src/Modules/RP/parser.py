@@ -1,9 +1,9 @@
 from Modules.RP.modules.M2 import InferRequirements
 from Modules.RP.modules.M3 import GenerateAttributes
 
-from Modules.abstract_module import LLM_Agent as AbstractModule
+from Modules.abstract_module import ReFactAgent
 
-class Parser:
+class ParserTeam:
 
     def __init__(self):
 
@@ -11,14 +11,14 @@ class Parser:
         self.attributes = []
 
         # Initialize the modules as AbstractModules
-        self.InferRequirements = AbstractModule(
+        self.InferRequirements = ReFactAgent(
             module=InferRequirements,
             load_path="Modules/RP/modules_fabric/M2_InferRequirements_opt.json",  # Assuming a config or model path if required
             model="gpt-3.5-turbo-0125",  # Assuming model parameter if required
             out="requirements"  # Output type as expected from the module
         )
 
-        self.GenerateAttributes = AbstractModule(
+        self.GenerateAttributes = ReFactAgent(
             module=GenerateAttributes,
             load_path="Modules/RP/modules_fabric/M31_GenerateAttributes_opt.json",  # Assuming a config or model path if required
             model="gpt-3.5-turbo-0125",  # Assuming model parameter if required
@@ -26,12 +26,12 @@ class Parser:
         )
 
     def get_requirements(self, description):
-        self.requirements = self.InferRequirements.forward(description)
+        self.requirements = self.InferRequirements.execute(description)
         return self.requirements
 
     def get_attributes(self, requirements, description):
         self.attributes = []
         for requirement in requirements:
-            attribute = self.GenerateAttributes.forward(description, requirement)
+            attribute = self.GenerateAttributes.execute(description, requirement)
             self.attributes.append(attribute)
         return self.attributes

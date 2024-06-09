@@ -1,11 +1,11 @@
 import dspy
-from typing import List
 from pathlib import Path
 import tempfile
+from dspy import teleprompt
 
 # ---------- Drop-in MaLB Implementation Class for Modules ---------- #
 
-class LLM_Agent:
+class ReFactAgent:
 
     def __init__(self,
                  module=None,
@@ -38,7 +38,21 @@ class LLM_Agent:
 
         self.module.load(Path(temp_file.name))
         Path(temp_file.name).unlink()
+
+    def train(self, trainset, valset, metric) -> None:
+        
+        config = dict(max_bootstrapped_demos=len(trainset+valset))
+        optimiser = teleprompt.BootstrapFewShot(
+            metric=metric,
+            **config
+            )
+
+        self.module = optimiser.compile(
+            self.module,
+            trainset=trainset,
+            valset=valset
+            )
     
-    def forward(self, *args):
+    def execute(self, *args):
         return getattr(self.module.forward(*args), self.out)
             
