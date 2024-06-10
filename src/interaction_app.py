@@ -29,8 +29,8 @@ def main():
 
     # ------------------ Streamlit UI Configuration ------------------ #
     
-    openai_logo_dir = Path("assets/openai-2.svg")
-    sony_logo_dir = Path("assets/SONY.png")
+    openai_logo_dir = Path("Modules/RP/assets/openai-2.svg")
+    sony_logo_dir = Path("Modules/RP/assets/SONY.png")
 
     with open(openai_logo_dir, "r") as file: page_icon = file.read()
 
@@ -241,10 +241,17 @@ def main():
             requirements = ParserTeam().get_requirements(st.session_state["selected_description"])
             attributes = ParserTeam().get_attributes(requirements, st.session_state["selected_description"])
 
-            # We extract the attributes of the requirements into a JSON file
-            attributes_dict = [attr.dict() for attr in attributes]
-            with open('attributes.json', 'w') as attr_file:
-                json.dump(attributes_dict, attr_file, indent=4)
+
+            # Saving "attributes" and "description" at @storage folder ###########
+
+            from datapipe import DataPipe as dp
+            dp.save(attributes, dir=dp.attributes_dir, extension='json')
+
+            description_json = {"description": st.session_state["selected_description"]}
+            dp.save(description_json, dir=dp.descriptions_dir, extension='json')
+
+            #################
+
             
             st.subheader("Inferred Requirements")
             st.write(requirements)

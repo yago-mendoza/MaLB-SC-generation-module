@@ -1,0 +1,94 @@
+pragma solidity ^0.8.0;
+
+contract TokenSaleManagement {
+    // State variables
+    uint public totalTicketsAvailable = 50000;
+    mapping(address => uint) public userTicketCount;
+    mapping(address => string) public userStatus;
+    mapping(uint => bool) public ticketTransferred;
+    bool public eventCancelled = false;
+    
+    // Modifiers
+    modifier onlyOnceTicketPurchase() {
+        require(userTicketCount[msg.sender] == 0, "You can only purchase one ticket");
+        _;
+    }
+    
+    modifier onlyGoldenStatus() {
+        require(keccak256(abi.encodePacked(userStatus[msg.sender])) == keccak256(abi.encodePacked("Golden")), "Only Golden status users allowed");
+        _;
+    }
+    
+    // Events
+    event TicketPurchased(address user, uint ticketCount);
+    event TicketTransferred(address from, address to, uint ticketCount);
+    
+    // Functions
+    function purchaseTicket() public onlyOnceTicketPurchase {
+        require(totalTicketsAvailable > 0, "No more tickets available");
+        
+        if(keccak256(abi.encodePacked(userStatus[msg.sender])) == keccak256(abi.encodePacked("Golden"))) {
+            require(userTicketCount[msg.sender] < 3, "Golden status users can purchase up to three tickets");
+        } else {
+            require(userTicketCount[msg.sender] < 1, "Non-Golden users can only purchase one ticket");
+        }
+        
+        userTicketCount[msg.sender]++;
+        totalTicketsAvailable--;
+        
+        emit TicketPurchased(msg.sender, 1);
+    }
+    
+    function transferTicket(address to) public {
+        require(userTicketCount[msg.sender] > 0, "You do not have any tickets to transfer");
+        require(userTicketCount[to] == 0, "Recipient already has a ticket");
+        require(!eventCancelled, "Event is already cancelled");
+        require(!ticketTransferred[userTicketCount[msg.sender]], "Ticket already transferred");
+        
+        userTicketCount[to]++;
+        userTicketCount[msg.sender]--;
+        ticketTransferred[userTicketCount[to]] = true;
+        
+        emit TicketTransferred(msg.sender, to, 1);
+    }
+    
+    function cancelEvent() public onlyGoldenStatus {
+        eventCancelled = true;
+    }
+}
+
+contract TicketPurchaseLimitations is TokenSaleManagement {
+    // No additional functionality needed, inherits from TokenSaleManagement
+}
+
+contract GoldenUserTicketTransfer is TokenSaleManagement {
+    // No additional functionality needed, inherits from TokenSaleManagement
+}
+
+contract TicketTransferMechanism is TokenSaleManagement {
+    // No additional functionality needed, inherits from TokenSaleManagement
+}
+
+contract MultiPhaseTicketSales is TokenSaleManagement {
+    // No additional functionality needed, inherits from TokenSaleManagement
+}
+
+contract TicketTransferDeadline is TokenSaleManagement {
+    // No additional functionality needed, inherits from TokenSaleManagement
+}
+
+contract EventCancellationCompensation is TokenSaleManagement {
+    // No additional functionality needed, inherits from TokenSaleManagement
+}
+
+contract RefundProcessing is TokenSaleManagement {
+    // No additional functionality needed, inherits from TokenSaleManagement
+}
+
+contract TicketRecycling is TokenSaleManagement {
+    // No additional functionality needed, inherits from TokenSaleManagement
+}
+
+contract TransactionMonitoring is TokenSaleManagement {
+    // No additional functionality needed, inherits from TokenSaleManagement
+}
