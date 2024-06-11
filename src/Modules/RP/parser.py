@@ -3,7 +3,7 @@ from Modules.RP.modules.M3 import GenerateAttributes
 
 from Modules.abstract_module import ReFactAgent
 
-class ParserTeam:
+class ParsingTeam:
 
     def __init__(self):
 

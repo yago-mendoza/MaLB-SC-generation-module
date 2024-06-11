@@ -38,6 +38,7 @@ streamlit-tags = "^1.2.8"
 streamlit-aggrid = "^1.0.5"
 python-dotenv = "^1.0.1"
 py-solc-x = "^2.0.3"
+seaborn = "^0.13.2"
 
 [tool.poetry.group.dev.dependencies]
 ipykernel = "^6.29.4"

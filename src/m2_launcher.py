@@ -1,155 +1,157 @@
 from datapipe import DataPipe as dp
 
-##########################
+turn_generation_on = False
+turn_syntax_check_on = False
+turn_assessment_on = True
+
+######################
 # GENERATION
-##########################
+######################
+if turn_generation_on:
 
-from Modules.generation_module.SOTA_generator import SOTA
+    features = dp.read(index=-1, json_joined=True, dir=dp.attributes_dir)
 
-dp.set_dir('attributes')
-requirements = dp.read(index=-1, json_joined=True)
-SOTA(requirements) # generates and saves
+    from Modules.generation_module.abstract_generator import generate_smart_contract
+    path, code = generate_smart_contract(features, reasoning="SOTA")
 
-##########################
+######################
+# SYNTAX CHECK
+######################
+if turn_syntax_check_on:
+
+    contract_to_be_syntax_checked = dp.read(index=-1, dir=dp.contracts_dir)
+
+    from Modules.assessment_module.syntax_checker import check_syntax
+    is_syntax_correct = check_syntax(contract_to_be_syntax_checked)
+
+######################
 # ASSESSMENT
-##########################
+######################
 
-# Syntax Check
+# completeness_hist = []
+# lim = 5
+# n = 1
 
-from Modules.assessment_module.syntax_checker import check_syntax
+# if turn_assessment_on:
 
-dp.set_dir('contracts')
-source_code = dp.read(index=-1)
-is_syntax_correct = check_syntax(source_code) # -> bool
+#     features = dp.read(index=-1, json_multistring=True, dir=dp.attributes_dir)
+#     description = dp.read(index=-1, dir=dp.descriptions_dir)
+#     source_code = dp.read(index=-1, dir=dp.contracts_dir)
 
-# SUITABILITY ASSESSMENT
+#     from Modules.assessment_module.suitability_assessment import assess_suitability
+#     path = assess_suitability(description, source_code, features)
 
-from typing import List
+#     suitability_results = dp.read(path=path)
+#     are_adequate = [result["is_adequate"] for result in suitability_results]
+#     completeness_hist.append(are_adequate)
 
-import dspy
+#     features = dp.read(index=-1, dir=dp.attributes_dir)
+#     while not all(are_adequate) and len(completeness_hist) < lim:
 
-model = dspy.OpenAI(model="gpt-3.5-turbo-0125", max_tokens=300, temperature=1)
-dspy.settings.configure(lm=model, max_tokens=1024)
+#         n+=1
+#         print(f'|Gen({n}/{lim}){'-'*30}|')
 
-class SmartContractCompliance(dspy.Signature):
-    """Determines if a smart contract fulfills a given requirement."""
-    description: str = dspy.InputField(desc="Description of the smart contract's purpose.")
-    requirement: str = dspy.InputField(desc="Specific requirement the contract should fulfill.")
-    contract_code: str = dspy.InputField(desc="The smart contract code.")
-    complies: bool = dspy.OutputField(desc="True if the code complies, False otherwise.")
+#         for i, _ in enumerate(features):
+#             feature_completeness = are_adequate[i]
+#             if not feature_completeness:
+#                 features[i]['hint'] = suitability_results[i]["assessment"]
+#                 features[i]['to_do'] = suitability_results[i]["to_do"]
+        
+#         from Modules.generation_module.abstract_generator import generate_smart_contract
+#         path, code = generate_smart_contract(str(features), reasoning="SOTA")
 
-class ImprovementAdvice(dspy.Signature):
-    """Provides a technical tip to improve a smart contract based on a failed requirement."""
-    description: str = dspy.InputField(desc="Description of the smart contract's purpose.")
-    requirement: str = dspy.InputField(desc="Specific requirement the contract failed to fulfill.")
-    contract_code: str = dspy.InputField(desc="The smart contract code.")
-    advice: str = dspy.OutputField(desc="Technical advice on how to improve the code.")
+#         path = assess_suitability(description, code, [str(f) for f in features])
+#         suitability_results = dp.read(path=path)
+#         are_adequate = [result["is_adequate"] for result in suitability_results]
+#         completeness_hist.append(are_adequate)
 
-class SmartContractAnalyzer(dspy.Module):
-    """Analyzes smart contract code against a requirement and determines compliance."""
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
 
-    def __init__(self):
-        super().__init__()
-        self.compliance_checker = dspy.ChainOfThought(SmartContractCompliance)
+# Your data
+data = [[True, True, True, True, True, False, False, True, True, False], [False, True, True, True, True, True, False, True, True, False], [False, True, True, True, True, False, True, True, False, False], [False, True, True, False, True, False, True, False, False, False], [False, True, False, False, True, False, True, True, True, False]]
 
-    def forward(self, description: str, requirement: str, contract_code: str) -> bool:
-        return self.compliance_checker(description=description, requirement=requirement, contract_code=contract_code)
+# Calculate the percentage of True values for each iteration
+percentages = [0]  # Start with 0% at iteration 0
+for row in data:
+    percentages.append(sum(row) / len(row) * 100)
 
-class SmartContractAdvisor(dspy.Module):
-    """Provides advice on how to improve a smart contract that fails to meet a requirement."""
-
-    def __init__(self):
-        super().__init__()
-        self.advice_giver = dspy.ChainOfThought(ImprovementAdvice)
-
-    def forward(self, description: str, requirement: str, contract_code: str) -> str:
-        return self.advice_giver(description=description, requirement=requirement, contract_code=contract_code)
-
-# Example Usage:
-analyzer = SmartContractAnalyzer()
-advisor = SmartContractAdvisor()
-
-contract_code = smart_contract_code
-requirement = requirements[0].multistring_json()
-file_path = 'selected_description.json'
-with open(file_path, 'r') as file:
-    description = json.load(file)   
-
-complies = analyzer(description=description, requirement=requirement, contract_code=contract_code)
-
-if complies:
-    print("The smart contract meets the requirement.")
-else:
-    advice = advisor(description=description, requirement=requirement, contract_code=contract_code)
-    print(f"The smart contract does not meet the requirement. Here's a tip:\n{advice}")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# Definir el prompt template para reflexionar sobre el cumplimiento de los requisitos
-prompt_template = ChatPromptTemplate.from_messages(
-    [
-        ("system", "You are an expert in smart contracts. You will review the smart contract code and determine if it fulfills the given requirement. Provide a detailed reflection on whether the code meets the requirement or not. If it does not, provide a technical tip on how to improve it."),
-        ("user", "Description: {description}\nRequirement: {requirement}\nContract Code: {contract_code}")
-    ]                       
-)
-
-model = ChatOpenAI(model="gpt-3.5-turbo")
-parser = StrOutputParser()
-
-chain = prompt_template | model | parser
-
-
-
-requirement = requirements[0]
-
-requirement_description = requirement.multistring_json()
-
-reflection = chain.invoke({
-    "description": description,
-    "requirement": requirement_description,
-    "contract_code": smart_contract_code
+# Create a DataFrame for easy plotting
+df = pd.DataFrame({
+    'Iteration': list(range(len(percentages))),
+    'Percentage of True': percentages
 })
 
-# Procesar la reflexión para obtener un booleano y un consejo técnico si es necesario
-def process_reflection(reflection: str):
-    if "does not meet" in reflection.lower():
-        return False, reflection.split("Tip:")[-1].strip()
-    return True, ""
+# Plotting
+plt.figure(figsize=(10, 6))
+sns.lineplot(x='Iteration', y='Percentage of True', data=df, marker='o')
+plt.title('Percentage of True Values Over Iterations')
+plt.xlabel('Iteration')
+plt.ylabel('Percentage of True Values')
+plt.ylim(0, 100)  # Ensuring y-axis goes from 0 to 100
+plt.show()
 
-# Obtener el resultado y el consejo técnico si aplica
-meets_requirement, technical_tip = process_reflection(reflection)
 
-# Imprimir los resultados
-print(f"Meets requirement: {meets_requirement}")
-if not meets_requirement:
-    print(f"Technical tip: {technical_tip}")
 
-# Guardar la reflexión en un archivo
-reflection_data = {
-    "requirement": requirement.name,
-    "meets_requirement": meets_requirement,
-    "reflection": reflection,
-    "technical_tip": technical_tip if not meets_requirement else ""
-}
+#### Viridis Squared Matrix
 
-from pathlib import Path
+# import matplotlib.pyplot as plt
 
-reflection_file_path = Path('reflection_result.json')
-with open(reflection_file_path, 'w') as file:
-    json.dump(reflection_data, file, indent=4)
+# fig, ax = plt.subplots()
+# ax.imshow(data, cmap='viridis', aspect='auto')
+# plt.show()
 
-print(f'Reflection result saved to {reflection_file_path}')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##########################
+# RE-GENERATION
+##########################
+
+# suitability_results = dp.read(index=-1, dir=dp.suitability_assessments_dir)
+
+# dp.set_dir('attributes')
+# requirements = dp.read(index=0)
+
+# for i, _ in enumerate(requirements):
+#     suitability_result = suitability_results[i]
+#     if not suitability_result["is_adequate"]:
+#         requirements[i]['hint'] = suitability_result["assessment"]
+#         print(requirements[i])
+
+# from Modules.generation_module.SOTA_generator import SOTA
+# path, code = SOTA(requirements) # .parent, .name, .suffix
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -4,11 +4,10 @@ from pathlib import Path
 from datetime import datetime
 import random
 
-
+# Convert JSON to Python
 def json_to_python(file_path: str, multistring: bool = False, joined: bool = False) -> Union[List[dict], List[str], str]:
-
-    # multistring=True : returns a list of strings
-    # joined=True : returns a single string with all requirements joined
+    # multistring=True : returns a list of strings with each JSON object as a pretty-printed string
+    # joined=True : returns a single string with all requirements joined, useful for direct display
 
     with open(file_path, 'r') as file:
         data = json.load(file)
@@ -23,68 +22,86 @@ def json_to_python(file_path: str, multistring: bool = False, joined: bool = Fal
         # Return a list of dictionary objects
         return data
 
+# Define DataPipe class for managing file operations
 class DataPipe:
     attributes_dir = Path('storage/attributes')
     descriptions_dir = Path('storage/descriptions')
     contracts_dir = Path('storage/contracts')
-    _default_dir = contracts_dir
+    suitability_assessments_dir = Path('storage/suitability_assessments')
+    _default_dir = contracts_dir  # Set initial default directory to contracts
 
+    # Set directory for operations
     @classmethod
     def set_dir(cls, dir_name: str) -> None:
-        dir_name += "_dir"  # Add the suffix to the directory name
+        # Set the directory to the specified dir_name (attributes, descriptions, contracts)
+        dir_name = f"{dir_name}_dir"  # Add the suffix to the directory name
         if hasattr(cls, dir_name):
             cls._default_dir = getattr(cls, dir_name)
-            print(f"Directory set to: {getattr(cls, dir_name)}")
+            print(f"Directory set to: {cls._default_dir}")
         else:
             raise ValueError(f"Directory name {dir_name} does not exist.")
         
+    # Generate filename based on current datetime
     @staticmethod
     def _filename_gen(content: str, extension: str) -> str:
-        return datetime.now().strftime("%m.%d_%H.%M.%S") + '.' + extension
-
+        return f"{datetime.now().strftime('%m.%d_%H.%M.%S')}.{extension}"
+    
+    # Save content to a file
     @classmethod
     def save(cls, content: str, dir: Path = None, extension: str = 'txt') -> Path:
-        if dir is None:
-            dir = cls._default_dir
+        # Save content to a specified directory with a given extension
+        dir = dir or cls._default_dir # Use default directory if none is specified
         dir.mkdir(parents=True, exist_ok=True)
-        file_path = dir / cls._filename_gen(str(content), extension)
-        if extension == 'json':
-            with open(file_path, 'w') as file:
-                json.dump(content, file, indent=4, default=lambda o: o.__dict__)
-        else:
-            with open(file_path, 'w') as file:
-                file.write(content)
-        print(f"File saved to: {file_path}")
-        return file_path
 
+        file_path = dir / cls._filename_gen(str(content), extension)
+
+        with open(file_path, 'w') as file:
+            if extension == 'json':
+                # Save content as JSON with indentation
+                json.dump(content, file, indent=4, default=lambda o: o.__dict__)
+            else:
+                # Save content as plain text
+                file.write(content)
+
+        print(f"File saved to: {file_path}")
+        return file_path  # Return file path for reference (parent, name, suffix, ...)
+
+    # Read content from a file
     @classmethod
-    def read(cls, dir: Path = None, filename: str = None, index: int = None, random_select: bool = False,
+    def read(cls, path: Path = None, dir: Path = None, filename: str = None, index: int = None, random_select: bool = False,
              json_multistring: bool = False, json_joined: bool = False) :
-        if dir is None:
-            dir = cls._default_dir
+        # Read content based on various selection criteria
         
-        files = list(dir.glob('*'))
-        if not files:
-            raise FileNotFoundError(f"No files found in the directory {dir}.")
-        
-        if random_select:
-            file_path = random.choice(files)
-        elif index is not None:
-            if index >= len(files) or index < -len(files):
-                raise IndexError(f"Index {index} is out of range for the directory {dir}.")
-            file_path = files[index]
-        elif filename:
-            file_path = dir / filename
-            if not file_path.exists():
-                raise FileNotFoundError(f"The file {filename} does not exist in the directory {dir}.")
-        else:
-            raise ValueError("Either filename, index, or random_select must be provided.")
+        if path:
+            file_path = path  # Directly use the provided path (most probably from "save" output)
+
+        else:         
+            dir = dir or cls._default_dir  # Use default directory if none is specified
+            files = list(dir.glob('*'))  # Get all files in the directory
+
+            if not files:
+                raise FileNotFoundError(f"No files found in the directory {dir}.")
+            
+            if random_select:
+                file_path = random.choice(files) # Select a random file (testing purposes)
+            elif index is not None:
+                if index >= len(files) or index < -len(files):
+                    raise IndexError(f"Index {index} is out of range for the directory {dir}.")
+                file_path = files[index] # Select file by index
+            elif filename:
+                file_path = dir / filename # Select file by filename
+                if not file_path.exists():
+                    raise FileNotFoundError(f"The file {filename} does not exist in the directory {dir}.")
+            else:
+                raise ValueError("Either filename, index, or random_select must be provided.")
         
         if file_path.suffix == '.json':
+            # Read and convert JSON content based on provided flags
             content = json_to_python(file_path, multistring=json_multistring, joined=json_joined)
             print(f"JSON file content read from: {file_path}")
             return content
         else:
+            # Read plain text content
             with open(file_path, 'r') as file:
                 content = file.read()
             print(f"File content read from: {file_path}")

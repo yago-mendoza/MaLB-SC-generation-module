@@ -3,8 +3,8 @@ from openai import OpenAI
 import os
 from pathlib import Path
 
-from Modules.RP.manager import ChatBotTeam
-from Modules.RP.parser import ParserTeam
+from Modules.RP.coordinator import CoordinationTeam
+from Modules.RP.parser import ParsingTeam
 
 import pandas as pd
 import json
@@ -19,7 +19,7 @@ def main():
 
     def get_manager():
         if 'manager' not in st.session_state:
-            st.session_state.manager = ChatBotTeam()
+            st.session_state.manager = CoordinationTeam()
             st.session_state.manager.reset()
         return st.session_state.manager
     
@@ -238,17 +238,17 @@ def main():
             with st.expander("Selected Description"):
                 st.write(st.session_state["selected_description"])
             
-            requirements = ParserTeam().get_requirements(st.session_state["selected_description"])
-            attributes = ParserTeam().get_attributes(requirements, st.session_state["selected_description"])
+            requirements = ParsingTeam().get_requirements(st.session_state["selected_description"])
+            attributes = ParsingTeam().get_attributes(requirements, st.session_state["selected_description"])
 
 
             # Saving "attributes" and "description" at @storage folder ###########
 
-            from datapipe import DataPipe as dp
+            from datapipe import DataPipe as dp # saves a dictionnary
             dp.save(attributes, dir=dp.attributes_dir, extension='json')
 
-            description_json = {"description": st.session_state["selected_description"]}
-            dp.save(description_json, dir=dp.descriptions_dir, extension='json')
+            description = st.session_state["selected_description"] # will simply save a sttring
+            dp.save(description, dir=dp.descriptions_dir, extension='json') 
 
             #################
 

@@ -5,7 +5,7 @@ from Modules.abstract_module import ReFactAgent
 
 from datetime import datetime
 
-class ChatBotTeam:
+class CoordinationTeam:
 
     ERROR_101 = "This is not technical enough. Please, repeat it."
     LEN_THRESHOLD = 750
@@ -86,7 +86,7 @@ class ChatBotTeam:
                     self.DESCRIPTIONS[-1],
                 )
                 self.keep("System Queries", self.QUESTIONS)
-                return ChatBotTeam.format_list(
+                return CoordinationTeam.format_list(
                     self.QUESTIONS,
                     "Okay, so let's start with some questions"
                     )
@@ -116,7 +116,7 @@ class ChatBotTeam:
                     self.DESCRIPTIONS[-1],
                 )
                 self.keep("Reflexion", self.DESCRIPTIONS[-1])
-                return ChatBotTeam.format_list(
+                return CoordinationTeam.format_list(
                     self.REFLEXION,
                     "I still have some questions about how certain aspects of the Smart Contract behave. If these are important for understanding its functionality, would you be able to clarify them for me?"
                     )
@@ -127,7 +127,7 @@ class ChatBotTeam:
                     self.DESCRIPTIONS[-1],
                 )
                 self.keep("System Queries", self.QUESTIONS)
-                return ChatBotTeam.format_list(
+                return CoordinationTeam.format_list(
                     self.QUESTIONS,
                     "Excellent. Just some additional questions"
                     )
