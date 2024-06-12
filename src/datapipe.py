@@ -25,21 +25,27 @@ def json_to_python(file_path: str, multistring: bool = False, joined: bool = Fal
 # Define DataPipe class for managing file operations
 class DataPipe:
 
+    # Objects
+
     # Interaction / Objects
     interaction_attributes_dir = Path('storage/interaction_storage/attributes')
     interaction_descriptions_dir = Path('storage/interaction_storage/descriptions')
 
+    # Generation / Objects
+    contracts_dir = Path('storage/generation_storage/contracts')
+
+    # Logs
+
     # Interaction / Logs
     interaction_logs_dir = Path('storage/interaction_storage/execution_logs')
 
-    # Generation / Objects
-    contracts_dir = Path('storage/generation_storage/contracts') # residual
-
     # Generation / Logs
-    code_generation_logs_dir = Path('storage/execution_logs/syntax_generation')
-    code_refinement_logs_dir = Path('storage/execution_logs/syntax_refinement')
+    syntax_generation_logs_dir = Path('storage/generation_storage/execution_logs/syntax_generation')
 
-    
+    # Assessment / Logs
+    syntax_refinement_logs_dir = Path('storage/assessment_storage/execution_logs/syntax_refinement')
+
+    # ------------------------------------------------------------------------------------------- #
 
     _default_dir = Path('storage')  # Set initial default directory to 'storage' itself
 
@@ -81,7 +87,7 @@ class DataPipe:
 
     # Read content from a file
     @classmethod
-    def read(cls, path: Path = None, dir: Path = None, filename: str = None, index: int = None, random_select: bool = False,
+    def read(cls, path: Path = None, dir: Path = None, filename: str = None, index: int = -1, random_select: bool = False,
              json_multistring: bool = False, json_joined: bool = False) :
         # Read content based on various selection criteria
         

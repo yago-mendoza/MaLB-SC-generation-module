@@ -1,4 +1,5 @@
 from importlib import import_module
+from datapipe import DataPipe as dp
 
 def generate_smart_contract(requirements, reasoning=None):
     if reasoning:
@@ -9,6 +10,9 @@ def generate_smart_contract(requirements, reasoning=None):
     else:
         from Modules.generation_module.ZSGen_generator import ZSGen
         ReasoningStrategy = ZSGen
+    
+        
+    path = dp.save(code:=ReasoningStrategy(requirements),
+                   extension='sol', dir=dp.contracts_dir)
 
-    path, code = ReasoningStrategy(requirements)
-    return path, code
+    return code

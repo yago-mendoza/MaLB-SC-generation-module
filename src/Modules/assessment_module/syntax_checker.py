@@ -11,8 +11,8 @@ def check_syntax(source_code):
         # Attempt to compile the source code
         compiled_sol = solcx.compile_source(source_code, output_values=['abi', 'bin'])
         return True
-    except solcx.exceptions.SolcError as e:
-        print(f"Compilation error: {e}")
+    except solcx.exceptions.SolcError:
+        print(f"Compilation error.")
         return False
 
 # Check syntax of Solidity source code from file

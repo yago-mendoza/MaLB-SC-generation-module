@@ -27,43 +27,7 @@ def ZSGen(requirements, model="gpt-3.5-turbo"):
         "language": "Solidity"
     })
     
-    while False:
-
-        # Bucle iterativo para completar placeholders (deprecated)
-
-        completion_prompt = ChatPromptTemplate.from_messages(
-            [
-                ("system", "Estás examinando un contrato inteligente para identificar si hay lógica incompleta, expresada a modo de placeholders indicativos. \
-                 Si encuentras alguno, indícalo. De lo contrario, responde con 'COMPLETO'."),
-                ("user", "{smart_contract_code}")
-            ]
-        )
-
-        completion_chain = completion_prompt | model | parser
-        completion_result = completion_chain.invoke({"smart_contract_code": smart_contract_code})
-        
-        print(completion_result)
-        if completion_result == "COMPLETO":
-            print('Breaking...')
-            break
-
-        print('Completion was not totally completed...')
-
-        refinement_prompt = ChatPromptTemplate.from_messages(
-            [
-                ("system", "Completa el siguiente código del contrato inteligente, reemplazando cualquier placeholder con código funcional:"),
-                ("user", "{smart_contract_code}")
-            ]
-        )
-
-        refinement_chain = refinement_prompt | model | parser
-        smart_contract_code = refinement_chain.invoke({"smart_contract_code": smart_contract_code})
-
-    # Guardar el contrato generado
-    dp.set_dir('contracts')
-    solidity_file_path = dp.save(smart_contract_code, extension='sol')
-    
-    return solidity_file_path, smart_contract_code
+    return smart_contract_code
 
 
 # from datapipe import DataPipe as dp

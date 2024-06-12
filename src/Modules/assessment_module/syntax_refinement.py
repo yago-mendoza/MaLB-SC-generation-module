@@ -53,7 +53,7 @@ def assess_suitability(description, source_code, features):
     # Applies the assessment pipeline to each feature, and saves the results.
 
     for i, feature in enumerate(features):
-        pred = pipeline(code=source_code, description=description, feature=feature)
+        pred = pipeline(code=source_code, description=description, feature=str(feature))
         features_assessment.append(
             {
                 "n": str(i+1),
