@@ -1,0 +1,82 @@
+[
+    {
+        "smart_contract_description": "Program a highly efficient ERC721 Smart Contract for the Fan Engagement Platform to distribute rewards based on activity and token holdings at the end of each month. Fans with more than 200 tokens held and at least 50 activity points accumulated in a month qualify for rewards. Rewards consist of awarding 10% of held tokens as additional tokens. Distribution occurs automatically on the last day of each month, emitting an event.",
+        "question": "How are activity points tracked and calculated?"
+    },
+    {
+        "smart_contract_description": "Program a highly efficient ERC721 Smart Contract for the Fan Engagement Platform to distribute rewards based on activity and token holdings at the end of each month. Fans with more than 200 tokens held and at least 50 activity points accumulated in a month qualify for rewards. Rewards consist of awarding 10% of held tokens as additional tokens. Distribution occurs automatically on the last day of each month, emitting an event.",
+        "question": "What types of activities contribute to the activity points?"
+    },
+    {
+        "smart_contract_description": "Program a highly efficient ERC721 Smart Contract for the Fan Engagement Platform to distribute rewards based on activity and token holdings at the end of each month. Fans with more than 200 tokens held and at least 50 activity points accumulated in a month qualify for rewards. Rewards consist of awarding 10% of held tokens as additional tokens. Distribution occurs automatically on the last day of each month, emitting an event.",
+        "question": "Is there a cap on the number of tokens a user can hold or earn through rewards?"
+    },
+    {
+        "smart_contract_description": "Program a highly efficient ERC721 Smart Contract for the Fan Engagement Platform to distribute rewards based on activity and token holdings at the end of each month. Fans with more than 200 tokens held and at least 50 activity points accumulated in a month qualify for rewards. Rewards consist of awarding 10% of held tokens as additional tokens. Distribution occurs automatically on the last day of each month, emitting an event.",
+        "question": "How is the 10% reward calculated and distributed?"
+    },
+    {
+        "smart_contract_description": "Program a highly efficient ERC721 Smart Contract for the Fan Engagement Platform to distribute rewards based on activity and token holdings at the end of each month. Fans with more than 200 tokens held and at least 50 activity points accumulated in a month qualify for rewards. Rewards consist of awarding 10% of held tokens as additional tokens. Distribution occurs automatically on the last day of each month, emitting an event.",
+        "question": "What happens if a user falls below the 200 token threshold before the end of the month but has accumulated 50 activity points?"
+    },
+    {
+        "smart_contract_description": "It is intended to manage tiered VIP memberships, allowing fans to upgrade or downgrade their membership based on the tokens they hold. Define membership levels as Bronze, Silver, and Gold, each with associated perks. Upgrading requires the owner to have a sufficient number of additional tokens (100 tokens for Silver, 200 for Gold). Include functionality for members to voluntarily lower their level, refunding tokens proportionally based on their tenure on the platform (70% if >2 years, 50% if >1 year, 30% if >6 months). Once downgraded, a member must wait 12 days before upgrading again.",
+        "question": "How are the perks for each membership level defined and updated?"
+    },
+    {
+        "smart_contract_description": "It is intended to manage tiered VIP memberships, allowing fans to upgrade or downgrade their membership based on the tokens they hold. Define membership levels as Bronze, Silver, and Gold, each with associated perks. Upgrading requires the owner to have a sufficient number of additional tokens (100 tokens for Silver, 200 for Gold). Include functionality for members to voluntarily lower their level, refunding tokens proportionally based on their tenure on the platform (70% if >2 years, 50% if >1 year, 30% if >6 months). Once downgraded, a member must wait 12 days before upgrading again.",
+        "question": "Is there a mechanism to prevent users from upgrading immediately after downgrading to game the system?"
+    },
+    {
+        "smart_contract_description": "It is intended to manage tiered VIP memberships, allowing fans to upgrade or downgrade their membership based on the tokens they hold. Define membership levels as Bronze, Silver, and Gold, each with associated perks. Upgrading requires the owner to have a sufficient number of additional tokens (100 tokens for Silver, 200 for Gold). Include functionality for members to voluntarily lower their level, refunding tokens proportionally based on their tenure on the platform (70% if >2 years, 50% if >1 year, 30% if >6 months). Once downgraded, a member must wait 12 days before upgrading again.",
+        "question": "How is tenure on the platform calculated and verified for token refunds?"
+    },
+    {
+        "smart_contract_description": "It is intended to manage tiered VIP memberships, allowing fans to upgrade or downgrade their membership based on the tokens they hold. Define membership levels as Bronze, Silver, and Gold, each with associated perks. Upgrading requires the owner to have a sufficient number of additional tokens (100 tokens for Silver, 200 for Gold). Include functionality for members to voluntarily lower their level, refunding tokens proportionally based on their tenure on the platform (70% if >2 years, 50% if >1 year, 30% if >6 months). Once downgraded, a member must wait 12 days before upgrading again.",
+        "question": "Are there any fees associated with upgrading or downgrading membership?"
+    },
+    {
+        "smart_contract_description": "It is intended to manage tiered VIP memberships, allowing fans to upgrade or downgrade their membership based on the tokens they hold. Define membership levels as Bronze, Silver, and Gold, each with associated perks. Upgrading requires the owner to have a sufficient number of additional tokens (100 tokens for Silver, 200 for Gold). Include functionality for members to voluntarily lower their level, refunding tokens proportionally based on their tenure on the platform (70% if >2 years, 50% if >1 year, 30% if >6 months). Once downgraded, a member must wait 12 days before upgrading again.",
+        "question": "Can members upgrade or downgrade multiple levels at once (e.g., from Gold to Bronze)"
+    },
+    {
+        "smart_contract_description": "A smart contract is needed to manage multiple subscription levels where fans pay a monthly fee in tokens to access exclusive content. Subscription levels include Basic (10 tokens/month), Premium (50 tokens/month), and Elite (100 tokens/month). Automatically deduct fees from a user's token balance every 30 days. If there are insufficient funds, the subscription is paused. Implement auto-renewal features, and if a subscription expires, access to exclusive content is immediately revoked until renewal.",
+        "question": "How is the token balance checked and fees deducted automatically every 30 days?"
+    },
+    {
+        "smart_contract_description": "A smart contract is needed to manage multiple subscription levels where fans pay a monthly fee in tokens to access exclusive content. Subscription levels include Basic (10 tokens/month), Premium (50 tokens/month), and Elite (100 tokens/month). Automatically deduct fees from a user's token balance every 30 days. If there are insufficient funds, the subscription is paused. Implement auto-renewal features, and if a subscription expires, access to exclusive content is immediately revoked until renewal.",
+        "question": "Is there a grace period before pausing the subscription due to insufficient funds?"
+    },
+    {
+        "smart_contract_description": "A smart contract is needed to manage multiple subscription levels where fans pay a monthly fee in tokens to access exclusive content. Subscription levels include Basic (10 tokens/month), Premium (50 tokens/month), and Elite (100 tokens/month). Automatically deduct fees from a user's token balance every 30 days. If there are insufficient funds, the subscription is paused. Implement auto-renewal features, and if a subscription expires, access to exclusive content is immediately revoked until renewal.",
+        "question": "How is the auto-renewal feature managed and can users opt-out?"
+    },
+    {
+        "smart_contract_description": "A smart contract is needed to manage multiple subscription levels where fans pay a monthly fee in tokens to access exclusive content. Subscription levels include Basic (10 tokens/month), Premium (50 tokens/month), and Elite (100 tokens/month). Automatically deduct fees from a user's token balance every 30 days. If there are insufficient funds, the subscription is paused. Implement auto-renewal features, and if a subscription expires, access to exclusive content is immediately revoked until renewal.",
+        "question": "What happens to the unused portion of a subscription if a user manually cancels before the end of the 30-day period?"
+    },
+    {
+        "smart_contract_description": "A smart contract is needed to manage multiple subscription levels where fans pay a monthly fee in tokens to access exclusive content. Subscription levels include Basic (10 tokens/month), Premium (50 tokens/month), and Elite (100 tokens/month). Automatically deduct fees from a user's token balance every 30 days. If there are insufficient funds, the subscription is paused. Implement auto-renewal features, and if a subscription expires, access to exclusive content is immediately revoked until renewal.",
+        "question": "Can users upgrade or downgrade their subscription level at any time, and how is the fee adjustment handled?"
+    },
+    {
+        "smart_contract_description": "Design a smart contract that tracks and rates fan interactions for each content piece. Fans earn points that influence their ranking on the platform, with interactions categorized as likes, comments, shares, and views. Each interaction type carries different weightings (1 point for likes, 10 points for shares, 20 points for comments). Fans can earn a maximum of 100 points per day from each activity. Platinum and Gold tier members can earn up to 150 and 200 points, respectively, but the extra points expire after a week.",
+        "question": "How are interactions tracked and points allocated in real-time?"
+    },
+    {
+        "smart_contract_description": "Design a smart contract that tracks and rates fan interactions for each content piece. Fans earn points that influence their ranking on the platform, with interactions categorized as likes, comments, shares, and views. Each interaction type carries different weightings (1 point for likes, 10 points for shares, 20 points for comments). Fans can earn a maximum of 100 points per day from each activity. Platinum and Gold tier members can earn up to 150 and 200 points, respectively, but the extra points expire after a week.",
+        "question": "What mechanisms are in place to prevent fraudulent interactions or spamming?"
+    },
+    {
+        "smart_contract_description": "Design a smart contract that tracks and rates fan interactions for each content piece. Fans earn points that influence their ranking on the platform, with interactions categorized as likes, comments, shares, and views. Each interaction type carries different weightings (1 point for likes, 10 points for shares, 20 points for comments). Fans can earn a maximum of 100 points per day from each activity. Platinum and Gold tier members can earn up to 150 and 200 points, respectively, but the extra points expire after a week.",
+        "question": "How are extra points for Platinum and Gold members calculated and tracked?"
+    },
+    {
+        "smart_contract_description": "Design a smart contract that tracks and rates fan interactions for each content piece. Fans earn points that influence their ranking on the platform, with interactions categorized as likes, comments, shares, and views. Each interaction type carries different weightings (1 point for likes, 10 points for shares, 20 points for comments). Fans can earn a maximum of 100 points per day from each activity. Platinum and Gold tier members can earn up to 150 and 200 points, respectively, but the extra points expire after a week.",
+        "question": "What happens to the points once they expire after a week for higher-tier members?"
+    },
+    {
+        "smart_contract_description": "Design a smart contract that tracks and rates fan interactions for each content piece. Fans earn points that influence their ranking on the platform, with interactions categorized as likes, comments, shares, and views. Each interaction type carries different weightings (1 point for likes, 10 points for shares, 20 points for comments). Fans can earn a maximum of 100 points per day from each activity. Platinum and Gold tier members can earn up to 150 and 200 points, respectively, but the extra points expire after a week.",
+        "question": "Is there a leaderboard or ranking system to display fan rankings based on points?"
+    }
+]
