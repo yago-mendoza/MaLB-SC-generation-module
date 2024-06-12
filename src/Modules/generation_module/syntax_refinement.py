@@ -48,11 +48,13 @@ def assess_suitability(description, source_code, features):
 
     pipeline = CodeAssessmentPipeline()
 
-    assessment_for_feature = []
+    features_assessment = []
+
+    # Applies the assessment pipeline to each feature, and saves the results.
 
     for i, feature in enumerate(features):
         pred = pipeline(code=source_code, description=description, feature=feature)
-        assessment_for_feature.append(
+        features_assessment.append(
             {
                 "n": str(i+1),
                 "reflection": pred.reflections,
@@ -62,4 +64,4 @@ def assess_suitability(description, source_code, features):
             }
         )
 
-    return dp.save(assessment_for_feature, dir=dp.suitability_assessments_dir, extension='json')
+    return features_assessment

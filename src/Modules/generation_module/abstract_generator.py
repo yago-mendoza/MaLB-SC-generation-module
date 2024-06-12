@@ -7,8 +7,8 @@ def generate_smart_contract(requirements, reasoning=None):
             reasoning
             )
     else:
-        from Modules.generation_module.SOTA_generator import SOTA
-        ReasoningStrategy = SOTA
+        from Modules.generation_module.ZSGen_generator import ZSGen
+        ReasoningStrategy = ZSGen
 
     path, code = ReasoningStrategy(requirements)
     return path, code

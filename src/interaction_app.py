@@ -216,6 +216,9 @@ def main():
 
         PARSER_BUTTONS = []
 
+        descriptions_log = []
+        questions_log = []
+
         for label, obj, dt in get_manager().BACK_DATA:
 
             str_datetime = dt.strftime("%H:%M:%S")
@@ -229,8 +232,14 @@ def main():
                     PARSER_BUTTONS.append((parser_button_label, obj,))
                 with c2:
                     st.expander(f'Back Data @{str_datetime} | {label}', expanded=True).write(obj)
+                descriptions_log.append({'label':label, 'obj':obj, 'dt':dt})
+
             else:
                 st.expander(f'Back Data @{str_datetime} | {label}', expanded=True).write(obj)
+                questions_log.append({'label':label, 'obj':obj, 'dt':dt})
+            
+            execution_log = {"questions": questions_log, "descriptions": descriptions_log}
+            dp.save(execution_log, dir=dp.interaction_logs_dir, extension='json')
     
     with ParserTab:
         if st.session_state.get("selected_description"):  # Ensuring the key exists and has value
@@ -241,17 +250,15 @@ def main():
             requirements = ParsingTeam().get_requirements(st.session_state["selected_description"])
             attributes = ParsingTeam().get_attributes(requirements, st.session_state["selected_description"])
 
-
             # Saving "attributes" and "description" at @storage folder ###########
 
             from datapipe import DataPipe as dp # saves a dictionnary
-            dp.save(attributes, dir=dp.attributes_dir, extension='json')
+            dp.save(attributes, dir=dp.interaction_attributes_dir, extension='json')
 
             description = st.session_state["selected_description"] # will simply save a sttring
-            dp.save(description, dir=dp.descriptions_dir, extension='json') 
+            dp.save(description, dir=dp.interaction_descriptions_dir, extension='json') 
 
-            #################
-
+            ################
             
             st.subheader("Inferred Requirements")
             st.write(requirements)

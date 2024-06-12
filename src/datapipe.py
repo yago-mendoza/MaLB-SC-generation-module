@@ -24,11 +24,24 @@ def json_to_python(file_path: str, multistring: bool = False, joined: bool = Fal
 
 # Define DataPipe class for managing file operations
 class DataPipe:
-    attributes_dir = Path('storage/attributes')
-    descriptions_dir = Path('storage/descriptions')
-    contracts_dir = Path('storage/contracts')
-    suitability_assessments_dir = Path('storage/suitability_assessments')
-    _default_dir = contracts_dir  # Set initial default directory to contracts
+
+    # Interaction / Objects
+    interaction_attributes_dir = Path('storage/interaction_storage/attributes')
+    interaction_descriptions_dir = Path('storage/interaction_storage/descriptions')
+
+    # Interaction / Logs
+    interaction_logs_dir = Path('storage/interaction_storage/execution_logs')
+
+    # Generation / Objects
+    contracts_dir = Path('storage/generation_storage/contracts') # residual
+
+    # Generation / Logs
+    code_generation_logs_dir = Path('storage/execution_logs/syntax_generation')
+    code_refinement_logs_dir = Path('storage/execution_logs/syntax_refinement')
+
+    
+
+    _default_dir = Path('storage')  # Set initial default directory to 'storage' itself
 
     # Set directory for operations
     @classmethod

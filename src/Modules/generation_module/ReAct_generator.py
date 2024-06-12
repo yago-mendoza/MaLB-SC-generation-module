@@ -4,7 +4,7 @@ from langchain_core.prompts import ChatPromptTemplate
 from dotenv import load_dotenv
 from datapipe import DataPipe as dp
 
-def SOTA(requirements):
+def ZSGen(requirements, model="gpt-3.5-turbo"):
 
     load_dotenv()
 
@@ -17,7 +17,7 @@ def SOTA(requirements):
         ]
     )
 
-    model = ChatOpenAI(model="gpt-3.5-turbo", temperature=0)
+    model = ChatOpenAI(model=model, temperature=0)
     parser = StrOutputParser()
 
     chain = prompt_template | model | parser
@@ -72,7 +72,7 @@ def SOTA(requirements):
 # from langchain_core.output_parsers import StrOutputParser
 # from langchain_core.prompts import ChatPromptTemplate
 
-# def SOTA(requirements):
+# def ZSGen(requirements):
 
 #     # requirements : full plain json string
     
