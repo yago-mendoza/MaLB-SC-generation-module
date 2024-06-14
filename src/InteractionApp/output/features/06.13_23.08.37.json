@@ -1,0 +1,214 @@
+[
+    {
+        "Name": "Token Sale Management",
+        "Scope": "Smart contract for managing the sale of tickets to a concert through tokens",
+        "Input": [
+            "Number of tickets available for sale (50,000)",
+            "User status levels (Golden, Platinum, Bronze)",
+            "Ticket pricing and transfer rules",
+            "Event cancellation policy",
+            "Refund and compensation calculations",
+            "Ticket sale phases and deadlines"
+        ],
+        "Constraints": [
+            "Users limited to purchasing one token/ticket",
+            "Golden status users can purchase and transfer up to three tickets",
+            "Second sale phase triggered if all tickets sold before first phase ends",
+            "Transfers facilitated through secure online platform with unique identifiers",
+            "Refunds and compensation processed in a single transaction",
+            "Unsold tickets returned to issuer after sales phases"
+        ],
+        "Output": [
+            "Successful ticket sales management",
+            "Accurate calculation of refunds and compensation",
+            "Efficient ticket transfer process",
+            "Prevention of ticket re-sales at inflated prices"
+        ],
+        "PrimaryScenario": "Smooth token sale process, event proceeds as planned",
+        "AlternativeScenario": "Event cancellation triggers accurate compensation calculations and ticket refund process"
+    },
+    {
+        "Name": "Ticket Purchase Limitations",
+        "Scope": "Ticket purchasing rules and restrictions",
+        "Input": [
+            "Number of available tickets (50,000)",
+            "User status (Golden, non-Golden)",
+            "Transfer rules"
+        ],
+        "Constraints": [
+            "One ticket per user, except Golden status (up to 3 tickets)",
+            "Transfer only to other users, facilitated through unique ticket identifiers",
+            "Second phase eligibility for non-Golden users based on ticket availability"
+        ],
+        "Output": [
+            "Number of tickets purchased per user",
+            "Transfer process details",
+            "Impact on ticket availability for different user statuses"
+        ],
+        "PrimaryScenario": "Users adhere to ticket purchase limits, with Golden status users able to transfer tickets to others",
+        "AlternativeScenario": "Attempted purchase or transfer beyond allowed limits"
+    },
+    {
+        "Name": "Golden User Ticket Transfer",
+        "Scope": "Manage the transfer of tickets by Golden status users",
+        "Input": [
+            "Total number of tickets sold",
+            "Number of tickets each user can purchase based on status",
+            "Unique ticket identifiers"
+        ],
+        "Constraints": [
+            "Golden status users can buy up to three tickets",
+            "Non-Golden users limited to one ticket",
+            "Transfers must occur before the concert",
+            "No set deadline for Golden user ticket transfers"
+        ],
+        "Output": [
+            "Successful ticket transfers",
+            "Unique ticket identifiers for transferred tickets"
+        ],
+        "PrimaryScenario": "Golden status user purchases multiple tickets and transfers them to others securely",
+        "AlternativeScenario": "Failure to transfer tickets before the concert"
+    },
+    {
+        "Name": "Ticket Transfer Mechanism",
+        "Scope": "Functionality to transfer tickets between users",
+        "Input": [
+            "User details",
+            "Ticket ID",
+            "Number of tickets being transferred"
+        ],
+        "Constraints": [
+            "Golden status users can transfer up to three tickets",
+            "Transfers must occur before the concert",
+            "Secure online platform for transfers"
+        ],
+        "Output": [
+            "Successful transfer confirmation",
+            "Updated ticket ownership records"
+        ],
+        "PrimaryScenario": "Golden status user transfers three tickets to another user",
+        "AlternativeScenario": "Transfer fails due to invalid ticket ID"
+    },
+    {
+        "Name": "Multi-phase Ticket Sales",
+        "Scope": "Management of ticket sales in two phases for a concert",
+        "Input": [
+            "Number of available tokens/tickets",
+            "User status levels (Golden, Platinum, Bronze)",
+            "Transfer limits",
+            "Compensation percentages for canceled event"
+        ],
+        "Constraints": [
+            "One ticket per user",
+            "Transfer permissions for Golden status users",
+            "Token price capping",
+            "Transaction monitoring"
+        ],
+        "Output": [
+            "Ticket allocation in each phase",
+            "Transfer process for Golden status users",
+            "Compensation calculation for canceled event"
+        ],
+        "PrimaryScenario": "Tokens sold in two phases, transfers completed before the concert, compensation calculated for event cancellation",
+        "AlternativeScenario": "Unsold tickets returned to issuer, prevention of ticket re-sales at inflated prices"
+    },
+    {
+        "Name": "Ticket Transfer Deadline",
+        "Scope": "In the context of ticket transfers for the concert event",
+        "Input": [
+            "User ticket transfer request",
+            "Unique ticket identifiers"
+        ],
+        "Constraints": [
+            "Golden ticket holders can transfer tickets to other users"
+        ],
+        "Output": [
+            "Ticket transfer deadline before the concert"
+        ],
+        "PrimaryScenario": "Golden ticket holders transferring tickets to others before the concert date",
+        "AlternativeScenario": "Failure to transfer tickets within the deadline resulting in tickets being locked"
+    },
+    {
+        "Name": "Event Cancellation Compensation",
+        "Scope": "Smart contract managing ticket sales for a concert",
+        "Input": [
+            "Number of tokens sold for the event",
+            "Ticket holder status (Golden, Platinum, Bronze)",
+            "Official cancellation announcement"
+        ],
+        "Constraints": [
+            "50,000 tokens available for sale",
+            "Golden ticket holders receive 25% extra compensation",
+            "Platinum ticket holders receive 5% extra compensation",
+            "Bronze ticket holders receive no extra compensation"
+        ],
+        "Output": [
+            "Automatically calculated compensation for each ticket holder status",
+            "Refunds and extra compensation processed in a single transaction",
+            "Unsold tickets returned to issuer"
+        ],
+        "PrimaryScenario": "If an event is canceled, ticket holders automatically receive the appropriate level of compensation",
+        "AlternativeScenario": "In case of system errors or delays, compensation processing may be delayed"
+    },
+    {
+        "Name": "Refund Processing",
+        "Scope": "Handling refund requests for ticket purchases",
+        "Input": [
+            "Request for refund",
+            "Membership tier of the user",
+            "Number of tokens to be refunded",
+            "Tenure of the user on the platform"
+        ],
+        "Constraints": [
+            "Refund amount based on membership tier and tenure",
+            "Minimum tenure required for a refund",
+            "Wait time before upgrading membership after a downgrade"
+        ],
+        "Output": [
+            "Refund processed successfully",
+            "Tokens refunded to the user"
+        ],
+        "PrimaryScenario": "User requests a refund, system checks eligibility, calculates refund amount, processes refund",
+        "AlternativeScenario": "User does not meet the criteria for a refund, refund request denied"
+    },
+    {
+        "Name": "Ticket Recycling",
+        "Scope": "Managing the unsold tickets after both sales phases",
+        "Input": [
+            "Number of unsold tickets",
+            "Transaction details",
+            "Price caps"
+        ],
+        "Constraints": [
+            "Unsold tickets cannot be sold at inflated prices",
+            "Tickets must be returned to the issuer for potential recycling or re-release"
+        ],
+        "Output": [
+            "Process for returning unsold tickets",
+            "Potential recycling or re-release of tickets"
+        ],
+        "PrimaryScenario": "Upon completion of both sales phases, any unsold tickets are returned to the issuer for potential recycling or re-release",
+        "AlternativeScenario": "If unsold tickets are not properly managed, there may be issues with ticket availability for future events"
+    },
+    {
+        "Name": "Transaction Monitoring",
+        "Scope": "Tracking and verifying token transactions within the smart contract system",
+        "Input": [
+            "List of token transactions",
+            "User details for transaction verification",
+            "Transaction history"
+        ],
+        "Constraints": [
+            "Monitoring must be real-time and continuous",
+            "Ensuring secure and reliable verification",
+            "Capability to handle high volume transactions"
+        ],
+        "Output": [
+            "Verification status of each token transaction",
+            "Alerts for suspicious or unauthorized transactions",
+            "Transaction monitoring reports"
+        ],
+        "PrimaryScenario": "Monitor all token transactions to prevent fraud and unauthorized activities",
+        "AlternativeScenario": "Failure to detect fraudulent transactions which may lead to financial loss"
+    }
+]

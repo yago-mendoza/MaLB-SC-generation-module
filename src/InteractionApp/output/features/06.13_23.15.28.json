@@ -1,0 +1,194 @@
+[
+    {
+        "Name": "Limited VIP Ticket Auction",
+        "Scope": "Facilitate an auction of limited VIP tickets for a concert",
+        "Input": [
+            "Unique token for each ticket",
+            "Maximum of 3 bids per address",
+            "Minimum bid increase of 5%",
+            "Auction extension if new bid in last 5 minutes",
+            "Real-time broadcast of highest bid event"
+        ],
+        "Constraints": [
+            "Maximum 3 bids per address",
+            "Bids must be at least 5% higher than current highest bid",
+            "Bids final and non-retractable",
+            "Auction concludes when time limit expires"
+        ],
+        "Output": [
+            "Winning bid amount locked in contract",
+            "Withdraw function for auction organizer to transfer funds"
+        ],
+        "PrimaryScenario": "Fans participate in auction by placing bids, highest bid at end wins, organizer withdraws funds",
+        "AlternativeScenario": "Multiple bids with same amount, bid sniping prevention extension"
+    },
+    {
+        "Name": "Unique Token Representation",
+        "Scope": "Facilitating an auction of limited VIP tickets for a concert with each ticket represented as a unique token",
+        "Input": [
+            "Token ID",
+            "Bid amount",
+            "Maximum number of bids per address",
+            "Minimum bid increment percentage",
+            "Auction extension time"
+        ],
+        "Constraints": [
+            "Each address limited to 3 bids",
+            "Each bid must be at least 5% higher than the current highest bid",
+            "Final bids cannot be retracted or modified",
+            "Bid sniping prevention with automatic 10-minute extension",
+            "Real-time updates through event emission",
+            "Automatic locking of highest bid amount upon winning"
+        ],
+        "Output": [
+            "Winning bid amount",
+            "Transfer of winning bid amount to auction organizer"
+        ],
+        "PrimaryScenario": "Successful bid placement, auction extension, winning bid determination",
+        "AlternativeScenario": "Bid retraction, bid sniping, multiple bids with the same amount"
+    },
+    {
+        "Name": "Bid Limitation",
+        "Scope": "Auction of limited VIP tickets for a concert",
+        "Input": [
+            "Maximum of 3 bids per address",
+            "Minimum bid increase of 5%",
+            "Automatic auction extension of 10 minutes if new highest bid in last 5 minutes",
+            "Minimum bid amount sent using msg.value attribute",
+            "Minimum 10 tokens required to participate"
+        ],
+        "Constraints": [
+            "Bids are final and non-retractable",
+            "Initial bid with highest amount wins in case of tie",
+            "Real-time updates through emission of NewHighestBid event"
+        ],
+        "Output": [
+            "Highest bid amount locked in contract upon winning",
+            "Withdrawal functionality to transfer winning bid amount to auction organizer"
+        ],
+        "PrimaryScenario": "Successful bidding process with clear rules and constraints",
+        "AlternativeScenario": "Issues with bids not meeting minimum requirements or real-time updates failing"
+    },
+    {
+        "Name": "Minimum Bid Percentage Increase",
+        "Scope": "Requirement for placing bids in the auction",
+        "Input": [
+            "Current highest bid amount",
+            "Minimum percentage increase required for new bid"
+        ],
+        "Constraints": [
+            "Bid must be at least 5% higher than the current highest bid"
+        ],
+        "Output": [
+            "New bid amount"
+        ],
+        "PrimaryScenario": "User places a bid that is at least 5% higher than the current highest bid",
+        "AlternativeScenario": "User tries to place a bid that is less than 5% higher than the current highest bid"
+    },
+    {
+        "Name": "Auction Extension Mechanism",
+        "Scope": "This requirement focuses on the functionality that extends the auction duration when a new highest bid is placed within the last 5 minutes.",
+        "Input": [
+            "Current highest bid amount",
+            "Time remaining in the auction",
+            "New bid amount"
+        ],
+        "Constraints": [
+            "New bid amount must be at least 5% higher than the current highest bid",
+            "Automatic extension of 10 minutes if a new highest bid is placed within the last 5 minutes"
+        ],
+        "Output": [
+            "Extended auction duration",
+            "Notification of auction extension"
+        ],
+        "PrimaryScenario": "A new highest bid is placed within the last 5 minutes of the auction, triggering an extension of 10 minutes.",
+        "AlternativeScenario": "No new bids are placed within the last 5 minutes, and the auction concludes as scheduled."
+    },
+    {
+        "Name": "Final Bids",
+        "Scope": "Managing final bids for the auction of VIP tickets",
+        "Input": [
+            "Current highest bid amount",
+            "Address of bidder",
+            "New bid amount"
+        ],
+        "Constraints": [
+            "Each address limited to 3 bids",
+            "New bid must be at least 5% higher than current highest bid",
+            "Cannot retract or modify bids"
+        ],
+        "Output": [
+            "Winning bid amount",
+            "Address of winning bidder",
+            "Transfer of bid amount to auction organizer"
+        ],
+        "PrimaryScenario": "Determining the winning bid at the conclusion of the auction",
+        "AlternativeScenario": "Extension of auction if new highest bid placed in last 5 minutes to prevent bid sniping"
+    },
+    {
+        "Name": "Real-time Bid Updates",
+        "Scope": "Tracking and broadcasting real-time updates of the highest bid during the auction",
+        "Input": [
+            "Current highest bid amount",
+            "New bid amount"
+        ],
+        "Constraints": [
+            "Maximum 3 bids per address",
+            "New bid must be at least 5% higher than current highest bid",
+            "Auction extension of 10 minutes if new bid placed within last 5 minutes"
+        ],
+        "Output": [
+            "Broadcast of event (NewHighestBid) with updated highest bid amount"
+        ],
+        "PrimaryScenario": "Fans place bids during the auction, with real-time updates of the highest bid displayed to all participants",
+        "AlternativeScenario": "No bids placed within the last 5 minutes, auction concludes as per original time limit"
+    },
+    {
+        "Name": "Auction Conclusion Criteria",
+        "Scope": "Criteria for concluding an auction in the smart contract",
+        "Input": [
+            "Highest bid amount",
+            "Time limit for auction",
+            "Minimum bid increment",
+            "Bid confirmation function",
+            "Event emission function"
+        ],
+        "Constraints": [
+            "Maximum 3 bids per address",
+            "Bids must be at least 5% higher than current highest bid",
+            "Auction extension of 10 minutes if new bid in last 5 minutes"
+        ],
+        "Output": [
+            "Winning bid amount",
+            "Transfer function for auction organizer"
+        ],
+        "PrimaryScenario": "Auction concludes at the end of time limit with highest bid as winner",
+        "AlternativeScenario": "Multiple bids with same amount resolved by first received bid"
+    },
+    {
+        "Name": "Bid Payment and Withdrawal",
+        "Scope": "Handling the process of placing bids, transferring Ether, and withdrawing funds",
+        "Input": [
+            "Bid amount",
+            "Maximum number of bids per address",
+            "Minimum bid increment",
+            "Current highest bid",
+            "Bidder address",
+            "Auction end time"
+        ],
+        "Constraints": [
+            "Each address can place a maximum of 3 bids",
+            "Bids must be at least 5% higher than the current highest bid",
+            "Bids are final and cannot be retracted or modified",
+            "An auction extension of 10 minutes is triggered if a new highest bid is placed within the last 5 minutes",
+            "Minimum of 10 tokens required to participate in the auction"
+        ],
+        "Output": [
+            "Winning bid amount",
+            "Transfer of funds to the auction organizer upon winning",
+            "Withdrawal of funds by the winning bidder"
+        ],
+        "PrimaryScenario": "Bidder places a bid, Ether is transferred to the smart contract, highest bid is updated, auction concludes with the winning bid",
+        "AlternativeScenario": "Bidder attempts to retract a bid, bid amount does not meet the minimum increment, auction end time expires without a winning bid"
+    }
+]
