@@ -1,0 +1,8 @@
+{
+    "success": false,
+    "errors": {
+        "type": 4,
+        "message": "Warning: SPDX license identifier not provided in source file. Before publishing, consider adding a comment containing \"SPDX-License-Identifier: <SPDX-License>\" to each source file. Use \"SPDX-License-Identifier: UNLICENSED\" for non-open-source code. Please see https://spdx.org for more information.\n--> temp_contract.sol\n\nError: Type address is not implicitly convertible to expected type string memory.\n  --> temp_contract.sol:66:32:\n   |\n66 |         require(ticketsPerUser[msg.sender] > 0, \"No tickets available for transfer\");\n   |                                ^^^^^^^^^^\n\nError: Type address is not implicitly convertible to expected type string memory.\n  --> temp_contract.sol:67:32:\n   |\n67 |         require(ticketsPerUser[msg.sender] <= 3, \"Golden status users can transfer up to three tickets\");\n   |                                ^^^^^^^^^^\n\nError: Type address is not implicitly convertible to expected type string memory.\n  --> temp_contract.sol:71:24:\n   |\n71 |         ticketsPerUser[msg.sender]--;\n   |                        ^^^^^^^^^^\n\nError: Type address is not implicitly convertible to expected type string memory.\n  --> temp_contract.sol:72:24:\n   |\n72 |         ticketsPerUser[_to]++;\n   |                        ^^^\n\n"
+    },
+    "output": null
+}

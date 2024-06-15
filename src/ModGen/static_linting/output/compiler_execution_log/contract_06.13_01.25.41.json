@@ -1,0 +1,29 @@
+{
+    "success": true,
+    "errors": null,
+    "output": {
+        "abi": [
+            {
+                "inputs": [],
+                "name": "calculateCompensation",
+                "outputs": [],
+                "stateMutability": "nonpayable",
+                "type": "function"
+            },
+            {
+                "inputs": [],
+                "name": "totalTokensSold",
+                "outputs": [
+                    {
+                        "internalType": "uint256",
+                        "name": "",
+                        "type": "uint256"
+                    }
+                ],
+                "stateMutability": "view",
+                "type": "function"
+            }
+        ],
+        "bytecode": "608060405234801561001057600080fd5b5060c78061001f6000396000f3fe6080604052348015600f57600080fd5b506004361060325760003560e01c8063121b5a2514603757806363b2011714603f575b600080fd5b603d6059565b005b6045605b565b60405160509190606e565b60405180910390f35b565b60005481565b6068816087565b82525050565b6000602082019050608160008301846061565b92915050565b600081905091905056fea26469706673582212205d24aaa4ddd275d60091e2fbccc38caa2b8350a2ab99ff1447331cee459e1df764736f6c63430008060033"
+    }
+}

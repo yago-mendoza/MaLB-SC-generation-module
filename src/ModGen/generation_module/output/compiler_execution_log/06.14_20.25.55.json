@@ -1,8 +1,0 @@
-{
-    "success": false,
-    "errors": {
-        "type": 4,
-        "message": "the JSON object must be str, bytes or bytearray, not list"
-    },
-    "output": null
-}

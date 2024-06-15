@@ -1,0 +1,8 @@
+{
+    "success": false,
+    "errors": {
+        "type": 4,
+        "message": "Warning: SPDX license identifier not provided in source file. Before publishing, consider adding a comment containing \"SPDX-License-Identifier: <SPDX-License>\" to each source file. Use \"SPDX-License-Identifier: UNLICENSED\" for non-open-source code. Please see https://spdx.org for more information.\n--> temp_contract.sol\n\nError: Using \"years\" as a unit denomination is deprecated.\n   --> temp_contract.sol:140:38:\n    |\n140 |         require(userTenure[_user] >= 1 years, \"Minimum tenure required for refund\");\n    |                                      ^^^^^^^\n\n"
+    },
+    "output": null
+}

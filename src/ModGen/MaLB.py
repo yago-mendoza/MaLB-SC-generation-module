@@ -1,47 +1,325 @@
+import json
+import re
+from datetime import datetime
+
 from utils.datapipe import DataPipe
+from utils.hline import hline
 
-ddp = DataPipe()
-ddp.set('../InteractionApp/output/descriptions')
-description = ddp.load(-1)
+class MALB :
 
-fdp = DataPipe()
-fdp.set('../InteractionApp/output/features')
-features = fdp.load(-1)
+    descriptions_dir = '../InteractionApp/output/descriptions'
 
-from generation_module.syntax_generator import generate_syntax
+    def __init__(
+        self,
+        session: str = None
+    ):
+        # If no argument is inserted, session will be named as "mm.dd_hh.mm.ss"
+        if not session:
+            session = datetime.now().strftime("%m.%d_%H.%M.%S")
+        self.set_session(str(session))
+
+    def set_session(
+        self,
+        session: str
+    ) -> None:
+        if re.search(r'[<>:"/\\|?*]', session):
+            raise ValueError("Session name contains prohibited characters.")
+        self.session = session if session else ''
+        self.set_dirs()
+    
+    def set_dirs(
+        self
+    ) -> None:
+        self.dirs = {}
+
+        # Initial conditions
+        self.dirs['descriptions'] = f'../InteractionApp/output/descriptions'
+        self.dirs['features'] = f'../InteractionApp/output/features'
+
+        # Other directories
+        self.dirs['contracts'] = f'generation_module/output/{self.session}/contracts'
+        self.dirs['compiler'] = f'static_linting/output/{self.session}/compiler_execution_logs'
+        self.dirs['solhint'] = f'static_linting/output/{self.session}/solhint_execution_logs'
+    
+    def generate_contracts(
+        self,
+        n_description: int = -1,
+        n_contracts: int = 10,
+        reasoning_technique: str = 'ZSGen',
+        language_model: str = 'gpt-3.5-turbo-0125',
+        contract_extension: str = 'sol',
+        datetime_identifiers: bool = True,
+        numeric_identifiers: bool = False,
+        contract_prefix: str = 'contract'
+    ) -> None:
+        from generation_module.syntax_generator import SyntaxGenerator
+
+        hline('Retrieving Initial Conditions') 
+        self.initial_conditions = (
+                DataPipe(self.dirs['descriptions']).load(n_description),
+                DataPipe(self.dirs['features']).load(n_description)
+            )
+        
+        hline('Setting up the generator') 
+        syntax_generator = SyntaxGenerator(
+            initial_conditions = self.initial_conditions,
+            language_model=language_model,
+            reasoning_technique=reasoning_technique,
+            verbose_policy=3
+        )
+
+        hline('Setting the contract dump directory') 
+        dp_contract_dump = DataPipe(
+            self.dirs['contracts'],
+            verbose_policy=0
+        )
+
+        hline('Generating and dumping contracts') 
+        for i in range(n_contracts):
+
+            print('~')
+
+            code = syntax_generator.generate()
+
+            if numeric_identifiers and datetime_identifiers:
+                raise ValueError("Both numeric_identifiers and datetime_identifiers cannot be true at the same time.")
+
+            if numeric_identifiers:
+                dp_contract_dump.dump(
+                    code,
+                    filename=f'{contract_prefix}_{i}.{contract_extension}'
+                )
+
+            if datetime_identifiers:
+                dp_contract_dump.dump(
+                    code,
+                    extension=contract_extension
+                )
+            
+        print('~')
+
+if __name__ == '__main__':
+
+    main_thread = MALB(session='0125')
+
+    main_thread.generate_contracts(
+        reasoning_technique='ZSGen',
+        language_model='gpt-3.5-turbo-0125',
+        n_contracts = 2
+    )
+
+
+
+    
+        
+
+# ddp = DataPipe()
+# ddp.set('../InteractionApp/output/descriptions')
+# description = ddp.load(-1)
+
+# fdp = DataPipe()
+# fdp.set('../InteractionApp/output/features')
+# features = fdp.load(-1)
+
+# ### ZSGen Contract Generation --------------------------------------
+
+
+
+
+
+
 
 # code = generate_syntax((description, features), reasoning='ZSGen')
 # dp.set('generation_module/output/contracts')
 # dp.dump(code, 'sol')
 
+### Checker Execution ----------------------------------------------
 
-# We get the contracts and generate syntax checks
+# from static_linting.syntax_checker import SolidityCompiler
+# compiler = SolidityCompiler(verbose_policy=1)
 
-cdp = DataPipe()
-cdp.set('generation_module/output/contracts')
-contracts = cdp.load_all_files()
+# from static_linting.solhint_analyzer import SolhintAnalyzer
+# solhint = SolhintAnalyzer(verbose_policy=1)
 
-from static_linting.syntax_checker import SolidityCompiler
+# dp = DataPipe(verbose_policy=1)
+# dp.set('generation_module/output/contracts')
+# contracts = dp.fetch_all_files()
 
-cel = DataPipe()
-cel.set('generation_module/output/compiler_execution_log')
-for contract in contracts[:5]:
+# compiler_pipe = DataPipe('static_linting/output/compiler_execution_log', verbose_policy=1)
+# solhint_pipe = DataPipe('static_linting/output/solhint_execution_log', verbose_policy=1)
 
-    # compiler = SolidityCompiler('0.8.4')
-    # output = compiler.compile(contract)
-    # print(len(output))
-    # cel.dump(output, 'json')
+# n_contracts = len(contracts)
+# n_contracts_compiled = 0
 
-    pass
+# contract_data = []
 
-from static_linting.solhint_analyzer import SolhintAnalyzer
+# for contract in contracts:
+
+#     filename, source_code = contract.values()
+
+#     data_point = {"length": len(source_code)}
+
+#     compiler_report = compiler.compile(source_code)
+#     compiler_pipe.dump(compiler_report, f"contract_{filename[:-4]}.json")
+
+#     if compiler_report.success:
+
+#         n_contracts_compiled += 1
+
+#         solhint_report = solhint.analyze(source_code)
+#         solhint_pipe.dump(solhint_report, f"solhint_{filename[:-4]}.json")
+
+#         data_point["nerrors"] = solhint_report.nerrors
+#         data_point["nwarnings"] = solhint_report.nwarnings
+    
+#     contract_data.append(data_point)
+
+### Plotting ----------------------------------------------
 
 
-from ModGen.utils.llm.LLM import LLM
-llm = LLM('You are a helpful assistante')
 
-# SolhintAnalyzer.debug_mode = False
-# solhint_report = SolhintAnalyzer.analyze(source_code, pathlib.Path('output/solhint_report.json'))
+
+
+
+
+
+# from static_linting.syntax_checker import CompilationReport
+# from static_linting.solhint_analyzer import SolhintReport
+
+# fetched_files = DataPipe('static_linting/output/compiler_execution_log').fetch_all_files()
+# a = [CompilationReport(fetched_file.content) for fetched_file in fetched_files]
+
+# fetched_files = DataPipe('static_linting/output/solhint_execution_log').fetch_all_files()
+# compilation_reports = [SolhintReport(fetched_file.content) for fetched_file in fetched_files]
+
+
+
+
+
+
+
+
+
+# import matplotlib.pyplot as plt
+# import pandas as pd
+
+# df = pd.DataFrame(contract_data)
+
+# # Replace NaN values with 0 for nerrors and nwarnings
+# df['nerrors'] = df['nerrors'].fillna(0).astype(int)
+# df['nwarnings'] = df['nwarnings'].fillna(0).astype(int)
+
+# # Plotting the data
+# fig, ax1 = plt.subplots(figsize=(14, 8))
+
+# # Length plot
+# ax1.bar(df.index, df['length'], color='b', label='Length')
+# ax1.set_xlabel('Contract Index')
+# ax1.set_ylabel('Length', color='b')
+# ax1.tick_params(axis='y', labelcolor='b')
+
+# # Create a second y-axis for the errors and warnings
+# ax2 = ax1.twinx()
+# ax2.plot(df.index, df['nerrors'], color='r', marker='o', linestyle='-', label='Errors')
+# ax2.plot(df.index, df['nwarnings'], color='g', marker='x', linestyle='--', label='Warnings')
+# ax2.set_ylabel('Number of Errors/Warnings', color='r')
+# ax2.tick_params(axis='y', labelcolor='r')
+
+# # Add legend
+# fig.legend(loc='upper right', bbox_to_anchor=(0.9, 0.9))
+
+# plt.title('Contract Data: Length, Errors, and Warnings')
+# plt.show()
+
+# import numpy as np
+# import pandas as pd
+# import matplotlib.pyplot as plt
+# import seaborn as sns
+# from scipy.stats import ttest_ind, pearsonr, spearmanr, mannwhitneyu
+
+# # Sample data for two sets
+# data1 = contract_data[:16]
+# data2 = contract_data[16:34]
+# data2 = contract_data[34:]
+
+# # Convert to DataFrame
+# df1 = pd.DataFrame(data1)
+# df2 = pd.DataFrame(data2)
+
+# # Fill NaN values
+# df1 = df1.fillna(0)
+# df2 = df2.fillna(0)
+
+# # Normalize errors and warnings
+# df1['normalized_errors'] = df1['nerrors'] / df1['length']
+# df1['normalized_warnings'] = df1['nwarnings'] / df1['length']
+# df2['normalized_errors'] = df2['nerrors'] / df2['length']
+# df2['normalized_warnings'] = df2['nwarnings'] / df2['length']
+
+# # Descriptive Statistics
+# desc1 = df1.describe()
+# desc2 = df2.describe()
+
+# # Correlation Analysis
+# pearson_corr1, _ = pearsonr(df1['length'], df1['nerrors'])
+# pearson_corr2, _ = pearsonr(df2['length'], df2['nerrors'])
+
+# spearman_corr1, _ = spearmanr(df1['length'], df1['nerrors'])
+# spearman_corr2, _ = spearmanr(df2['length'], df2['nerrors'])
+
+# # Hypothesis Testing
+# t_stat, p_value = ttest_ind(df1['length'], df2['length'])
+# u_stat, p_value_mw = mannwhitneyu(df1['length'], df2['length'])
+
+# # Regression Analysis
+# # Assuming `statsmodels` is installed
+# import statsmodels.api as sm
+
+# X1 = sm.add_constant(df1['length'])
+# y1 = df1['nerrors']
+# model1 = sm.OLS(y1, X1).fit()
+
+# X2 = sm.add_constant(df2['length'])
+# y2 = df2['nerrors']
+# model2 = sm.OLS(y2, X2).fit()
+
+# # Visualizations
+# plt.figure(figsize=(14, 8))
+
+# # Histograms
+# plt.subplot(2, 2, 1)
+# sns.histplot(df1['length'], color='b', label='Set 1 Length', kde=True)
+# sns.histplot(df2['length'], color='r', label='Set 2 Length', kde=True)
+# plt.legend()
+
+# plt.subplot(2, 2, 2)
+# sns.histplot(df1['nerrors'], color='b', label='Set 1 Errors', kde=True)
+# sns.histplot(df2['nerrors'], color='r', label='Set 2 Errors', kde=True)
+# plt.legend()
+
+# # Scatter Plots
+# plt.subplot(2, 2, 3)
+# plt.scatter(df1['length'], df1['nerrors'], color='b', label='Set 1')
+# plt.scatter(df2['length'], df2['nerrors'], color='r', label='Set 2')
+# plt.xlabel('Length')
+# plt.ylabel('Errors')
+# plt.legend()
+
+# # Box Plots
+# plt.subplot(2, 2, 4)
+# sns.boxplot(data=[df1['length'], df2['length']], palette=['b', 'r'])
+# plt.xticks([0, 1], ['Set 1', 'Set 2'])
+# plt.ylabel('Length')
+
+# plt.tight_layout()
+# plt.show()
+
+
+
+
+
+
+
 
 
 

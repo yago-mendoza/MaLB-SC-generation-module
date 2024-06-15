@@ -2,9 +2,12 @@ from langchain_openai import ChatOpenAI
 from langchain_core.output_parsers import StrOutputParser
 from dotenv import load_dotenv
 
-from ModGen.utils.llm.LLM import LLM
+from utils.llm.LLM import LLM
 
-def ZSGen(initial_conditions, model="gpt-3.5-turbo"):
+def ZSGen(
+    initial_conditions,
+    model="gpt-3.5-turbo"
+):
 
     load_dotenv()
 

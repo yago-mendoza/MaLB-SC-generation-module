@@ -1,0 +1,8 @@
+{
+    "success": false,
+    "errors": {
+        "type": 4,
+        "message": "Warning: SPDX license identifier not provided in source file. Before publishing, consider adding a comment containing \"SPDX-License-Identifier: <SPDX-License>\" to each source file. Use \"SPDX-License-Identifier: UNLICENSED\" for non-open-source code. Please see https://spdx.org for more information.\n--> temp_contract.sol\n\nError: Operator == not compatible with types string storage ref and literal_string \"Golden\"\n  --> temp_contract.sol:26:17:\n   |\n26 |         require(users[to].statusLevel == \"Golden\" && users[to].ticketsPurchased < 3, \"Recipient cannot receive more tickets\");\n   |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n"
+    },
+    "output": null
+}

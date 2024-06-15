@@ -1,0 +1,338 @@
+[
+    {
+        "line": 1,
+        "column": 1,
+        "severity": "Warning",
+        "message": "Found more than One contract per file. 10 contracts found!",
+        "ruleId": "one-contract-per-file",
+        "fix": null,
+        "filePath": "C:/Users/YAGO/AppData/Local/Temp/tmpjq2mdvk1.sol"
+    },
+    {
+        "line": 12,
+        "column": 9,
+        "severity": "Warning",
+        "message": "Error message for require is too long: 38 counted / 32 allowed",
+        "ruleId": "reason-string",
+        "fix": null,
+        "filePath": "C:/Users/YAGO/AppData/Local/Temp/tmpjq2mdvk1.sol"
+    },
+    {
+        "line": 12,
+        "column": 9,
+        "severity": "Warning",
+        "message": "GC: Use Custom Errors instead of require statements",
+        "ruleId": "gas-custom-errors",
+        "fix": null,
+        "filePath": "C:/Users/YAGO/AppData/Local/Temp/tmpjq2mdvk1.sol"
+    },
+    {
+        "line": 13,
+        "column": 9,
+        "severity": "Warning",
+        "message": "GC: Use Custom Errors instead of require statements",
+        "ruleId": "gas-custom-errors",
+        "fix": null,
+        "filePath": "C:/Users/YAGO/AppData/Local/Temp/tmpjq2mdvk1.sol"
+    },
+    {
+        "line": 16,
+        "column": 13,
+        "severity": "Warning",
+        "message": "Error message for require is too long: 45 counted / 32 allowed",
+        "ruleId": "reason-string",
+        "fix": null,
+        "filePath": "C:/Users/YAGO/AppData/Local/Temp/tmpjq2mdvk1.sol"
+    },
+    {
+        "line": 16,
+        "column": 13,
+        "severity": "Warning",
+        "message": "GC: Use Custom Errors instead of require statements",
+        "ruleId": "gas-custom-errors",
+        "fix": null,
+        "filePath": "C:/Users/YAGO/AppData/Local/Temp/tmpjq2mdvk1.sol"
+    },
+    {
+        "line": 26,
+        "column": 9,
+        "severity": "Warning",
+        "message": "Error message for require is too long: 36 counted / 32 allowed",
+        "ruleId": "reason-string",
+        "fix": null,
+        "filePath": "C:/Users/YAGO/AppData/Local/Temp/tmpjq2mdvk1.sol"
+    },
+    {
+        "line": 26,
+        "column": 9,
+        "severity": "Warning",
+        "message": "GC: Use Custom Errors instead of require statements",
+        "ruleId": "gas-custom-errors",
+        "fix": null,
+        "filePath": "C:/Users/YAGO/AppData/Local/Temp/tmpjq2mdvk1.sol"
+    },
+    {
+        "line": 27,
+        "column": 9,
+        "severity": "Warning",
+        "message": "GC: Use Custom Errors instead of require statements",
+        "ruleId": "gas-custom-errors",
+        "fix": null,
+        "filePath": "C:/Users/YAGO/AppData/Local/Temp/tmpjq2mdvk1.sol"
+    },
+    {
+        "line": 28,
+        "column": 9,
+        "severity": "Warning",
+        "message": "GC: Use Custom Errors instead of require statements",
+        "ruleId": "gas-custom-errors",
+        "fix": null,
+        "filePath": "C:/Users/YAGO/AppData/Local/Temp/tmpjq2mdvk1.sol"
+    },
+    {
+        "line": 31,
+        "column": 13,
+        "severity": "Warning",
+        "message": "Error message for require is too long: 33 counted / 32 allowed",
+        "ruleId": "reason-string",
+        "fix": null,
+        "filePath": "C:/Users/YAGO/AppData/Local/Temp/tmpjq2mdvk1.sol"
+    },
+    {
+        "line": 31,
+        "column": 13,
+        "severity": "Warning",
+        "message": "GC: Use Custom Errors instead of require statements",
+        "ruleId": "gas-custom-errors",
+        "fix": null,
+        "filePath": "C:/Users/YAGO/AppData/Local/Temp/tmpjq2mdvk1.sol"
+    },
+    {
+        "line": 39,
+        "column": 27,
+        "severity": "Warning",
+        "message": "Variable \"user\" is unused",
+        "ruleId": "no-unused-vars",
+        "fix": null,
+        "filePath": "C:/Users/YAGO/AppData/Local/Temp/tmpjq2mdvk1.sol"
+    },
+    {
+        "line": 52,
+        "column": 9,
+        "severity": "Warning",
+        "message": "Error message for require is too long: 38 counted / 32 allowed",
+        "ruleId": "reason-string",
+        "fix": null,
+        "filePath": "C:/Users/YAGO/AppData/Local/Temp/tmpjq2mdvk1.sol"
+    },
+    {
+        "line": 52,
+        "column": 9,
+        "severity": "Warning",
+        "message": "GC: Use Custom Errors instead of require statements",
+        "ruleId": "gas-custom-errors",
+        "fix": null,
+        "filePath": "C:/Users/YAGO/AppData/Local/Temp/tmpjq2mdvk1.sol"
+    },
+    {
+        "line": 53,
+        "column": 9,
+        "severity": "Warning",
+        "message": "GC: Use Custom Errors instead of require statements",
+        "ruleId": "gas-custom-errors",
+        "fix": null,
+        "filePath": "C:/Users/YAGO/AppData/Local/Temp/tmpjq2mdvk1.sol"
+    },
+    {
+        "line": 56,
+        "column": 13,
+        "severity": "Warning",
+        "message": "Error message for require is too long: 45 counted / 32 allowed",
+        "ruleId": "reason-string",
+        "fix": null,
+        "filePath": "C:/Users/YAGO/AppData/Local/Temp/tmpjq2mdvk1.sol"
+    },
+    {
+        "line": 56,
+        "column": 13,
+        "severity": "Warning",
+        "message": "GC: Use Custom Errors instead of require statements",
+        "ruleId": "gas-custom-errors",
+        "fix": null,
+        "filePath": "C:/Users/YAGO/AppData/Local/Temp/tmpjq2mdvk1.sol"
+    },
+    {
+        "line": 63,
+        "column": 9,
+        "severity": "Warning",
+        "message": "Error message for require is too long: 46 counted / 32 allowed",
+        "ruleId": "reason-string",
+        "fix": null,
+        "filePath": "C:/Users/YAGO/AppData/Local/Temp/tmpjq2mdvk1.sol"
+    },
+    {
+        "line": 63,
+        "column": 9,
+        "severity": "Warning",
+        "message": "GC: Use Custom Errors instead of require statements",
+        "ruleId": "gas-custom-errors",
+        "fix": null,
+        "filePath": "C:/Users/YAGO/AppData/Local/Temp/tmpjq2mdvk1.sol"
+    },
+    {
+        "line": 64,
+        "column": 9,
+        "severity": "Warning",
+        "message": "Error message for require is too long: 37 counted / 32 allowed",
+        "ruleId": "reason-string",
+        "fix": null,
+        "filePath": "C:/Users/YAGO/AppData/Local/Temp/tmpjq2mdvk1.sol"
+    },
+    {
+        "line": 64,
+        "column": 9,
+        "severity": "Warning",
+        "message": "GC: Use Custom Errors instead of require statements",
+        "ruleId": "gas-custom-errors",
+        "fix": null,
+        "filePath": "C:/Users/YAGO/AppData/Local/Temp/tmpjq2mdvk1.sol"
+    },
+    {
+        "line": 65,
+        "column": 9,
+        "severity": "Warning",
+        "message": "GC: Use Custom Errors instead of require statements",
+        "ruleId": "gas-custom-errors",
+        "fix": null,
+        "filePath": "C:/Users/YAGO/AppData/Local/Temp/tmpjq2mdvk1.sol"
+    },
+    {
+        "line": 76,
+        "column": 41,
+        "severity": "Warning",
+        "message": "Variable \"ticketId\" is unused",
+        "ruleId": "no-unused-vars",
+        "fix": null,
+        "filePath": "C:/Users/YAGO/AppData/Local/Temp/tmpjq2mdvk1.sol"
+    },
+    {
+        "line": 77,
+        "column": 9,
+        "severity": "Warning",
+        "message": "GC: Use Custom Errors instead of require statements",
+        "ruleId": "gas-custom-errors",
+        "fix": null,
+        "filePath": "C:/Users/YAGO/AppData/Local/Temp/tmpjq2mdvk1.sol"
+    },
+    {
+        "line": 89,
+        "column": 41,
+        "severity": "Warning",
+        "message": "Variable \"ticketId\" is unused",
+        "ruleId": "no-unused-vars",
+        "fix": null,
+        "filePath": "C:/Users/YAGO/AppData/Local/Temp/tmpjq2mdvk1.sol"
+    },
+    {
+        "line": 90,
+        "column": 9,
+        "severity": "Warning",
+        "message": "Error message for require is too long: 45 counted / 32 allowed",
+        "ruleId": "reason-string",
+        "fix": null,
+        "filePath": "C:/Users/YAGO/AppData/Local/Temp/tmpjq2mdvk1.sol"
+    },
+    {
+        "line": 90,
+        "column": 9,
+        "severity": "Warning",
+        "message": "GC: Use Custom Errors instead of require statements",
+        "ruleId": "gas-custom-errors",
+        "fix": null,
+        "filePath": "C:/Users/YAGO/AppData/Local/Temp/tmpjq2mdvk1.sol"
+    },
+    {
+        "line": 102,
+        "column": 38,
+        "severity": "Warning",
+        "message": "Code contains empty blocks",
+        "ruleId": "no-empty-blocks",
+        "fix": null,
+        "filePath": "C:/Users/YAGO/AppData/Local/Temp/tmpjq2mdvk1.sol"
+    },
+    {
+        "line": 106,
+        "column": 48,
+        "severity": "Warning",
+        "message": "Code contains empty blocks",
+        "ruleId": "no-empty-blocks",
+        "fix": null,
+        "filePath": "C:/Users/YAGO/AppData/Local/Temp/tmpjq2mdvk1.sol"
+    },
+    {
+        "line": 114,
+        "column": 41,
+        "severity": "Warning",
+        "message": "Variable \"ticketId\" is unused",
+        "ruleId": "no-unused-vars",
+        "fix": null,
+        "filePath": "C:/Users/YAGO/AppData/Local/Temp/tmpjq2mdvk1.sol"
+    },
+    {
+        "line": 115,
+        "column": 9,
+        "severity": "Warning",
+        "message": "Error message for require is too long: 45 counted / 32 allowed",
+        "ruleId": "reason-string",
+        "fix": null,
+        "filePath": "C:/Users/YAGO/AppData/Local/Temp/tmpjq2mdvk1.sol"
+    },
+    {
+        "line": 115,
+        "column": 9,
+        "severity": "Warning",
+        "message": "GC: Use Custom Errors instead of require statements",
+        "ruleId": "gas-custom-errors",
+        "fix": null,
+        "filePath": "C:/Users/YAGO/AppData/Local/Temp/tmpjq2mdvk1.sol"
+    },
+    {
+        "line": 125,
+        "column": 45,
+        "severity": "Warning",
+        "message": "Code contains empty blocks",
+        "ruleId": "no-empty-blocks",
+        "fix": null,
+        "filePath": "C:/Users/YAGO/AppData/Local/Temp/tmpjq2mdvk1.sol"
+    },
+    {
+        "line": 133,
+        "column": 37,
+        "severity": "Warning",
+        "message": "Code contains empty blocks",
+        "ruleId": "no-empty-blocks",
+        "fix": null,
+        "filePath": "C:/Users/YAGO/AppData/Local/Temp/tmpjq2mdvk1.sol"
+    },
+    {
+        "line": 141,
+        "column": 43,
+        "severity": "Warning",
+        "message": "Code contains empty blocks",
+        "ruleId": "no-empty-blocks",
+        "fix": null,
+        "filePath": "C:/Users/YAGO/AppData/Local/Temp/tmpjq2mdvk1.sol"
+    },
+    {
+        "line": 147,
+        "column": 43,
+        "severity": "Warning",
+        "message": "Code contains empty blocks",
+        "ruleId": "no-empty-blocks",
+        "fix": null,
+        "filePath": "C:/Users/YAGO/AppData/Local/Temp/tmpjq2mdvk1.sol"
+    },
+    {
+        "conclusion": "37 problem/s (37 warning/s)"
+    }
+]

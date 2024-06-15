@@ -1,0 +1,8 @@
+{
+    "success": false,
+    "errors": {
+        "type": 4,
+        "message": "Error: Expected pragma, import directive or contract/interface/library/struct/enum/constant/function definition.\n --> temp_contract.sol:1:1:\n  |\n1 | ```solidity\n  | ^\n\n"
+    },
+    "output": null
+}
