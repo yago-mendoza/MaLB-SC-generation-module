@@ -67,6 +67,8 @@ class DataPipe(VerboseLogger):
 
         directory (Path): The directory path.
         file (str): The file name.
+        verbose_policy (int): The verbosity level.
+        force (bool): The overwrite protection flag.
     
     Methods:
 
@@ -136,10 +138,12 @@ class DataPipe(VerboseLogger):
     def __init__(
         self,
         *args,
-        verbose_policy: int =1
+        verbose_policy: int =1,
+        force: bool = False
     ) -> None:
         self.directory = None
         self.file = None
+        self.force = force
 
         VerboseLogger.__init__(self)
         self.verbose_policy = verbose_policy
@@ -267,6 +271,9 @@ class DataPipe(VerboseLogger):
         The dump method writes content to the specified file. If only the content is provided, it writes to the default file set by the set method. If an integer is provided as the second argument, it writes to the file by index within the set directory, handling negative indices appropriately. If a string is provided as the second argument, it writes to the specified file name within the set directory. When an extension is provided as the second argument, the file name is automatically set to the current date and time. The method supports both JSON and non-JSON files, automatically creating the file if it does not exist. If there is no default file or directory set, it defaults to the root directory. If the file is not empty, you need 'force=True' to overwrite it.
 
         """
+
+        if self.force:
+            force = True
         
         if extension:
             time.sleep(1.0) # to avoid repeated names

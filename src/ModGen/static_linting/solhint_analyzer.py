@@ -3,6 +3,7 @@ import subprocess
 import json
 import tempfile
 import pathlib
+from pathlib import Path
 
 from utils.verbose_logger import VerboseLogger
 
@@ -113,7 +114,6 @@ class SolhintAnalyzer(VerboseLogger):
         Analyzes a given Solidity source code file using Solhint. It first calls initialize to ensure Solhint is installed and configured. If the operating system is Windows, it calls set_execution_policy to set the PowerShell execution policy. The method then creates a temporary file to store the provided source_code and constructs a command to run Solhint using the solhint_path and config_path class variables. It executes this command and captures the output, which it logs for debugging. The output is parsed into a JSON report, and the method handles any JSON decoding errors, ensuring the temporary file is deleted afterward.
 
         """
-        self._initialize()
 
         if os.name == 'nt':
             self._set_execution_policy()
@@ -226,6 +226,7 @@ class SolhintAnalyzer(VerboseLogger):
         Creates a default configuration file for Solhint. It sets the config_path variable to the path of a .solhint.json file in the current working directory. If this file does not already exist, the method creates it with a default configuration, including rules for maximum line length, inline assembly, and compiler version. The method logs whether the configuration file was created or already existed. It returns the path to the configuration file. This method is called by initialize to set up Solhint with a standard configuration.
 
         """
+        # config_path = Path('static_linting/.solhint.json')
         config_path = os.path.join(os.getcwd(), '.solhint.json')
 
         if not os.path.exists(config_path):
