@@ -1,8 +1,0 @@
-{
-    "success": true,
-    "errors": null,
-    "output": {
-        "abi": [],
-        "bytecode": "6080604052348015600f57600080fd5b50603f80601d6000396000f3fe6080604052600080fdfea2646970667358221220d58c937df2acd03b25647e43810ee9d451daeda80d9a007d5bface47b43bf86d64736f6c63430008060033"
-    }
-}

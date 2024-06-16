@@ -42,6 +42,7 @@ py-solc-x = "1.0.1"
 slither-analyzer = "^0.10.3"
 solc-select = "^1.0.4"
 statsmodels = "^0.14.2"
+scipy = "^1.13.1"
 
 [tool.poetry.group.dev.dependencies]
 ipykernel = "^6.29.4"

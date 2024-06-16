@@ -28,6 +28,8 @@ class SolhintReport(list):
 
     Usage:
 
+    >>> report = SolhintReport(report_data) 
+    # report data is stored at every "analysis_log"
     >>> report.warnings
     >>> report.errors
     >>> report.nwarnings

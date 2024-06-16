@@ -56,23 +56,27 @@ class Placeholder:
         self.parent = parent
         self.prompt = placeholder_prompt
 
-    def run(self, user_data=None):
+    def run(self, *args, **kwargs):
+
+        def escape_and_convert(item):
+            if isinstance(item, (dict, list)):
+                return escape_braces(str(item))
+            return escape_braces(item)
 
         if _has_named_placeholders(self.prompt):
-            if isinstance(user_data, dict):
-                user_data = {k: escape_braces(v) for k, v in user_data.items()}
+            if kwargs:
+                user_data = {k: escape_and_convert(v) for k, v in kwargs.items()}
                 return self.parent._trigger_llm(self.prompt.format(**user_data))
             else:
-                raise ValueError("User data must be a dict.")
-            
+                raise ValueError("Named placeholders require keyword arguments.")
+
         elif _has_placeholders(self.prompt):
-            if isinstance(user_data, str): user_data = [user_data]
-            if isinstance(user_data, (List, Tuple)):
-                user_data = [escape_braces(item) for item in user_data]
+            if args:
+                user_data = [escape_and_convert(item) for item in args]
                 return self.parent._trigger_llm(self.prompt.format(*user_data))
             else:
-                raise ValueError("User data must be a list.")
-            
+                raise ValueError("Positional placeholders require positional arguments.")
+
         else:
             return self.parent._trigger_llm(self.prompt)
 
@@ -83,7 +87,7 @@ class LLM:
 
     Attributes:
         system_prompt (str): The system message template.
-        model (str): The model name to use.
+        language_model (str): The model name to use.
         temperature (float): The temperature to use for the model's generation.
         memory (List[Tuple[str, str]]): The conversation history.
 
@@ -113,11 +117,11 @@ class LLM:
     def __init__(
         self,
         system_prompt: str = None,
-        model: str = "gpt-3.5-turbo",
+        language_model: str = "gpt-3.5-turbo",
         temperature: float = 0.5
     ):
 
-        self.model = model
+        self.language_model = language_model
         self.temperature = temperature
         self._start_endpoint()
         
@@ -193,7 +197,7 @@ class LLM:
     ):
 
         self.endpoint = ChatOpenAI(
-            model=self.model,
+            model=self.language_model,
             temperature=self.temperature
         )
     

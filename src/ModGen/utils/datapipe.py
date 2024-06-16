@@ -1,6 +1,7 @@
 from datetime import datetime
 from pathlib import Path
 import json
+import time
 import os
 
 from utils.verbose_logger import VerboseLogger 
@@ -8,7 +9,8 @@ from utils.verbose_logger import VerboseLogger
 from typing import (
     Any,
     Dict,
-    List
+    List,
+    Union
 )
 
 class FetchedFileData(dict):
@@ -258,7 +260,7 @@ class DataPipe(VerboseLogger):
         content: str,
         filename=None,
         index=None,
-        extension=None,
+        extension=None, # generates automatic strftime names
         force=False
     ) -> None:
         """
@@ -267,6 +269,7 @@ class DataPipe(VerboseLogger):
         """
         
         if extension:
+            time.sleep(1.0) # to avoid repeated names
             filename = f"{datetime.now().strftime('%m.%d_%H.%M.%S')}.{extension}"
             file_path = self._get_directory() / filename
             self.log(f"Using path with created datetime file: {file_path}.", 1)
@@ -319,12 +322,21 @@ class DataPipe(VerboseLogger):
                 raise ValueError("Invalid content type for non-JSON file.")
     
     def fetch_all_files(
-        self
-    ) -> List[FetchedFileData]:
+        self,
+        filename: bool = False
+    ) -> Union[List[FetchedFileData], List[str]]:
         """
-        The fetch_all_files method reads content from all files in the set directory. It returns a list of structures, with each element representing the filename and content of a single file. The method raises an error if the directory is not set.
+        Reads content from all files in the specified directory. It returns a list of structures, where each element represents the filename and content of a single file when the filename parameter is True. If filename is False, it returns only the contents of the files. The method raises an error if the directory is not set.
 
-        >>> lst = file_manager.fetch_all_files()
+        Usage
+
+        >>> lst = dp.fetch_all_files(filename=True)
+        >>> for file in lst:
+        >>>     print(f"Filename: {file.filename}, Content: {file.content}")
+
+        >>> contents = dp.fetch_all_files(filename=False)
+        >>> for content in contents:
+        >>>     print(content)
         
         """
         if not self._get_directory():
@@ -333,16 +345,19 @@ class DataPipe(VerboseLogger):
         file_list = sorted(self._get_directory().glob('*'))
         files_with_contents = []
 
-        self.verbose_policy, policy_backup = 0, self.verbose_policy # Suppress recurrent verbose output	
+        self.verbose_policy, policy_backup = 0, self.verbose_policy # Suppress recurrent verbose output    
         
         for file_path in file_list:
             content = self.load(filename=file_path.name)
-            files_with_contents.append(
-                FetchedFileData({
-                    "filename": file_path.name,
-                    "content": content
-                    })
-                 )
+            if filename:
+                files_with_contents.append(
+                    FetchedFileData({
+                        "filename": file_path.name,
+                        "content": content
+                        })
+                     )
+            else:
+                files_with_contents.append(content)
             
         self.verbose_policy = policy_backup
         

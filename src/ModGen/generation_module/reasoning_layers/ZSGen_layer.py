@@ -1,32 +1,36 @@
-from langchain_openai import ChatOpenAI
-from langchain_core.output_parsers import StrOutputParser
 from dotenv import load_dotenv
-
 from utils.llm.LLM import LLM
+import re
+
+# para estas clases no habrá logs, sino que sacaran su proceso de pensamiento a alguna parte via datapipe
 
 def ZSGen(
     initial_conditions,
-    model="gpt-3.5-turbo"
+    language_model="gpt-3.5-turbo"
 ):
-
-    load_dotenv()
-
     description, features = initial_conditions
-
-    initial_conditions = f"""
-    Description: {description}
-    Features: {features}
-    """
-
-    system_prompt = """
+    load_dotenv()
+    
+    system_prompt = f"""
         You are a proficient Solidity developer.\
         You won't stop coding until all logics are fully developed.\
         Write only code, no yapping."
     """
 
-    user_message = initial_conditions + f"Write a Smart Contract basing on {features}"
+    user_message = """
+        Description: {} \
+        Features: {} \
+        Write a Smart Contract basing on the Features.
+    """
 
-    llm = LLM(system_prompt)
-    smart_contract_code = llm(user_message)
-    
-    return smart_contract_code
+    llm = LLM(
+        system_prompt=system_prompt,
+        language_model=language_model
+    )
+
+    plc = llm.set_placeholder(user_message)
+    out = plc.run(description, features)
+
+    out = re.sub(r"```solidity|```", "", out).strip()
+
+    return out

@@ -1,8 +1,0 @@
-{
-    "success": false,
-    "errors": {
-        "type": 4,
-        "message": "Warning: SPDX license identifier not provided in source file. Before publishing, consider adding a comment containing \"SPDX-License-Identifier: <SPDX-License>\" to each source file. Use \"SPDX-License-Identifier: UNLICENSED\" for non-open-source code. Please see https://spdx.org for more information.\n--> temp_contract.sol\n\nError: Operator == not compatible with types string storage ref and literal_string \"Golden\"\n   --> temp_contract.sol:113:13:\n    |\n113 |         if (userStatus[msg.sender] == \"Golden\") {\n    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nError: Operator == not compatible with types string storage ref and literal_string \"Platinum\"\n   --> temp_contract.sol:115:20:\n    |\n115 |         } else if (userStatus[msg.sender] == \"Platinum\") {\n    |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n"
-    },
-    "output": null
-}
