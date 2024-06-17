@@ -1,0 +1,71 @@
+{
+    "Limited VIP Ticket Auction": [
+        "Is the maximum bid limit per address correctly enforced?",
+        "Is the minimum bid increase of 5% correctly enforced?",
+        "Is the auction extension triggered correctly when a new highest bid is placed within the last 5 minutes?",
+        "Are real-time updates of the highest bid correctly broadcasted through the emission of an event?",
+        "Is the winning bid amount automatically locked in the contract upon conclusion of the auction?",
+        "Is the withdraw function correctly implemented for the auction organizer to transfer funds?"
+    ],
+    "Unique Token Representation": [
+        "Is the maximum number of bids per address limited to 3?",
+        "Is the minimum bid increment percentage correctly enforced?",
+        "Is bid sniping prevented with the automatic 10-minute extension?",
+        "Are real-time updates of the highest bid broadcasted through the emission of an event?",
+        "Is the winning bid amount automatically locked in the contract upon winning?",
+        "Is the transfer of the winning bid amount to the auction organizer implemented correctly?"
+    ],
+    "Bid Limitation": [
+        "Are bidders limited to a maximum of 3 bids per address?",
+        "Is the minimum bid increase of 5% enforced for each new bid?",
+        "Is the automatic auction extension of 10 minutes triggered correctly when a new highest bid is placed within the last 5 minutes?",
+        "Is the bid amount sent using the msg.value attribute for each bid?",
+        "Are bids non-retractable and final?",
+        "Is the highest bid amount automatically locked in the contract upon winning?",
+        "Is the withdrawal functionality implemented correctly to transfer the winning bid amount to the auction organizer?",
+        "Are real-time updates of the highest bid broadcasted through the emission of the NewHighestBid event?"
+    ],
+    "Minimum Bid Percentage Increase": [
+        "Is the minimum bid percentage increase correctly enforced?",
+        "Is the bid amount locked in the contract upon winning?",
+        "Is the auction extension triggered correctly when a new highest bid is placed within the last 5 minutes?",
+        "Are real-time updates of the highest bid broadcasted through the emission of the NewHighestBid event?"
+    ],
+    "Auction Extension Mechanism": [
+        "Is the auction extension triggered when a new highest bid is placed within the last 5 minutes?",
+        "Is the auction duration extended by 10 minutes when a new highest bid is placed within the last 5 minutes?",
+        "Are real-time updates of the auction extension broadcasted through the emission of an event?",
+        "Are bids placed final and unable to be retracted or modified?"
+    ],
+    "Final Bids": [
+        "Is the maximum number of bids per address limited to 3?",
+        "Does the contract enforce the 5% increase requirement for new bids?",
+        "Are bids prevented from being retracted or modified?",
+        "Is the auction extension of 10 minutes triggered if a new highest bid is placed within the last 5 minutes?",
+        "Is the winning bid automatically determined at the conclusion of the auction?",
+        "Are real-time updates of the highest bid correctly broadcast through the emission of an event?",
+        "Is the highest bid amount automatically locked in the contract upon winning?",
+        "Is the bid amount successfully transferred to the auction organizer upon winning?"
+    ],
+    "Real-time Bid Updates": [
+        "Is the maximum number of bids per address limited to 3?",
+        "Is the new bid amount required to be at least 5% higher than the current highest bid?",
+        "Is the auction extension of 10 minutes triggered if a new bid is placed within the last 5 minutes?",
+        "Is the event (NewHighestBid) emitted with the updated highest bid amount?"
+    ],
+    "Auction Conclusion Criteria": [
+        "Is the maximum number of bids per address limited to 3?",
+        "Are bids required to be at least 5% higher than the current highest bid?",
+        "Is the auction extension of 10 minutes triggered if a new bid is placed within the last 5 minutes?",
+        "Are bid retractions or modifications prevented?",
+        "Is the NewHighestBid event emitted for real-time updates?",
+        "Is the winning bid amount determined correctly at the end of the auction?",
+        "Is the transfer function for the auction organizer implemented correctly?"
+    ],
+    "Bid Payment and Withdrawal": [
+        "Are the constraints for placing bids correctly implemented?",
+        "Is the auction extension triggered when a new highest bid is placed within the last 5 minutes?",
+        "Is the winning bid determined correctly in case of multiple bids with the same amount?",
+        "Is the withdrawal process for the winning bidder functioning as expected?"
+    ]
+}

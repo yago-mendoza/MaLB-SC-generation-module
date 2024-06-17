@@ -1,0 +1,145 @@
+[
+    {
+        "line": 6,
+        "column": 5,
+        "severity": "Warning",
+        "message": "Rule is set with explicit type [var/s: uint]",
+        "ruleId": "explicit-types",
+        "filePath": "C:/Users/YAGO/AppData/Local/Temp/tmp9g5cf9fn.sol"
+    },
+    {
+        "line": 7,
+        "column": 5,
+        "severity": "Warning",
+        "message": "Rule is set with explicit type [var/s: uint]",
+        "ruleId": "explicit-types",
+        "filePath": "C:/Users/YAGO/AppData/Local/Temp/tmp9g5cf9fn.sol"
+    },
+    {
+        "line": 10,
+        "column": 5,
+        "severity": "Warning",
+        "message": "Rule is set with explicit type [var/s: uint]",
+        "ruleId": "explicit-types",
+        "filePath": "C:/Users/YAGO/AppData/Local/Temp/tmp9g5cf9fn.sol"
+    },
+    {
+        "line": 12,
+        "column": 41,
+        "severity": "Warning",
+        "message": "Rule is set with explicit type [var/s: uint]",
+        "ruleId": "explicit-types",
+        "filePath": "C:/Users/YAGO/AppData/Local/Temp/tmp9g5cf9fn.sol"
+    },
+    {
+        "line": 14,
+        "column": 5,
+        "severity": "Warning",
+        "message": "Explicitly mark visibility in function (Set ignoreConstructors to true if using solidity >=0.7.0)",
+        "ruleId": "func-visibility",
+        "fix": null,
+        "filePath": "C:/Users/YAGO/AppData/Local/Temp/tmp9g5cf9fn.sol"
+    },
+    {
+        "line": 20,
+        "column": 9,
+        "severity": "Warning",
+        "message": "Error message for require is too long: 41 counted / 32 allowed",
+        "ruleId": "reason-string",
+        "fix": null,
+        "filePath": "C:/Users/YAGO/AppData/Local/Temp/tmp9g5cf9fn.sol"
+    },
+    {
+        "line": 20,
+        "column": 9,
+        "severity": "Warning",
+        "message": "GC: Use Custom Errors instead of require statements",
+        "ruleId": "gas-custom-errors",
+        "fix": null,
+        "filePath": "C:/Users/YAGO/AppData/Local/Temp/tmp9g5cf9fn.sol"
+    },
+    {
+        "line": 25,
+        "column": 9,
+        "severity": "Warning",
+        "message": "GC: Use Custom Errors instead of require statements",
+        "ruleId": "gas-custom-errors",
+        "fix": null,
+        "filePath": "C:/Users/YAGO/AppData/Local/Temp/tmp9g5cf9fn.sol"
+    },
+    {
+        "line": 26,
+        "column": 9,
+        "severity": "Warning",
+        "message": "Error message for require is too long: 54 counted / 32 allowed",
+        "ruleId": "reason-string",
+        "fix": null,
+        "filePath": "C:/Users/YAGO/AppData/Local/Temp/tmp9g5cf9fn.sol"
+    },
+    {
+        "line": 26,
+        "column": 9,
+        "severity": "Warning",
+        "message": "GC: Use Custom Errors instead of require statements",
+        "ruleId": "gas-custom-errors",
+        "fix": null,
+        "filePath": "C:/Users/YAGO/AppData/Local/Temp/tmp9g5cf9fn.sol"
+    },
+    {
+        "line": 27,
+        "column": 2,
+        "severity": "Error",
+        "message": "Line length must be no more than 120 but current length is 123.",
+        "ruleId": "max-line-length",
+        "fix": null,
+        "filePath": "C:/Users/YAGO/AppData/Local/Temp/tmp9g5cf9fn.sol"
+    },
+    {
+        "line": 27,
+        "column": 9,
+        "severity": "Warning",
+        "message": "Error message for require is too long: 66 counted / 32 allowed",
+        "ruleId": "reason-string",
+        "fix": null,
+        "filePath": "C:/Users/YAGO/AppData/Local/Temp/tmp9g5cf9fn.sol"
+    },
+    {
+        "line": 27,
+        "column": 9,
+        "severity": "Warning",
+        "message": "GC: Use Custom Errors instead of require statements",
+        "ruleId": "gas-custom-errors",
+        "fix": null,
+        "filePath": "C:/Users/YAGO/AppData/Local/Temp/tmp9g5cf9fn.sol"
+    },
+    {
+        "line": 28,
+        "column": 9,
+        "severity": "Warning",
+        "message": "Error message for require is too long: 34 counted / 32 allowed",
+        "ruleId": "reason-string",
+        "fix": null,
+        "filePath": "C:/Users/YAGO/AppData/Local/Temp/tmp9g5cf9fn.sol"
+    },
+    {
+        "line": 28,
+        "column": 9,
+        "severity": "Warning",
+        "message": "GC: Use Custom Errors instead of require statements",
+        "ruleId": "gas-custom-errors",
+        "fix": null,
+        "filePath": "C:/Users/YAGO/AppData/Local/Temp/tmp9g5cf9fn.sol"
+    },
+    {
+        "line": 42,
+        "column": 9,
+        "severity": "Warning",
+        "message": "GC: Use Custom Errors instead of require statements",
+        "ruleId": "gas-custom-errors",
+        "fix": null,
+        "filePath": "C:/Users/YAGO/AppData/Local/Temp/tmp9g5cf9fn.sol"
+    },
+    {
+        "conclusion": "16 problem/s (1 error/s, 15 warning/s)"
+    }
+]

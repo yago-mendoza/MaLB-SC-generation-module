@@ -1,0 +1,50 @@
+{
+    "Proposal creation by members": [
+        "Can only members create proposals?",
+        "Is each proposal assigned a unique ID?",
+        "Are the start and end times for voting correctly set?",
+        "Is the proposal creation event emitted correctly?"
+    ],
+    "Voting on proposals": [
+        "Can only members vote on proposals?",
+        "Is each member restricted to one vote per proposal?",
+        "Is the voting period correctly enforced?",
+        "Is the vote count correctly updated?"
+    ],
+    "Execution of approved proposals": [
+        "Can only the admin execute proposals?",
+        "Is the proposal execution restricted to after the voting period?",
+        "Is the quorum requirement enforced before execution?",
+        "Is the proposal execution event emitted correctly?"
+    ],
+    "Quorum requirement for proposal approval": [
+        "Is the quorum correctly set during contract deployment?",
+        "Does the contract check the quorum before executing a proposal?",
+        "Is the proposal prevented from execution if the quorum is not met?",
+        "Is the quorum value adjustable by the admin?"
+    ],
+    "Admin role for managing members and execution": [
+        "Can only the admin add members?",
+        "Can only the admin remove members?",
+        "Can only the admin execute proposals?",
+        "Is the admin role transferable?"
+    ],
+    "Time-bound voting period": [
+        "Is the start time for voting set correctly during proposal creation?",
+        "Is the end time for voting set correctly during proposal creation?",
+        "Does the contract prevent voting before the start time?",
+        "Does the contract prevent voting after the end time?"
+    ],
+    "Membership management by admin": [
+        "Can the admin add new members?",
+        "Can the admin remove existing members?",
+        "Is the membership status check implemented correctly?",
+        "Are membership changes tracked through events?"
+    ],
+    "Proposal state tracking": [
+        "Is the proposal marked as executed after execution?",
+        "Does the contract track which members have voted on a proposal?",
+        "Are proposal details correctly retrievable?",
+        "Is the proposal state updated correctly after execution?"
+    ]
+}

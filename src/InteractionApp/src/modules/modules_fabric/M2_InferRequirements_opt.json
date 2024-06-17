@@ -3,7 +3,7 @@
     "lm": null,
     "traces": [],
     "train": [],
-    "demos": [
+    "demos": [b
       {
         "augmented": true,
         "smart_contract_description": "It has to manage 50,000 tokens available for a concert, with each token representing one ticket. Users are limited to purchasing one ticket each, but those with Golden status can buy up to three tickets to transfer to other users. The ticket sales are divided into two phases. The first phase lasts for 5 minutes, and the second phase is triggered one week after the first one ends. If the event is cancelled, compensation includes an extra 25% for Golden ticket holders, 5% for Platinum, and no extra compensation for Bronze ticket holders.",

@@ -1,18 +1,11 @@
 
-<!-- SOURCE -->
-<!-- https://github.com/princeton-nlp/SWE-agent/blob/main/README.md -->
+# README
 
 <p align="center">
   <a href="https://www.google.com/">
     <img src="assets/banner.PNG" />
   </a>
 </p>
-
-<!-- <p align="center">
-  <a href="https://swe-agent.com"><strong>Website & Demo</strong></a>&nbsp; | &nbsp;
-  <a href="https://discord.gg/AVEFbBn2rH"><strong>Discord</strong></a>&nbsp; | &nbsp;
-  <strong>Paper [coming April 10th]</strong>
-</p> -->
 
 # Table of Contents
 
@@ -21,135 +14,235 @@
    - [Python & Poetry](#python-and-poetry)
    - [Cloning the Repository](#cloning-the-repository)
    - [Activate the Virtual Environment](#activate-the-virtual-environment)
-3. [Development Commands](#development-commands)
-
+3. [Running the Modules](#running-the-modules)
+   - [Interaction Module](#interaction-module)
+   - [Generation Module](#generation-module)
+   - [Statistics and Testing Module (STTMD)](#statistics-and-testing-module-sttmd)
+4. [Development Commands](#development-commands)
+5. [License](#license)
 
 # 👋 Overview <a name="overview"></a>
-Proof-of-concept for a self-organizing multi-agent system that leverages transformer-based LLMs to autonomously script functional programs for the Ethereum Virtual Machine (EVM), designed within specified operational constraints and aiming to achieve targeted performance metrics and security standards.
+This project is a proof-of-concept for a self-organizing multi-agent system that leverages transformer-based Large Language Models (LLMs) to autonomously script functional programs for the Ethereum Virtual Machine (EVM). The goal is to design these programs within specified operational constraints while achieving targeted performance metrics and security standards. 
 
-<!-- <p align="center">
-  <img src="assets/workflow.png" style="width: 90%; height: auto;">
-</p> -->
+The project is organized into several modules, each responsible for different aspects of the overall process. The primary modules include:
+- Interaction Module: Refines a description of a smart contract and chunks it into structured features.
+- Generation Module: Generates smart contracts based on the structured features.
+- Statistics and Testing Module (STTMD): Analyzes data generated from the smart contracts, especially from compiled contracts.
+
+⚠️ **Note:** This project is currently under active development. Some features are still being refined and are not yet ready for production use.
 
 # 🔧 Installation <a name="installation"></a>
 
-In this section, we provide detailed instructions on how to install [Python](https://www.python.org/downloads/) and [Poetry](https://python-poetry.org/) using [Chocolatey](https://chocolatey.org/), a package manager for windows. We highly recommend this approach, although more traditional methods should also suffice. 
-
-Run the following command to install [Chocolatey](https://chocolatey.org/) (if you haven't already):
-
-  ```shell
-  Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
-  ```
+In this section, we provide detailed instructions on how to install [Python](https://www.python.org/downloads/) and [Poetry](https://python-poetry.org/) using various methods. The installation process varies slightly depending on your operating system.
 
 ## 1. Python & Poetry <a name="python-and-poetry"></a>
 
-### Python
+### For Windows
 
-Before you can use [Poetry](https://python-poetry.org/) or any other Python-based tool, you need to have Python installed on your system. Enter the following commands to install [Python](https://www.python.org/downloads/):
+Run the following command to install [Chocolatey](https://chocolatey.org/) (if you haven't already):
 
-1. Open a command prompt with administrator privileges.
+```shell
+Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+```
 
-2. Once [Chocolatey](https://chocolatey.org/) is installed, run the following command to install [Python](https://www.python.org/downloads/):
+Once [Chocolatey](https://chocolatey.org/) is installed, run the following command to install [Python](https://www.python.org/downloads/):
 
-    ```shell
-    choco install python
-    ```
+```shell
+choco install python
+```
 
-    This command will install the latest version of [Python](https://www.python.org/downloads/). If you need a specific version of Python, you can specify it by adding `--version=X.X.X` to the command.
+To verify that Python was installed correctly, open a new command prompt and run the following command:
 
-3. To verify that Python was installed correctly, open a new command prompt and run the following command:
+```shell
+python --version
+```
 
-   ```shell
-   python --version
-   ```
+Next, install [Poetry](https://python-poetry.org/) using [Chocolatey](https://chocolatey.org/):
 
-### Poetry
+```shell
+choco install poetry
+```
 
-Once you will have [Poetry](https://python-poetry.org/) installed, you will be able to install dependencies specified in the `pyproject.toml` file in a secure and smooth manner. 
+Verify the installation by running:
 
-> While we recommend [Poetry](https://python-poetry.org/) due to its ease of use and robustness, other [Python](https://www.python.org/downloads/) dependency managers can also be used to accurately install the specified versions of dependencies.
+```shell
+poetry --version
+```
 
-To install [Poetry](https://python-poetry.org/) using [Chocolatey](https://chocolatey.org/), follow these steps:
+### For Linux and macOS
 
-1. Open a command prompt with administrator privileges.
+First, ensure that [Python](https://www.python.org/downloads/) is installed. Then, install [Poetry](https://python-poetry.org/) using the following command:
 
-2. Once [Chocolatey](https://chocolatey.org/) is installed, run the following command to install [Poetry](https://python-poetry.org/):
+```shell
+curl -sSL https://install.python-poetry.org | python3 -
+```
 
-    ```shell
-    choco install poetry
-    ```
+Verify the installation by running:
 
-    This will install [Poetry](https://python-poetry.org/) and its dependencies.
-
-3. Verify the installation by running:
-
-    ```shell
-    poetry --version
-    ```
+```shell
+poetry --version
+```
 
 ## 2. Cloning the Repository <a name="cloning-the-repository"></a>
 
-  First, clone the repository to your local machine:
+First, clone the repository to your local machine. This repository contains all the code and resources needed to run the project.
 
-  ```shell
-  git clone https://github.com/yago-mendoza/MaLB-SC-generation-module.git
-  cd MaLB-SC-generation-module
-  ```
+```shell
+git clone https://github.com/yago-mendoza/MaLB-SC-generation-module.git
+cd MaLB-SC-generation-module
+```
 
 ## 3. Activate the Virtual Environment <a name="activate-the-virtual-environment"></a>
 
-  Use [Poetry](https://python-poetry.org/) to install the project's dependencies. [Poetry](https://python-poetry.org/) will automatically create a virtual environment.
+Use [Poetry](https://python-poetry.org/) to install the project's dependencies. Poetry will automatically create a virtual environment for the project. This ensures that all dependencies are installed in an isolated environment, avoiding conflicts with other projects.
 
-  ```shell
-  poetry install
-  ```
-
-  This should install many critical dependencies, besides development tools like [Ruff](https://docs.astral.sh/ruff/), [Black](https://github.com/psf/black), and [Sphynx](https://www.sphinx-doc.org/en/master/), which alongside [GitHub Copilot] and and the [VSCode Debugger]() are unvaluable for developing.
-
-  Is it advisable to select `CTRL+SHIFT+P` `Select Interpreter` `Python3.11.1 ('.venv': Poetry)`, or whatever version you are using.
-
-  Once the dependencies are installed, activate the virtual environment:
-
-  ```powershell
-  .\.venv\Scripts\Activate
-  ```
-
-  This command activates the virtual environment, setting up your shell to use the project’s local dependencies instead of globally installed packages. Ensure that you're using a command-line interface that supports PowerShell commands if you're on Windows, or adapt the command for Unix-based systems as needed.
-
-  When you're done working, you can deactivate the virtual environment to return to your global Python environment:
-
-  ```powershell
-  deactivate
-  ```
-
-# Running the Parsing Module <a name="development-commands"></a>
-
-⚠️ **Disclaimer:** The generation and assessment features are currently under development and cannot be run at this time. However, you can run the parsing module as described below.
-
-To run the program, execute the command:
-
-```bash
-streamlit run src/app.py
+```shell
+poetry install
 ```
 
-This will launch a Streamlit web application on your local server.
+Activate the virtual environment created by Poetry:
 
-The app.py script imports the ChatBotTeam and ParserTeam modules for interaction and data processing purposes.
+```powershell
+.\.venv\Scripts\Activate
+```
 
-After filling in the required categories and completing the process, the application will generate an `attributes.json` file with the results of the interaction.
+For Unix-based systems, use the following command:
+
+```bash
+source .venv/bin/activate
+```
+
+When you're done working, you can deactivate the virtual environment to return to your global Python environment:
+
+```powershell
+deactivate
+```
+
+# 🚀 Running the Modules <a name="running-the-modules"></a>
+
+The project consists of multiple modules, each responsible for a specific part of the process. Below are detailed instructions on how to run each module.
+
+## Interaction Module <a name="interaction-module"></a>
+
+The interaction module is designed to refine a description of a smart contract and chunk it into structured features. This process is facilitated through a Streamlit web application.
+
+To run the interaction module, navigate to the appropriate directory and execute the Streamlit application:
+
+```bash
+cd src/InteractionApp
+streamlit run streamlit_app.py
+```
+
+This command launches a Streamlit web application on your local server. The app provides an interface for you to input and refine a description of a smart contract, breaking it down into structured features. The refined descriptions and features are then stored in the `src/InteractionApp/output` directory.
+
+**Preloaded Outputs:**
+- **Descriptions:** Stored in `src/InteractionApp/output/descriptions`. This JSON file contains a multi-line string describing what the smart contract should do.
+- **Features:** Stored in `src/InteractionApp/output/features`. This JSON file contains a list of dictionaries, each representing a feature of the smart contract. Each feature dictionary includes:
+  - `Name` (str): The name of the feature.
+  - `Scope` (str): The scope of the feature.
+  - `Input` (list of strings): Inputs required for the feature.
+  - `Constraints` (list of strings): Constraints associated with the feature.
+  - `Output` (list of strings): Outputs generated by the feature.
+  - `PrimaryScenario` (string): The primary scenario for the feature.
+  - `AlternativeScenario` (string): Alternative scenarios for the feature.
+
+## Generation Module <a name="generation-module"></a>
+
+The generation module is responsible for generating smart contracts based on the structured features produced by the interaction module. This module uses the refined descriptions and features to generate functional smart contracts.
+
+To run the generation module, execute the following command:
+
+```bash
+poetry run python src/ModGen/run_MaLB.py
+```
+
+Alternatively, you can run it using:
+
+```bash
+python src/ModGen/run_MaLB.py
+```
+
+### Main Parameters
+
+Before running, ensure you adjust the parameters in the `__name__ == '__main__'` section of `run_MaLB.py`. These parameters control various aspects of the generation process:
+
+```python
+session = "session_name"  # The name of the folder in "output" being used
+generate_contracts = True
+compile_contracts = False
+analyze_contracts = False
+align_contracts = False
+
+language_model = "gpt-3.5-turbo"
+n_description = 1
+n_contracts = 5
+reasoning_layer = "ZSGen"
+analysis_coverage = 0.8
+feature_nquestions = 10
+view_points = 3
+gpt_openai_model = "gpt-3.5-turbo"
+```
+
+### Task Options
+
+1. **Generate Contracts**
+   - `n_contracts`: Number of contracts to generate.
+   - `reasoning_layer`: Type of reasoning technique to use (default: `ZSGen` from `ModGen/generation_module/reasoning_layers`).
+
+2. **Compile Contracts**
+   - `analysis_coverage`: Proportion of contracts to compile.
+
+3. **Analyze Contracts** (Solhint)
+   - No parameters required.
+
+4. **Align Contracts**
+   - `feature_nquestions`: Number of questions generated per feature.
+   - `view_points`: Points of view for the questions.
+   - `gpt_openai_model`: Large language model used for this phase.
+
+### Outputs
+
+The outputs of this process are stored in a folder named `output` with the name of the execution session. The outputs for each task are as follows:
+
+- **Generation:** Contracts
+- **Compilation:** `compilation_logs`, `compiled_contracts`, `execution_log`
+- **Solhint:** `analysis_logs` (list of errors and warnings)
+- **Alignment:** `alignment_questions`, answers to those questions, and improvement suggestions
+
+## Statistics and Testing Module (STTMD) <a name="statistics-and-testing-module-sttmd"></a>
+
+The STTMD is used for analyzing the generated data, especially from compiled contracts. It generates statistics and plots to provide insights into the performance and characteristics of the generated smart contracts.
+
+To run the statistics and testing module, use:
+
+```bash
+poetry run python src/ModGen/run_sttmd.py
+```
+
+The module outputs its results in `src/ModGen/utils/sttmd/output_images`.
+
+**Analysis Scripts:**
+- `compiled_contract_lengths_distributions.py`: Analyzes normal and lognormal length distributions.
+- `compiled_contract_lengths_stats.py`: Provides general statistics on length distributions.
+- `compiled_contracts_linting_stats.py`: Generates statistics on Solhint warning logs.
+- `compiled_contracts_warnings_plots_1.py`: Plots length vs. warnings with linear regression and statistical inference of linear regression parameters.
+- `compiled_contracts_warnings_plots_2.py`: Advanced chunking plots relating length and number of warnings.
 
 # 🛠 Development Commands <a name="development-commands"></a>
 
+The following commands are useful for development and maintaining code quality:
+
 | Tool    | Command                           | Explanation                                                  |
 |---------|-----------------------------------|--------------------------------------------------------------|
-| Ruff    | `ruff check . --fix`                    | Automatically fixes `FIXABLE` `[*]` issues in the current directory.         |
+| Ruff    | `ruff check . --fix`              | Automatically fixes `FIXABLE` `[*]` issues in the current directory. |
 | Ruff    | `ruff check .`                    | Checks for issues in the current directory without fixing.   |
-| Black   | `black .`                         | Automatically formats Python code in the current directory (requires `:reload`)  |
-| Poetry  | `poetry add`                      | Adds a new dependency to your Poetry project.                |
-| Poetry  | `poetry remove`                   | Removes a dependency from your Poetry project.               |
+| Black   | `black .`                         | Automatically formats Python code in the current directory.  |
+| Poetry  | `poetry add <package>`            | Adds a new dependency to your Poetry project.                |
+| Poetry  | `poetry remove <package>`         | Removes a dependency from your Poetry project.               |
 | Sphinx  | `docs/make html`                  | Builds HTML documentation using Sphinx.                      |
 | Browser | `start docs/build/html/index.html`| Opens the built HTML documentation in your default browser.  |
 
 # 📄 License <a name="license"></a>
-MIT. Check `LICENSE`.
+This project is licensed under the MIT License. See the `LICENSE` file for more details.
 
+---

@@ -1,0 +1,208 @@
+[
+    {
+        "line": 7,
+        "column": 5,
+        "severity": "Warning",
+        "message": "Rule is set with explicit type [var/s: uint]",
+        "ruleId": "explicit-types",
+        "filePath": "C:/Users/YAGO/AppData/Local/Temp/tmp_x2zohqb.sol"
+    },
+    {
+        "line": 8,
+        "column": 5,
+        "severity": "Warning",
+        "message": "Rule is set with explicit type [var/s: uint]",
+        "ruleId": "explicit-types",
+        "filePath": "C:/Users/YAGO/AppData/Local/Temp/tmp_x2zohqb.sol"
+    },
+    {
+        "line": 10,
+        "column": 5,
+        "severity": "Warning",
+        "message": "Rule is set with explicit type [var/s: uint]",
+        "ruleId": "explicit-types",
+        "filePath": "C:/Users/YAGO/AppData/Local/Temp/tmp_x2zohqb.sol"
+    },
+    {
+        "line": 11,
+        "column": 5,
+        "severity": "Warning",
+        "message": "Rule is set with explicit type [var/s: uint]",
+        "ruleId": "explicit-types",
+        "filePath": "C:/Users/YAGO/AppData/Local/Temp/tmp_x2zohqb.sol"
+    },
+    {
+        "line": 12,
+        "column": 5,
+        "severity": "Warning",
+        "message": "Rule is set with explicit type [var/s: uint]",
+        "ruleId": "explicit-types",
+        "filePath": "C:/Users/YAGO/AppData/Local/Temp/tmp_x2zohqb.sol"
+    },
+    {
+        "line": 13,
+        "column": 5,
+        "severity": "Warning",
+        "message": "Rule is set with explicit type [var/s: uint]",
+        "ruleId": "explicit-types",
+        "filePath": "C:/Users/YAGO/AppData/Local/Temp/tmp_x2zohqb.sol"
+    },
+    {
+        "line": 14,
+        "column": 5,
+        "severity": "Warning",
+        "message": "Rule is set with explicit type [var/s: uint]",
+        "ruleId": "explicit-types",
+        "filePath": "C:/Users/YAGO/AppData/Local/Temp/tmp_x2zohqb.sol"
+    },
+    {
+        "line": 16,
+        "column": 5,
+        "severity": "Warning",
+        "message": "Rule is set with explicit type [var/s: uint]",
+        "ruleId": "explicit-types",
+        "filePath": "C:/Users/YAGO/AppData/Local/Temp/tmp_x2zohqb.sol"
+    },
+    {
+        "line": 18,
+        "column": 41,
+        "severity": "Warning",
+        "message": "Rule is set with explicit type [var/s: uint]",
+        "ruleId": "explicit-types",
+        "filePath": "C:/Users/YAGO/AppData/Local/Temp/tmp_x2zohqb.sol"
+    },
+    {
+        "line": 20,
+        "column": 5,
+        "severity": "Warning",
+        "message": "Explicitly mark visibility in function (Set ignoreConstructors to true if using solidity >=0.7.0)",
+        "ruleId": "func-visibility",
+        "fix": null,
+        "filePath": "C:/Users/YAGO/AppData/Local/Temp/tmp_x2zohqb.sol"
+    },
+    {
+        "line": 20,
+        "column": 17,
+        "severity": "Warning",
+        "message": "Rule is set with explicit type [var/s: uint]",
+        "ruleId": "explicit-types",
+        "filePath": "C:/Users/YAGO/AppData/Local/Temp/tmp_x2zohqb.sol"
+    },
+    {
+        "line": 20,
+        "column": 38,
+        "severity": "Warning",
+        "message": "Rule is set with explicit type [var/s: uint]",
+        "ruleId": "explicit-types",
+        "filePath": "C:/Users/YAGO/AppData/Local/Temp/tmp_x2zohqb.sol"
+    },
+    {
+        "line": 28,
+        "column": 9,
+        "severity": "Warning",
+        "message": "Error message for require is too long: 36 counted / 32 allowed",
+        "ruleId": "reason-string",
+        "fix": null,
+        "filePath": "C:/Users/YAGO/AppData/Local/Temp/tmp_x2zohqb.sol"
+    },
+    {
+        "line": 28,
+        "column": 9,
+        "severity": "Warning",
+        "message": "GC: Use Custom Errors instead of require statements",
+        "ruleId": "gas-custom-errors",
+        "fix": null,
+        "filePath": "C:/Users/YAGO/AppData/Local/Temp/tmp_x2zohqb.sol"
+    },
+    {
+        "line": 29,
+        "column": 9,
+        "severity": "Warning",
+        "message": "GC: Use Custom Errors instead of require statements",
+        "ruleId": "gas-custom-errors",
+        "fix": null,
+        "filePath": "C:/Users/YAGO/AppData/Local/Temp/tmp_x2zohqb.sol"
+    },
+    {
+        "line": 30,
+        "column": 9,
+        "severity": "Warning",
+        "message": "Error message for require is too long: 37 counted / 32 allowed",
+        "ruleId": "reason-string",
+        "fix": null,
+        "filePath": "C:/Users/YAGO/AppData/Local/Temp/tmp_x2zohqb.sol"
+    },
+    {
+        "line": 30,
+        "column": 9,
+        "severity": "Warning",
+        "message": "GC: Use Custom Errors instead of require statements",
+        "ruleId": "gas-custom-errors",
+        "fix": null,
+        "filePath": "C:/Users/YAGO/AppData/Local/Temp/tmp_x2zohqb.sol"
+    },
+    {
+        "line": 32,
+        "column": 9,
+        "severity": "Warning",
+        "message": "Rule is set with explicit type [var/s: uint]",
+        "ruleId": "explicit-types",
+        "filePath": "C:/Users/YAGO/AppData/Local/Temp/tmp_x2zohqb.sol"
+    },
+    {
+        "line": 33,
+        "column": 9,
+        "severity": "Warning",
+        "message": "Rule is set with explicit type [var/s: uint]",
+        "ruleId": "explicit-types",
+        "filePath": "C:/Users/YAGO/AppData/Local/Temp/tmp_x2zohqb.sol"
+    },
+    {
+        "line": 35,
+        "column": 9,
+        "severity": "Warning",
+        "message": "Error message for require is too long: 62 counted / 32 allowed",
+        "ruleId": "reason-string",
+        "fix": null,
+        "filePath": "C:/Users/YAGO/AppData/Local/Temp/tmp_x2zohqb.sol"
+    },
+    {
+        "line": 35,
+        "column": 9,
+        "severity": "Warning",
+        "message": "GC: Use Custom Errors instead of require statements",
+        "ruleId": "gas-custom-errors",
+        "fix": null,
+        "filePath": "C:/Users/YAGO/AppData/Local/Temp/tmp_x2zohqb.sol"
+    },
+    {
+        "line": 49,
+        "column": 9,
+        "severity": "Warning",
+        "message": "Error message for require is too long: 37 counted / 32 allowed",
+        "ruleId": "reason-string",
+        "fix": null,
+        "filePath": "C:/Users/YAGO/AppData/Local/Temp/tmp_x2zohqb.sol"
+    },
+    {
+        "line": 49,
+        "column": 9,
+        "severity": "Warning",
+        "message": "GC: Use Custom Errors instead of require statements",
+        "ruleId": "gas-custom-errors",
+        "fix": null,
+        "filePath": "C:/Users/YAGO/AppData/Local/Temp/tmp_x2zohqb.sol"
+    },
+    {
+        "line": 50,
+        "column": 9,
+        "severity": "Warning",
+        "message": "GC: Use Custom Errors instead of require statements",
+        "ruleId": "gas-custom-errors",
+        "fix": null,
+        "filePath": "C:/Users/YAGO/AppData/Local/Temp/tmp_x2zohqb.sol"
+    },
+    {
+        "conclusion": "24 problem/s (24 warning/s)"
+    }
+]

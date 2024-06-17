@@ -1,0 +1,84 @@
+{
+    "generate_answer.predictor": {
+      "lm": null,
+      "traces": [],
+      "train": [],
+      "demos": [
+        {
+          "augmented": true,
+          "feature": "Proposal creation by members",
+          "reasoning": "produce the questions. We ...",
+          "questions": [
+            "Can only members create proposals?",
+            "Is each proposal assigned a unique ID?",
+            "Are the start and end times for voting correctly set?",
+            "Is the proposal creation event emitted correctly?"
+            ]
+        },
+        {
+          "augmented": true,
+          "feature": "Voting on proposals",
+          "reasoning": " of how the Virtual Handshake Protocol works programmatically post-deployment in order to determine if it is about Smart Contracts. The text here doesn't provide that level of detail, so the boolean assessment is False.",
+          "questions": [
+            "Can only members vote on proposals?",
+            "Is each member restricted to one vote per proposal?",
+            "Is the voting period correctly enforced?",
+            "Is the vote count correctly updated?"
+            ]
+        },
+        {
+          "augmented": true,
+          "feature": "Execution of approved proposals",
+          "reasoning": "produce the questions. We want to determine if the text is about Smart Contracts by evaluating the specific details and functionalities described in the passage.",
+          "questions": [
+            "Is the quorum correctly set during contract deployment?",
+            "Does the contract check the quorum before executing a proposal?",
+            "Is the proposal prevented from execution if the quorum is not met?",
+            "Is the quorum value adjustable by the admin?"
+            ]
+        },
+        {
+          "augmented": true,
+          "feature": "Quorum requirement for proposal approval",
+          "reasoning": "produce the questions. We ...",
+          "questions": [
+            "Is the quorum correctly set during contract deployment?",
+            "Does the contract check the quorum before executing a proposal?",
+            "Is the proposal prevented from execution if the quorum is not met?",
+            "Is the quorum value adjustable by the admin?"
+            ]
+        },
+        {
+          "augmented": true,
+          "feature": "Admin role for managing members and execution",
+          "reasoning": "produce the questions. We carefully describe the features of the smart contract and how it functions after deployment, explaining its specific use cases and functionalities.",
+          "questions": [
+            "Can only the admin add members?",
+            "Can only the admin remove members?",
+            "Can only the admin execute proposals?",
+            "Is the admin role transferable?"
+            ]
+        },
+        {
+          "feature": "Time-bound voting period",
+          "questions": [
+            "Is the start time for voting set correctly during proposal creation?",
+            "Is the end time for voting set correctly during proposal creation?",
+            "Does the contract prevent voting before the start time?",
+            "Does the contract prevent voting after the end time?"
+            ]
+        },
+        {
+          "feature": "Membership management by admin",
+          "questions": [
+            "Can the admin add new members?",
+            "Can the admin remove existing members?",
+            "Is the membership status check implemented correctly?",
+            "Are membership changes tracked through events?"
+            ]  
+        }
+      ],
+      "signature_instructions": "Generate Y/N questions for a contract feature implementation.",
+      "signature_prefix": "Questions:"
+    }
+  }

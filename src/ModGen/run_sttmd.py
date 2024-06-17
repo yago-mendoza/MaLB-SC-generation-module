@@ -30,17 +30,17 @@ class SttmdRunner:
             cls.sessions.extend(sessions)
     
     @classmethod
-    def run_compiled_contracts_general_stats (
+    def run_compiled_contract_lengths_stats (
         cls
     ):
         """
         Analyzes general statistics of compiled smart contracts, including duplicates and distribution fitting.
 
         Workflow:
-        1. Imports the `compiled_contracts_general_stats` function.
+        1. Imports the `compiled_contract_lengths_stats` function.
         2. Creates an `MALB` instance for the first session.
         3. Fetches all compiled contract files using `DataPipe`.
-        4. Calls the `compiled_contracts_general_stats` function with the fetched contracts.
+        4. Calls the `compiled_contract_lengths_stats` function with the fetched contracts.
 
         Inputs:
 
@@ -69,28 +69,30 @@ class SttmdRunner:
 
         # 1. Importing the analysis program & creating threads -----------------------
 
-        from utils.sttmd.compiled_contracts_general_stats import compiled_contracts_general_stats
+        from utils.sttmd.compiled_contract_lengths_stats import compiled_contract_lengths_stats
         session = cls.sessions[0]
         ablation_thread = MALB(session=session)
 
         # 2. Gathering args for the analysis (via threads) ---------------------------
 
         contracts = DataPipe(
-            ablation_thread.dirs['compiled_contracts']
+            ablation_thread.dirs['compiled_contracts'],
+            verbose_policy=0
         ).fetch_all_files()
 
         # 3. Running the analysis (only required args) -------------------------------
 
-        compiled_contracts_general_stats(contracts)
+        compiled_contract_lengths_stats(contracts)
     
     ##################################################################################
 
     @classmethod
-    def run_multi_plotting_contract_lenghts(
+    def run_compiled_contract_lengths_distributions(
         cls,
         norm_flags,
         lognorm_flags,
-        hist_flags
+        hist_flags,
+        labels
     ):
         """
         Generates plots for contract lengths, fitting normal and log-normal distributions, and plotting histograms.
@@ -103,7 +105,7 @@ class SttmdRunner:
 
         Inputs:
 
-            - contract_data_batches (list of lists): Batches of contract lengths.
+            - contract_sets (list of lists): Batches of contract lengths.
             - norm_flags (list of bools): Flags indicating whether to fit a normal distribution for each batch.
             - lognorm_flags (list of bools): Flags indicating whether to fit a log-normal distribution for each batch.
             - hist_flags (list of bools): Flags indicating whether to plot a histogram for each batch.
@@ -118,94 +120,128 @@ class SttmdRunner:
 
         # 1. Importing the analysis program & creating threads -----------------------
 
-        from utils.sttmd.multi_plotting_contract_lenghts import multi_plotting_contract_lenghts
+        from utils.sttmd.compiled_contract_lengths_distributions import compiled_contract_lengths_distributions
         multi_plotting_threads = [MALB(session=session) for session in cls.sessions]
 
         # 2. Gathering args for the analysis (via threads) ---------------------------
 
-        contract_data_batches = [
+        contract_sets = [
             DataPipe(
-                thread.dirs['compiled_contracts']
+                thread.dirs['compiled_contracts'],
+                verbose_policy=0
             ).fetch_all_files() for thread in multi_plotting_threads
         ]
 
         # 3. Running the analysis (only required args) -------------------------------
 
-        multi_plotting_contract_lenghts(
-            contract_length_data_batches=contract_data_batches,
+        compiled_contract_lengths_distributions(
+            contract_sets=contract_sets,
             norm_flags=norm_flags,
             lognorm_flags=lognorm_flags,
             hist_flags=hist_flags,
+            labels=labels
         )
-
+    
     @classmethod
-    def run_compiled_contracts_linting_stats_and_plots(
-        cls,
+    def run_compiled_contracts_linting_stats(
+        cls
     ):
         """
-        Analyzes linting reports of compiled smart contracts and generates statistics and visualizations.
+        Analyzes linting reports of compiled smart contracts and generates general statistics.
 
         Workflow:
-        1. Imports the `compiled_contracts_linting_stats_and_plots` function.
+        1. Imports the `compiled_contracts_linting_stats` function.
         2. Creates an `MALB` instance for the first session.
         3. Fetches all compiled contract files and analysis logs using `DataPipe`.
-        4. Calls the `compiled_contracts_linting_stats_and_plots` function with the fetched session, contracts, and analysis logs.
+        4. Calls the `compiled_contracts_linting_stats` function with the fetched contracts and analysis logs.
 
         Inputs:
 
-            - session (str): A session identifier used to organize and save the specific analysis results.
             - compiled_contracts (list): A list of compiled smart contracts.
-            - dp_analysis_logs (list): A list of file paths to the Solhint analysis logs.
-
-        Outputs:
-        
-            Console Outputs:
-            1. Number of contracts analyzed.
-            2. Total number of warnings.
-            3. Mean (average) number of warnings per contract.
-            4. Standard deviation of warnings.
-            5. Total number of errors.
-            6. Mean (average) number of errors per contract.
-            7. Standard deviation of errors.
-            8. Statistical summary of warnings and code length.
-            9. Correlation matrix between code length and number of warnings.
-            10. Summary of the linear regression model (OLS), including coefficients and fit measures.
-
-            Image Outputs:
-            - Scatter plot with a trend line showing the relationship between code length and number of warnings.
-            Dir: utils/sttmd/output_images/compiled_contracts_linting_stats_and_plots/{session}
+            - analysis_logs (list): A list of file paths to the Solhint analysis logs.
 
         """
 
         # 1. Importing the analysis program & creating threads -----------------------
 
-        from ModGen.utils.sttmd.compiled_contracts_linting_stats_and_plots import compiled_contracts_linting_stats_and_plots
+        from utils.sttmd.compiled_contracts_linting_stats import compiled_contracts_linting_stats
         session = cls.sessions[0]
         ablation_thread = MALB(session=session)
 
-        """
-        Displays some general statistics in the terminal, about the linting results for the given contracts.
-
-        """
-
         # 2. Gathering args for the analysis (via threads) ---------------------------
 
-        compiled_contracts =  DataPipe(
-            ablation_thread.dirs['compiled_contracts']
+        compiled_contracts = DataPipe(
+            ablation_thread.dirs['compiled_contracts'],
+            verbose_policy=0
         ).fetch_all_files()
 
-        dp_analysis_logs = DataPipe(
+        analysis_logs = DataPipe(
             ablation_thread.dirs['analysis_logs'],
             verbose_policy=0
         ).fetch_all_files()
 
         # 3. Running the analysis (only required args) -------------------------------
-        
-        compiled_contracts_linting_stats_and_plots(session, compiled_contracts, dp_analysis_logs)
+
+        compiled_contracts_linting_stats(
+            compiled_contracts=compiled_contracts,
+            analysis_logs=analysis_logs
+        )
 
     @classmethod
-    def run_plotting_warnings_throughout_length_sets(
-        cls
+    def run_compiled_contracts_warning_plots_1(
+        cls,
+        labels
+    ):
+        """
+        Analyzes linting reports of compiled smart contracts and generates statistics and visualizations.
+
+        Workflow:
+        1. Imports the `compiled_contracts_linting_plots` function.
+        2. Creates an `MALB` instance for the first session.
+        3. Fetches all compiled contract files and analysis logs using `DataPipe`.
+        4. Calls the `compiled_contracts_linting_plots` function with the fetched session, contracts, and analysis logs.
+
+        Inputs:
+
+            - compiled_contracts (list): A list of compiled smart contracts.
+            - analysis_logs (list): A list of file paths to the Solhint analysis logs.
+            - labels (list): A list of labels for the plots.
+
+        """
+
+        # 1. Importing the analysis program & creating threads -----------------------
+
+        from utils.sttmd.compiled_contracts_warning_plots_1 import compiled_contracts_warning_plots_1
+        multi_plotting_threads = [MALB(session=session) for session in cls.sessions]
+
+        # 2. Gathering args for the analysis (via threads) ---------------------------
+
+        contract_sets = [
+            DataPipe(
+                thread.dirs['compiled_contracts'],
+                verbose_policy=0
+            ).fetch_all_files() for thread in multi_plotting_threads
+        ]
+
+        analysis_logs_list_sets = [
+            DataPipe(
+                thread.dirs['analysis_logs'],
+                verbose_policy=0
+            ).fetch_all_files() for thread in multi_plotting_threads
+        ]
+
+        # 3. Running the analysis (only required args) -------------------------------
+        
+        compiled_contracts_warning_plots_1(
+            contract_sets=contract_sets,
+            analysis_logs_list_sets=analysis_logs_list_sets,
+            labels=labels
+        )
+
+    @classmethod
+    def run_compiled_contracts_warning_plots_2(
+        cls,
+        labels
     ):
         """
         Takes multiple sets of contracts, sorts them by length, divides them into 4 equally sized parts, calculates the mean number of errors for each part, and plots the results.
@@ -233,20 +269,24 @@ class SttmdRunner:
 
         # 1. Importing the analysis program & creating threads -----------------------
 
-        from utils.sttmd.plotting_warnings_throughout_length_sets import plotting_warnings_throughout_length_sets
+        from utils.sttmd.compiled_contracts_warning_plots_2 import compiled_contracts_warning_plots_2
         multi_plotting_threads = [MALB(session=session) for session in cls.sessions]
 
         # 2. Gathering args for the analysis (via threads) ---------------------------
 
         contract_sets = [
             DataPipe(
-                thread.dirs['compiled_contracts']
+                thread.dirs['compiled_contracts'],
+                verbose_policy=0
             ).fetch_all_files() for thread in multi_plotting_threads
         ]
 
         # 3. Running the analysis (only required args) -------------------------------
         
-        plotting_warnings_throughout_length_sets(contract_sets)
+        compiled_contracts_warning_plots_2(
+            contract_sets=contract_sets,
+            labels=labels
+        )
 
 if __name__ == '__main__':
 
@@ -263,28 +303,33 @@ if __name__ == '__main__':
 
 
     ''' ~ Targeting sessions for analysis '''
-    session = ['0225', '0075']  # <<<
+    session = ['7501', '7502', '7503']  # <<< (used for labeling plots)
 
     sttmd = SttmdRunner()
-    sttmd.set_sessions(session)
-
+    sttmd.set_sessions(session) # for creating threads to gather data
+    
 
     ''' ~ Compiled contract lengths '''
-    run_compiled_contracts_general_stats = False  # <<<
+    run_compiled_contract_lengths_stats = False  # <<<
 
-    # plots saved at 'utils/sttmd/output_images/.../'
-    run_multi_plotting_contract_lenghts = False  # <<<
+    # [!] Supports +1 session plotting
+    # # plots saved at 'utils/sttmd/output_images/.../'
+    run_compiled_contract_lengths_distributions = False  # <<<
     norm_flags, lognorm_flags, hist_flags = [True], [True], [True]  # <<<
 
     
     ''' ~ Warnings and errors in the linting process '''
-    # plots saved at 'utils/sttmd/output_images/.../session/'
-    run_compiled_contracts_linting_stats_and_plots = False  # <<<
+    run_compiled_contracts_linting_stats = False  # <<<
+
+    # [!] Supports +1 session plotting
+    # plots saved at 'utils/sttmd/output_images/.../'
+    run_compiled_contracts_warning_plots_1 = True  # <<<
 
     
     ''' ~ Plotting warnings throughout length sets '''
+    # [!] Supports +1 session plotting
     # plots saved at 'utils/sttmd/output_images/.../'
-    run_plotting_warnings_throughout_length_sets = True  # <<<
+    run_compiled_contracts_warning_plots_2 = False  # <<<
 
 
     ##################################################################################
@@ -300,20 +345,24 @@ if __name__ == '__main__':
     ###
 
     ''' ~ Compiled contract lengths '''    
-    if run_compiled_contracts_general_stats:
-        sttmd.run_compiled_contracts_general_stats()
+    if run_compiled_contract_lengths_stats:
+        sttmd.run_compiled_contract_lengths_stats()
 
-    if run_multi_plotting_contract_lenghts:
-        sttmd.run_multi_plotting_contract_lenghts(
-            norm_flags,
-            lognorm_flags,
-            hist_flags
+    if run_compiled_contract_lengths_distributions:
+        sttmd.run_compiled_contract_lengths_distributions(
+            norm_flags=norm_flags,
+            lognorm_flags=lognorm_flags,
+            hist_flags=hist_flags,
+            labels=session
         )
 
     ''' ~ Warnings and errors in the linting process '''
-    if run_compiled_contracts_linting_stats_and_plots:
-        sttmd.run_compiled_contracts_linting_stats_and_plots()
+    if run_compiled_contracts_linting_stats:
+        sttmd.run_compiled_contracts_linting_stats() 
+
+    if run_compiled_contracts_warning_plots_1:
+        sttmd.run_compiled_contracts_warning_plots_1(labels=session)
     
     ''' ~ Plotting warnings throughout length sets '''
-    if run_plotting_warnings_throughout_length_sets:
-        sttmd.run_plotting_warnings_throughout_length_sets()
+    if run_compiled_contracts_warning_plots_2:
+        sttmd.run_compiled_contracts_warning_plots_2(labels=session)

@@ -1,0 +1,276 @@
+{
+    "Limited VIP Ticket Auction": [
+        [
+            "What is the maximum number of bids allowed per address?",
+            "How much higher must a new bid be compared to the current highest bid?",
+            "What happens if a new bid is placed within the last 5 minutes of the auction?",
+            "What happens to the bid amount upon winning?",
+            "What are the constraints for placing bids in the auction?"
+        ],
+        [
+            "What is the maximum number of bids allowed per address?",
+            "How much higher must a new bid be compared to the current highest bid?",
+            "What happens if a new bid is placed within the last 5 minutes of the auction?",
+            "What happens to the bid amount upon winning?",
+            "What are the constraints for placing bids in the auction?"
+        ],
+        [
+            "What is the maximum number of bids allowed per address?",
+            "How much higher must a new bid be compared to the current highest bid?",
+            "What happens if a new bid is placed within the last 5 minutes of the auction?",
+            "What happens to the bid amount upon winning?",
+            "What are the constraints for placing bids in the auction?"
+        ],
+        [
+            "What is the maximum number of bids allowed per address?",
+            "How much higher must a new bid be compared to the current highest bid?",
+            "What happens if a new bid is placed within the last 5 minutes of the auction?",
+            "What happens to the bid amount upon winning?",
+            "What are the constraints for placing bids in the auction?"
+        ]
+    ],
+    "Unique Token Representation": [
+        [
+            "What is the maximum number of bids allowed per address?",
+            "What is the minimum bid increment percentage?",
+            "How does the automatic auction extension work?",
+            "What happens if a new highest bid is placed within the last 5 minutes of the auction?",
+            "How is the winning bid determined in case of multiple bids with the same amount?"
+        ],
+        [
+            "What is the maximum number of bids allowed per address?",
+            "What is the minimum bid increment percentage?",
+            "How does the automatic auction extension work?",
+            "What happens if a new highest bid is placed within the last 5 minutes of the auction?",
+            "How is the winning bid determined in case of multiple bids with the same amount?"
+        ],
+        [
+            "What is the maximum number of bids allowed per address?",
+            "What is the minimum bid increment percentage?",
+            "How does the automatic auction extension work?",
+            "What happens if a new highest bid is placed within the last 5 minutes of the auction?",
+            "How is the winning bid determined in case of multiple bids with the same amount?"
+        ],
+        [
+            "What is the maximum number of bids allowed per address?",
+            "What is the minimum bid increment percentage?",
+            "How does the automatic auction extension work?",
+            "What happens if a new highest bid is placed within the last 5 minutes of the auction?",
+            "How is the winning bid determined in case of multiple bids with the same amount?"
+        ]
+    ],
+    "Bid Limitation": [
+        [
+            "What is the maximum number of bids that each address can place?",
+            "What is the minimum percentage increase required for each bid?",
+            "How does the contract handle a new highest bid within the last 5 minutes of the auction?",
+            "What happens to the Ether sent as the bid amount?",
+            "What is the primary scenario for the bidding process?",
+            "What are the constraints for the bids placed?",
+            "How is the winning bid amount transferred to the auction organizer?"
+        ],
+        [
+            "What is the maximum number of bids that each address can place?",
+            "What is the minimum percentage increase required for each bid?",
+            "How does the contract handle a new highest bid within the last 5 minutes of the auction?",
+            "What happens to the Ether sent as the bid amount?",
+            "What is the primary scenario for the bidding process?",
+            "What are the constraints for the bids placed?",
+            "How is the winning bid amount transferred to the auction organizer?"
+        ],
+        [
+            "What is the maximum number of bids that each address can place?",
+            "What is the minimum percentage increase required for each bid?",
+            "How does the contract handle a new highest bid within the last 5 minutes of the auction?",
+            "What happens to the Ether sent as the bid amount?",
+            "What is the primary scenario for the bidding process?",
+            "What are the constraints for the bids placed?",
+            "How is the winning bid amount transferred to the auction organizer?"
+        ],
+        [
+            "What is the maximum number of bids that each address can place?",
+            "What is the minimum percentage increase required for each bid?",
+            "How does the contract handle a new highest bid within the last 5 minutes of the auction?",
+            "What happens to the Ether sent as the bid amount?",
+            "What is the primary scenario for the bidding process?",
+            "What are the constraints for the bids placed?",
+            "How is the winning bid amount transferred to the auction organizer?"
+        ]
+    ],
+    "Minimum Bid Percentage Increase": [
+        [
+            "What is the current highest bid amount?",
+            "What is the minimum percentage increase required for a new bid?",
+            "What happens if a user tries to place a bid that is less than 5% higher than the current highest bid?",
+            "What is the output of the feature when a user places a bid that is at least 5% higher than the current highest bid?"
+        ],
+        [
+            "What is the current highest bid amount?",
+            "What is the minimum percentage increase required for a new bid?",
+            "What happens if a user tries to place a bid that is less than 5% higher than the current highest bid?",
+            "What is the output of the feature when a user places a bid that is at least 5% higher than the current highest bid?"
+        ],
+        [
+            "What is the current highest bid amount?",
+            "What is the minimum percentage increase required for a new bid?",
+            "What happens if a user tries to place a bid that is less than 5% higher than the current highest bid?",
+            "What is the output of the feature when a user places a bid that is at least 5% higher than the current highest bid?"
+        ],
+        [
+            "What is the current highest bid amount?",
+            "What is the minimum percentage increase required for a new bid?",
+            "What happens if a user tries to place a bid that is less than 5% higher than the current highest bid?",
+            "What is the output of the feature when a user places a bid that is at least 5% higher than the current highest bid?"
+        ]
+    ],
+    "Auction Extension Mechanism": [
+        [
+            "What is the maximum number of bids allowed per address?",
+            "What is the minimum percentage by which a new bid must exceed the current highest bid?",
+            "How is the auction duration extended when a new highest bid is placed within the last 5 minutes?",
+            "What event is emitted to provide real-time updates of the highest bid?",
+            "Can bids be retracted or modified after being placed?"
+        ],
+        [
+            "What is the maximum number of bids allowed per address?",
+            "What is the minimum percentage by which a new bid must exceed the current highest bid?",
+            "How is the auction duration extended when a new highest bid is placed within the last 5 minutes?",
+            "What event is emitted to provide real-time updates of the highest bid?",
+            "Can bids be retracted or modified after being placed?"
+        ],
+        [
+            "What is the maximum number of bids allowed per address?",
+            "What is the minimum percentage by which a new bid must exceed the current highest bid?",
+            "How is the auction duration extended when a new highest bid is placed within the last 5 minutes?",
+            "What event is emitted to provide real-time updates of the highest bid?",
+            "Can bids be retracted or modified after being placed?"
+        ],
+        [
+            "What is the maximum number of bids allowed per address?",
+            "What is the minimum percentage by which a new bid must exceed the current highest bid?",
+            "How is the auction duration extended when a new highest bid is placed within the last 5 minutes?",
+            "What event is emitted to provide real-time updates of the highest bid?",
+            "Can bids be retracted or modified after being placed?"
+        ]
+    ],
+    "Final Bids": [
+        [
+            "What are the constraints on the number of bids per address?",
+            "How much higher must a new bid be compared to the current highest bid?",
+            "What happens if a new highest bid is placed within the last 5 minutes of the auction?",
+            "What are the primary and alternative scenarios for this feature?",
+            "How is the winning bid determined at the conclusion of the auction?"
+        ],
+        [
+            "What are the constraints on the number of bids per address?",
+            "How much higher must a new bid be compared to the current highest bid?",
+            "What happens if a new highest bid is placed within the last 5 minutes of the auction?",
+            "What are the primary and alternative scenarios for this feature?",
+            "How is the winning bid determined at the conclusion of the auction?"
+        ],
+        [
+            "What are the constraints on the number of bids per address?",
+            "How much higher must a new bid be compared to the current highest bid?",
+            "What happens if a new highest bid is placed within the last 5 minutes of the auction?",
+            "What are the primary and alternative scenarios for this feature?",
+            "How is the winning bid determined at the conclusion of the auction?"
+        ],
+        [
+            "What are the constraints on the number of bids per address?",
+            "How much higher must a new bid be compared to the current highest bid?",
+            "What happens if a new highest bid is placed within the last 5 minutes of the auction?",
+            "What are the primary and alternative scenarios for this feature?",
+            "How is the winning bid determined at the conclusion of the auction?"
+        ]
+    ],
+    "Real-time Bid Updates": [
+        [
+            "What mechanism will be used to track and update the current highest bid amount in real-time?",
+            "How will the smart contract handle situations where a new bid is not at least 5% higher than the current highest bid?",
+            "What triggers the automatic extension of the auction by 10 minutes if a new bid is placed within the last 5 minutes?",
+            "How will the smart contract broadcast the event (NewHighestBid) with the updated highest bid amount to all participants?"
+        ],
+        [
+            "What mechanism will be used to track and update the current highest bid amount in real-time?",
+            "How will the smart contract handle situations where a new bid is not at least 5% higher than the current highest bid?",
+            "What triggers the automatic extension of the auction by 10 minutes if a new bid is placed within the last 5 minutes?",
+            "How will the smart contract broadcast the event (NewHighestBid) with the updated highest bid amount to all participants?"
+        ],
+        [
+            "What mechanism will be used to track and update the current highest bid amount in real-time?",
+            "How will the smart contract handle situations where a new bid is not at least 5% higher than the current highest bid?",
+            "What triggers the automatic extension of the auction by 10 minutes if a new bid is placed within the last 5 minutes?",
+            "How will the smart contract broadcast the event (NewHighestBid) with the updated highest bid amount to all participants?"
+        ],
+        [
+            "What mechanism will be used to track and update the current highest bid amount in real-time?",
+            "How will the smart contract handle situations where a new bid is not at least 5% higher than the current highest bid?",
+            "What triggers the automatic extension of the auction by 10 minutes if a new bid is placed within the last 5 minutes?",
+            "How will the smart contract broadcast the event (NewHighestBid) with the updated highest bid amount to all participants?"
+        ]
+    ],
+    "Auction Conclusion Criteria": [
+        [
+            "What are the criteria for concluding an auction in the smart contract?",
+            "What are the constraints for placing bids in the auction?",
+            "What are the primary and alternative scenarios for the conclusion of the auction?",
+            "What is the transfer function for the auction organizer?"
+        ],
+        [
+            "What are the criteria for concluding an auction in the smart contract?",
+            "What are the constraints for placing bids in the auction?",
+            "What are the primary and alternative scenarios for the conclusion of the auction?",
+            "What is the transfer function for the auction organizer?"
+        ],
+        [
+            "What are the criteria for concluding an auction in the smart contract?",
+            "What are the constraints for placing bids in the auction?",
+            "What are the primary and alternative scenarios for the conclusion of the auction?",
+            "What is the transfer function for the auction organizer?"
+        ],
+        [
+            "What are the criteria for concluding an auction in the smart contract?",
+            "What are the constraints for placing bids in the auction?",
+            "What are the primary and alternative scenarios for the conclusion of the auction?",
+            "What is the transfer function for the auction organizer?"
+        ]
+    ],
+    "Bid Payment and Withdrawal": [
+        [
+            "What is the maximum number of bids allowed per address?",
+            "What is the minimum percentage by which a bid must exceed the current highest bid?",
+            "Can bids be retracted or modified once placed?",
+            "What triggers an auction extension?",
+            "How is the winning bid determined in case of multiple bids with the same amount?",
+            "What happens to the bid amount upon winning?",
+            "How can the winning bidder withdraw their funds from the smart contract?"
+        ],
+        [
+            "What is the maximum number of bids allowed per address?",
+            "What is the minimum percentage by which a bid must exceed the current highest bid?",
+            "Can bids be retracted or modified once placed?",
+            "What triggers an auction extension?",
+            "How is the winning bid determined in case of multiple bids with the same amount?",
+            "What happens to the bid amount upon winning?",
+            "How can the winning bidder withdraw their funds from the smart contract?"
+        ],
+        [
+            "What is the maximum number of bids allowed per address?",
+            "What is the minimum percentage by which a bid must exceed the current highest bid?",
+            "Can bids be retracted or modified once placed?",
+            "What triggers an auction extension?",
+            "How is the winning bid determined in case of multiple bids with the same amount?",
+            "What happens to the bid amount upon winning?",
+            "How can the winning bidder withdraw their funds from the smart contract?"
+        ],
+        [
+            "What is the maximum number of bids allowed per address?",
+            "What is the minimum percentage by which a bid must exceed the current highest bid?",
+            "Can bids be retracted or modified once placed?",
+            "What triggers an auction extension?",
+            "How is the winning bid determined in case of multiple bids with the same amount?",
+            "What happens to the bid amount upon winning?",
+            "How can the winning bidder withdraw their funds from the smart contract?"
+        ]
+    ]
+}
