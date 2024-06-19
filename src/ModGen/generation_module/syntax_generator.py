@@ -17,6 +17,7 @@ class SyntaxGenerator(VerboseLogger):
         initial_conditions: Tuple[str, List[Dict[str, Any]]],
         language_model: str = "gpt-3.5-turbo",
         reasoning_layer: str = "ZSGen",
+
         verbose_policy: int = 1
     ) -> None:
         VerboseLogger.__init__(self)
@@ -54,14 +55,16 @@ class SyntaxGenerator(VerboseLogger):
             raise
 
     def generate(
-        self
+        self,
+        hints: List[str]
     ) -> str:
         self.log(f"Retrieved reasoning layer {self.reasoning_layer.__name__}", 2)
         self.log("Generating code...", 3)
 
         code = self.reasoning_layer(
             initial_conditions=self.initial_conditions,
-            language_model=self.language_model
+            language_model=self.language_model,
+            hints=hints
         )
         
         self.log(f"Code generated: {len(code)} characters in total", 1)

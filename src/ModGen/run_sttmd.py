@@ -6,7 +6,7 @@
 ############################################################
 ############################################################
 
-from run_MaLB import MALB
+from MaLB_bricks.py import MALB
 from utils.datapipe import DataPipe
 
 class SttmdRunner:

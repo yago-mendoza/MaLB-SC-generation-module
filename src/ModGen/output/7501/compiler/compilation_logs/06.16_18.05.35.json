@@ -1,9 +1,0 @@
-{
-    "success": false,
-    "errors": {
-        "type": 4,
-        "message": "Error: \"msg.value\" and \"callvalue()\" can only be used in payable public functions. Make the function \"payable\" or use an internal function to avoid this error.\n  --> temp_contract.sol:68:32:\n   |\n68 |         bidderPayable.transfer(msg.value);\n   |                                ^^^^^^^^^\n\n"
-    },
-    "abi": null,
-    "bytecode": null
-}

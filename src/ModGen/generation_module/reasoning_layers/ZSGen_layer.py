@@ -1,36 +1,52 @@
+# Import necessary modules and functions
 from dotenv import load_dotenv
-from utils.llm.LLM import LLM
+from generation_module.llm.LLM import LLM
 import re
-
-# para estas clases no habrá logs, sino que sacaran su proceso de pensamiento a alguna parte via datapipe
+from typing import List, Dict, Any, Tuple
+from generation_module.reasoning_layers.prompts.USER_TRIGGER import USER_MESSAGE_PROMPT_CREATE
+from generation_module.reasoning_layers.prompts.SYSTEM import PROMPT_DEVELOPER
 
 def ZSGen(
-    initial_conditions,
-    language_model="gpt-3.5-turbo"
-):
-    description, features = initial_conditions
-    load_dotenv()
+    initial_conditions: Tuple[str, List[Dict[str, Any]]],
+    language_model: str = "gpt-3.5-turbo",
+    hints: List[str] = []
+) -> str:
+    """
+    Generates a response based on initial conditions and hints using a specified language model.
     
-    system_prompt = f"""
-        You are a proficient Solidity developer.\
-        You won't stop coding until all logics are fully developed.\
-        Write only code, no yapping."
-    """
+    Args:
+        initial_conditions (Tuple[str, List[Dict[str, Any]]]): The initial description and features for the generation.
+        language_model (str): The language model to use for generation. Default is "gpt-3.5-turbo".
+        hints (List[str]): Optional hints to guide the generation process.
 
-    user_message = """
-        Description: {} \
-        Features: {} \
-        Write a Smart Contract basing on the Features.
+    Returns:
+        str: The generated output, cleaned of any specific code markers.
     """
+    description, features = initial_conditions
+    
+    # Load environment variables
+    load_dotenv()
 
+    # Prepare hints if provided
+    if hints:
+        hints_str = "\nHints (to bear in mind):\n{}".format("\n".join(hints))
+    else:
+        hints_str = ''
+
+    # Initialize the language model with the system prompt and specified language model
     llm = LLM(
-        system_prompt=system_prompt,
+        system_prompt=PROMPT_DEVELOPER,
         language_model=language_model
     )
 
-    plc = llm.set_placeholder(user_message)
-    out = plc.run(description, features)
+    # Set placeholder with user message prompt and hints
+    plc = llm.set_placeholder(USER_MESSAGE_PROMPT_CREATE + hints_str)
+    
+    # Generate the output using the description and features
+    output = plc.run(description, features)
 
-    out = re.sub(r"```solidity|```", "", out).strip()
+    # Clean the output by removing specific code markers
+    cleaned_output = re.sub(r"```solidity|```", "", output).strip()
 
-    return out
+    return cleaned_output
+

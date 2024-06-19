@@ -1,7 +1,7 @@
 from src.modules.M2 import InferRequirements
 from src.modules.M3 import GenerateAttributes
 
-from src.coalitions.PseudoAgent import PseudoAgent
+from InteractionApp.src.coalitions.CompilableEntity import CompilableEntity
 
 from datetime import datetime
 
@@ -13,14 +13,14 @@ class ParsingTeam:
         self.attributes = []
 
         # Initialize the modules as AbstractModules
-        self.InferRequirements = PseudoAgent(
+        self.InferRequirements = CompilableEntity(
             module=InferRequirements,
             load_path="src/modules/modules_fabric/M2_InferRequirements_opt.json",  # Assuming a config or model path if required
             model="gpt-3.5-turbo-0125",  # Assuming model parameter if required
             out="requirements"  # Output type as expected from the module
         )
 
-        self.GenerateAttributes = PseudoAgent(
+        self.GenerateAttributes = CompilableEntity(
             module=GenerateAttributes,
             load_path="src/modules/modules_fabric/M31_GenerateAttributes_opt.json",  # Assuming a config or model path if required
             model="gpt-3.5-turbo-0125",  # Assuming model parameter if required

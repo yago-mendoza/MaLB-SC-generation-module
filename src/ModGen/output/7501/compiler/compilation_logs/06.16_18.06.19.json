@@ -1,9 +1,0 @@
-{
-    "success": false,
-    "errors": {
-        "type": 4,
-        "message": "Error: Member \"length\" not found or not visible after argument-dependent lookup in uint256.\n  --> temp_contract.sol:38:17:\n   |\n38 |         require(numBidsPlaced[msg.sender].length < numBidsAllowed, \"Maximum number of bids reached for this address\");\n   |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n"
-    },
-    "abi": null,
-    "bytecode": null
-}

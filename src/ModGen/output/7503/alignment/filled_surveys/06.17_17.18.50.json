@@ -1,0 +1,294 @@
+{
+    "Is the maximum bid limit of 3 per address correctly enforced?": [
+        true,
+        false,
+        true,
+        true
+    ],
+    "Is the minimum bid increase of 5% correctly enforced?": [
+        true,
+        false,
+        true,
+        true
+    ],
+    "Is the auction extension triggered correctly if a new bid is placed within the last 5 minutes?": [
+        false,
+        false,
+        true,
+        true
+    ],
+    "Are real-time updates of the highest bid broadcasted through the emission of the NewHighestBid event?": [
+        true,
+        true,
+        true,
+        false
+    ],
+    "Is each ticket represented as a unique token?": [
+        true,
+        true,
+        true,
+        true
+    ],
+    "Are bidders limited to a maximum of 3 bids per address?": [
+        true,
+        true,
+        true,
+        true
+    ],
+    "Is each bid required to be at least 5% higher than the current highest bid?": [
+        true,
+        true,
+        true,
+        true
+    ],
+    "Is there a mechanism in place to prevent bid retraction or modification?": [
+        true,
+        true,
+        true,
+        true
+    ],
+    "Is the automatic 10-minute extension triggered when a new highest bid is placed within the last 5 minutes of the auction?": [
+        true,
+        true,
+        true,
+        false
+    ],
+    "Are real-time updates of the highest bid broadcasted through the emission of an event?": [
+        true,
+        false,
+        true,
+        true
+    ],
+    "Is the highest bid amount automatically locked in the contract upon winning?": [
+        true,
+        true,
+        true,
+        true
+    ],
+    "Is the winning bid amount transferred to the auction organizer upon winning?": [
+        true,
+        true,
+        true,
+        true
+    ],
+    "Can each address place a maximum of 3 bids?": [
+        true,
+        true,
+        true,
+        true
+    ],
+    "Is the minimum bid increase of 5% enforced for each new bid?": [
+        true,
+        true,
+        true,
+        true
+    ],
+    "Is the automatic auction extension of 10 minutes triggered correctly when a new highest bid is placed within the last 5 minutes?": [
+        true,
+        true,
+        true,
+        true
+    ],
+    "Is the minimum bid amount sent using msg.value attribute correctly enforced?": [
+        true,
+        true,
+        true,
+        true
+    ],
+    "Is the requirement of a minimum of 10 tokens to participate implemented?": [
+        true,
+        true,
+        true,
+        true
+    ],
+    "Are bids final and non-retractable as per the contract logic?": [
+        true,
+        true,
+        true,
+        true
+    ],
+    "Is the determination of the winning bid in case of a tie functioning correctly?": [
+        false,
+        true,
+        true,
+        true
+    ],
+    "Are real-time updates through the emission of NewHighestBid event working as expected?": [
+        true,
+        true,
+        true,
+        true
+    ],
+    "Is the functionality to lock the highest bid amount in the contract upon winning implemented correctly?": [
+        true,
+        true,
+        true,
+        true
+    ],
+    "Is the withdrawal functionality to transfer the winning bid amount to the auction organizer functioning as expected?": [
+        true,
+        true,
+        true,
+        true
+    ],
+    "Is the minimum bid percentage increase correctly enforced?": [
+        true,
+        false,
+        true,
+        true
+    ],
+    "Is the bid amount locked in the contract upon placement of a new highest bid?": [
+        true,
+        true,
+        true,
+        true
+    ],
+    "Is the auction extension triggered correctly when a new highest bid is placed within the last 5 minutes?": [
+        true,
+        true,
+        true,
+        true,
+        false,
+        true,
+        true,
+        true
+    ],
+    "Are real-time updates of the highest bid correctly broadcasted through the emission of an event?": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        true,
+        true
+    ],
+    "Is the auction extension triggered when a new highest bid is placed within the last 5 minutes?": [
+        true,
+        true,
+        true,
+        true
+    ],
+    "Is the auction duration extended by 10 minutes as per the requirement?": [
+        true,
+        true,
+        true,
+        true
+    ],
+    "Are real-time updates of the auction extension broadcasted through the emission of an event?": [
+        true,
+        true,
+        true,
+        true
+    ],
+    "Are bids placed final and unmodifiable as per the requirement?": [
+        true,
+        true,
+        true,
+        true
+    ],
+    "Is the maximum number of bids per address limited to 3?": [
+        false,
+        true,
+        true,
+        true
+    ],
+    "Is the minimum bid increase of 5% enforced for new bids?": [
+        true,
+        true,
+        true,
+        true
+    ],
+    "Are bids prevented from being retracted or modified?": [
+        true,
+        true,
+        true,
+        true
+    ],
+    "Is the auction extension of 10 minutes triggered if a new highest bid is placed within the last 5 minutes?": [
+        true,
+        true,
+        false,
+        true
+    ],
+    "Is the real-time bid update event (NewHighestBid) emitted correctly?": [
+        true,
+        true,
+        true,
+        true
+    ],
+    "Are bid amounts checked to ensure they are at least 5% higher than the current highest bid?": [
+        true,
+        true,
+        true,
+        false
+    ],
+    "Is the auction extension of 10 minutes triggered correctly if a new bid is placed within the last 5 minutes?": [
+        true,
+        true,
+        true,
+        true
+    ],
+    "Are real-time updates of the highest bid accurately tracked and broadcasted?": [
+        true,
+        true,
+        true,
+        true
+    ],
+    "Is the maximum bid limit per address correctly enforced?": [
+        true,
+        true,
+        true,
+        true
+    ],
+    "Is the minimum bid increment correctly enforced?": [
+        true,
+        true,
+        true,
+        true,
+        false,
+        true,
+        true,
+        true
+    ],
+    "Is the auction extension correctly triggered when a new bid is placed within the last 5 minutes?": [
+        true,
+        true,
+        true,
+        true
+    ],
+    "Is the winning bid determined correctly in case of multiple bids with the same amount?": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+    ],
+    "Is the maximum number of bids per address correctly enforced?": [
+        true,
+        true,
+        true,
+        true
+    ],
+    "Is the bid amount automatically locked in the contract upon winning?": [
+        true,
+        true,
+        true,
+        true
+    ],
+    "Is the transfer of funds to the auction organizer upon winning implemented correctly?": [
+        true,
+        true,
+        true,
+        true
+    ],
+    "Is the withdrawal of funds by the winning bidder implemented correctly?": [
+        true,
+        true,
+        true,
+        true
+    ]
+}

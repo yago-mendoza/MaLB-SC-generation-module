@@ -1,7 +1,7 @@
 from src.modules.M1 import ValidateTopic
 from src.modules.M4 import GenerateQuestions, UpdateDescription, Reflexion
 
-from src.coalitions.PseudoAgent import PseudoAgent
+from InteractionApp.src.coalitions.CompilableEntity import CompilableEntity
 
 from datetime import datetime
 
@@ -28,27 +28,27 @@ class CoordinationTeam:
 
         # -------------- Modules -------------- #
 
-        self.ValidateTopic = PseudoAgent(
+        self.ValidateTopic = CompilableEntity(
             module=ValidateTopic,
             load_path="src/modules/modules_fabric/M11_ValidateTopic_opt.json",
             model=self.model,
             out="boolean_assessment"
         )
         
-        self.GenerateQuestions = PseudoAgent(
+        self.GenerateQuestions = CompilableEntity(
             module=GenerateQuestions,
             load_path="src/modules/modules_fabric/M4_GenerateQuestions_opt.json",
             model=self.model,
             out="questions"
         )
         
-        self.UpdateDescription = PseudoAgent(
+        self.UpdateDescription = CompilableEntity(
             module=UpdateDescription,
             model=self.model,
             out="new_description"
         )
 
-        self.Reflect = PseudoAgent(
+        self.Reflect = CompilableEntity(
             module=Reflexion,
             model=self.model,
             out="insights"

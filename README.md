@@ -22,7 +22,7 @@
 5. [License](#license)
 
 # 👋 Overview <a name="overview"></a>
-This project is a proof-of-concept for a self-organizing multi-agent system that leverages transformer-based Large Language Models (LLMs) to autonomously script functional programs for the Ethereum Virtual Machine (EVM). The goal is to design these programs within specified operational constraints while achieving targeted performance metrics and security standards. 
+This project is a proof-of-concept for a multi-agent system that leverages transformer-based Large Language Models (LLMs) to autonomously script functional programs for the Ethereum Virtual Machine (EVM). The goal is to design these programs within specified operational constraints while achieving targeted performance metrics and security standards. 
 
 The project is organized into several modules, each responsible for different aspects of the overall process. The primary modules include:
 - Interaction Module: Refines a description of a smart contract and chunks it into structured features.
