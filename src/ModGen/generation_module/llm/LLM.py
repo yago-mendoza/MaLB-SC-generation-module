@@ -3,7 +3,7 @@ from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import ChatPromptTemplate
 from dotenv import load_dotenv
 
-from utils.llm.brace_handling_functions import (
+from generation_module.llm.brace_handling_functions import (
     escape_braces,
     _has_placeholders,
     _has_named_placeholders
