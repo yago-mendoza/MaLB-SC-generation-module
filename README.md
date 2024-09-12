@@ -246,3 +246,27 @@ The following commands are useful for development and maintaining code quality:
 This project is licensed under the MIT License. See the `LICENSE` file for more details.
 
 ---
+
+# Brief Overview
+
+![image_1](https://github.com/yago-mendoza/MaLB-SC-generation-module/blob/main/assets/img1.PNG)
+
+![image_1](https://github.com/yago-mendoza/MaLB-SC-generation-module/blob/main/assets/img2.PNG)
+
+The architecture depicts a modular system centered around a Large Language Model (LLM) for generating and validating smart contracts. The system is divided into three main phases: M1, M2, and M3.
+In M1, the Coordinator module handles initial input processing. It performs validation of premises, updates descriptions, and conducts reflection on the input. This module interacts directly with user-provided premises and feedback, ensuring the input is properly formatted and understood before further processing. M2 encompasses parsing and generation. The Parser extracts relevant information from the validated input and performs inference to structure the data. The Generator then utilizes this structured information to produce Solidity smart contracts. This generation process is iterative, with multiple attempts represented by the vertical bars in the Generator block. M3 focuses on quality assurance and alignment. The Linting module performs compilation checks and uses Solhint for static code analysis, ensuring correctness of the generated contract. The Alignment module implements the SuAV (Survey Augmented Generation for Validation) process, utilizing an Inquisitor to generate questions and Scrutineers to assess completeness.
+
+# SuAV (Survey Augmented Generation for Validation)
+
+![image_1](https://github.com/yago-mendoza/MaLB-SC-generation-module/blob/main/assets/img3.PNG)
+
+The Survey Augmented Generation for Validation (SuAV) process is a key component of the smart contract generation system. It employs an Inquisitor agent to formulate targeted questions based on contract features and the compiled program. These questions are then evaluated by multiple Scrutineers, whose assessments are consolidated to produce a comprehensive evaluation of the smart contract's alignment with user requirements. This multi-step process ensures a thorough and unbiased validation of the generated contracts.
+
+
+
+
+
+
+
+
+
